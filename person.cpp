@@ -10,10 +10,14 @@ private:
     static int count;
 
 public:
+    // constructor 
     Person(const string& name, const string& email) : name(name), email(email) {
         count++;
     }
+    //χρειαζεται κιαλλο(ους) constructor(s) αλλα γιατι?? τι διαφορετικές λειτουργίες θα εχουν?
 
+
+    // destructor
     ~Person() {
         count--;
     }
@@ -52,4 +56,5 @@ public:
     }
 };
 
+// Αρχικοποίηση του count
 int Person::count = 0;
