@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "secretary.h"
 
 using namespace std;
 

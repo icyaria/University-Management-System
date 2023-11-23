@@ -1,44 +1,59 @@
 #include <iostream>
 #include <string>
+#include "person.h"
 
 using namespace std;
 
-class Person {
-private:
-    string name;
-    string email;
-    static int count;
-
-public:
-    // constructor 
-    Person(const string& name, const string& email) : name(name), email(email) {
+    // 1st constructor 
+    Person::Person(string n, string e) {
+        name = n;
+        email = e;
         count++;
+        cout << "Constructed person without phone number" <<endl;
     }
-    //χρειαζεται κιαλλο(ους) constructor(s) αλλα γιατι?? τι διαφορετικές λειτουργίες θα εχουν?
+
+    // 2nd constructor 
+    Person::Person(string n, string e, long int ph) {
+        name = n;
+        email = e;
+        phone = ph;
+        count++;
+        cout << "Constructed person with phone number" <<endl;
+    }
 
 
-    // destructor
-    ~Person() {
+    // deconstructor
+    Person::~Person() {
+        cout << "Deconstructed person" <<endl;
         count--;
     }
-
+  
     // getters και setters
-    string getName() const {
+    string Person::getName() const {
         return name;
     }
 
-    void setName(const string& newName) {
+    void Person::setName(string newName) {
         name = newName;
     }
 
-    string getEmail() const {
+    string Person::getEmail() const {
         return email;
     }
 
-    void setEmail(const string& newEmail) {
+    void Person::setEmail(string newEmail) {
         email = newEmail;
     }
 
+    long int Person::getPhone() const {
+        return phone;
+    }
+
+    void Person::setPhone(long int newPhone) {
+        phone = newPhone;
+    }
+
+/*
     // Υπερφόρτωση τελεστών << και >> για είσοδο και έξοδο
     friend istream& operator>>(istream& is, Person& person) {
         is >> person.name >> person.email;
@@ -49,12 +64,11 @@ public:
         os << "Name: " << person.name << ", Email: " << person.email;
         return os;
     }
-
+*/
     // # person objects που δημιουργήθηκαν
-    static int getCount() {
+    int Person::getCount() {
         return count;
     }
-};
-
+    
 // Αρχικοποίηση του count
 int Person::count = 0;
