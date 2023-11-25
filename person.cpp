@@ -4,31 +4,43 @@
 
 using namespace std;
 
+
+    // default constructor
+    Person::Person() {
+        name = "";
+        email = "";
+        phone = 0;
+        count++;
+        cout << "Constructed person without parameters" <<endl;
+    }
+
     // 1st constructor 
     Person::Person(string n, string e) {
         name = n;
         email = e;
+        phone = 0;
         count++;
         cout << "Constructed person without phone number" <<endl;
     }
 
-    // 2nd constructor 
+    // 2nd constructor
     Person::Person(string n, string e, long int ph) {
         name = n;
         email = e;
         phone = ph;
         count++;
-        cout << "Constructed person with phone number" <<endl;
+        cout << "Constructed person with all information" <<endl;
     }
 
 
-    // deconstructor
+
     Person::~Person() {
         cout << "Deconstructed person" <<endl;
         count--;
     }
-  
-    // getters και setters
+
+
+
     string Person::getName() const {
         return name;
     }
@@ -53,22 +65,28 @@ using namespace std;
         phone = newPhone;
     }
 
-/*
-    // Υπερφόρτωση τελεστών << και >> για είσοδο και έξοδο
-    friend istream& operator>>(istream& is, Person& person) {
-        is >> person.name >> person.email;
-        return is;
+
+
+
+    istream &operator>>(istream &istr, Person &person) {
+        cout << "Enter name: ";
+        istr >> person.name;
+        cout << "Enter email: ";
+        istr >> person.email;
+        cout << "Enter phone: ";
+        istr >> person.phone;
+        return istr;
     }
 
-    friend ostream& operator<<(ostream& os, const Person& person) {
-        os << "Name: " << person.name << ", Email: " << person.email;
-        return os;
+    ostream &operator<<(ostream &ostr, Person &person) {
+        ostr << "Name: " << person.name << ", Email: " << person.email << ", Phone: " << person.phone << endl;
+        return ostr;
     }
-*/
-    // # person objects που δημιουργήθηκαν
+
+
+
     int Person::getCount() {
         return count;
     }
     
-// Αρχικοποίηση του count
-int Person::count = 0;
+

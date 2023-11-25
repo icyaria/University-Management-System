@@ -3,8 +3,16 @@
 #include "person.h"
 #include "secretary.h"
 
+// Αρχικοποίηση του count
+int Person::count = 0;
 
 int main() {
+
+    // Μπορούμε να έχουμε πρόσβαση στo count χωρίς
+    // να έχει δημιουργηθεί κάποιο αντικείμενο επειδή
+    // η getCount είναι static
+    cout << "Count of Person is: "<<Person::getCount()<<endl;
+
     string name = "John";
     string email = "john@gmail.com";
     long int phone = 6980336000;
@@ -26,11 +34,17 @@ int main() {
     countA = A.getCount();
     countB = B.getCount();
 
-    cout << "Name A is: "<<nameA <<endl;
-    cout << "Name B is: "<<nameB <<endl;
-    cout << "Phone B is: "<<phoneB <<endl;
-    cout << "Count A is: "<<countA <<endl;
-    cout << "Count B is: "<<countB <<endl;
+    cout << "Name of Person A is: "<<nameA <<endl;
+    cout << "Name of Person B is: "<<nameB <<endl;
+    cout << "Phone of Person B is: "<<phoneB <<endl;
+    cout << "Count of Person is: "<<countA <<endl;
+    cout << "Count of Person is: "<<countB <<endl;
+
+    Person C("George", "george@gmail.com", 6980343400);
+    cout << C;
+
+    Person D;
+    cin >> D;
 
     return 0;
 }
