@@ -3,7 +3,6 @@
 #include "person.h"
 #include "secretary.h"
 
-//experiment
 
 int main() {
     string name = "John";
