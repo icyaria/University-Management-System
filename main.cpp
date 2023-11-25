@@ -40,11 +40,10 @@ int main() {
     cout << "Count of Person is: "<<countA <<endl;
     cout << "Count of Person is: "<<countB <<endl;
 
-    Person C("George", "george@gmail.com", 6980343400);
-    cout << C;
 
-    Person D;
-    cin >> D;
+    Person C;
+    cin >> C;
+    cout << C;
 
     return 0;
 }
