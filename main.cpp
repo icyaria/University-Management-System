@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "person.h"
 #include "secretary.h"
 
@@ -13,32 +14,34 @@ int main() {
     // η getCount είναι static
     cout << "Count of Person is: "<<Person::getCount()<<endl;
 
-    string name = "John";
+    string first_name = "John";
+    string last_name = "Smith";
     string email = "john@gmail.com";
     long int phone = 6980336000;
-    Person A (name, email, phone);
-    Person B (name, email);
+
+    Person A (first_name, last_name, email, phone);
+
+    cout << "Name of Person A is: "<<A.getFirstName() <<" "<< A.getLastName() <<endl;
 
 
-    string nameA;
-    string nameB;
+    Person B ("Bob", "William", "bobwill@gmail.com");
+    B.setLastName("Williams");
+    cout << "enter phone number:";
     long int phoneB;
+    cin >> phoneB;
+    B.setPhone(phoneB);
 
-    B.setName("Bob");
+    string first_nameB = B.getFirstName();
+    string last_nameB = B.getLastName();
+    long int getphoneB;
+    getphoneB = B.getPhone();
 
-    nameA = A.getName();
-    nameB = B.getName();
-    phoneB = B.getPhone();
-
-    int countA, countB;
-    countA = A.getCount();
-    countB = B.getCount();
-
-    cout << "Name of Person A is: "<<nameA <<endl;
-    cout << "Name of Person B is: "<<nameB <<endl;
+    cout << "Name of Person B is: "<<first_nameB <<" "<< last_nameB <<endl;
     cout << "Phone of Person B is: "<<phoneB <<endl;
-    cout << "Count of Person is: "<<countA <<endl;
-    cout << "Count of Person is: "<<countB <<endl;
+
+    int count;
+    count = A.getCount();
+    cout << "Count of Person is: "<<count <<endl;
 
 
     Person C;
