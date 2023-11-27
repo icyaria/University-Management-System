@@ -92,7 +92,7 @@ using namespace std;
     }
 
     ostream &operator<<(ostream &ostr, Person &person) {
-        ostr << "First name: " << person.first_name << ", Last name: " << person.last_name << ", Email: " << person.email << ", Phone: " << person.phone << endl;
+        ostr << "First name: " << person.first_name << endl << "Last name: " << person.last_name << endl << "Email: " << person.email << endl << "Phone: " << person.phone << endl;
         return ostr;
     }
 
