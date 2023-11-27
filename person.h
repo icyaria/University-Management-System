@@ -5,37 +5,39 @@ using namespace std;
 
 class Person {
 private:
-    string name;
+    string first_name;
+    string last_name;
     string email;
     long int phone;
     static int count; //static γιατι αλλιώς θα ήταν μεταβλητή του κάθε αντικειμένου
 
 public:
 
+
     // default constructor
-    
     Person();
 
-
     // 1st constructor 
+    Person(string f, string l, string e);
 
-    Person(string n, string e);
+    // 2nd constructor
+    Person(string f, string l, string e, long int ph);
 
-    // 2nd constructor 
-
-    Person(string n, string e, long int ph);
 
 
     // deconstructor
-
     ~Person();
 
 
     // getters και setters
 
-    string getName() const;
+    string getFirstName() const;
 
-    void setName(string newName);
+    void setFirstName(string newFName);
+
+    string getLastName() const;
+
+    void setLastName(string newLName);
 
     string getEmail() const;
 
