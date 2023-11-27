@@ -1,31 +1,14 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include "person.h"
 #include "secretary.h"
 
 using namespace std;
 
-class Secretary {
-private:
-    
-public:
-    // constructor 
-    Secretary() {
-        
+
+
+    Secretary::Secretary() {
+            vector<Person*> vec;
+    // vec.push_back();
     }
-
-    // destructor
-    ~Secretary() {
-        
-    }
-
-    //υπερφόρτωση input και output
-    //
-    //
-    //
-
-    //υπερφόρτωση τελεστή +
-    //
-    //
-    //
-
-};
