@@ -27,7 +27,7 @@ public:
 
     friend ostream &operator<<(ostream &ostr, Secretary &secretary);
 
-    friend Secretary operator+(Person &person);
+    Secretary operator+(Person &person);
 
     
 };

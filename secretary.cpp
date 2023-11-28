@@ -47,6 +47,6 @@ using namespace std;
                 return ostr;
         }
 
-        // Secretary operator+(Person &person) {
-        //         add(person);
-        // }
+        Secretary Secretary::operator+(Person &person) {
+                add(person);
+        }
