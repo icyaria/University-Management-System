@@ -2,7 +2,10 @@
 #include <string>
 #include <vector>
 #include "secretary.h"
+
 using namespace std;
+
+
 // Αρχικοποίηση του count
 int Person::count = 0;
 
