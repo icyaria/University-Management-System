@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-//#include "person.h"
 #include "secretary.h"
 using namespace std;
 // Αρχικοποίηση του count
