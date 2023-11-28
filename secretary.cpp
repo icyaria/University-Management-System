@@ -10,17 +10,21 @@ using namespace std;
                 
         }
 
-        Secretary::~Secretary() {                
-                for (vector<Person*>::iterator pObj = vec.begin(); pObj != vec.end(); ++pObj) {
-                        delete *pObj;
+        Secretary::~Secretary() {  
+                int size = vec.size();              
+                 for (int i = 0; i < size; i++) {
+                        delete vec.at(i);
+                         cout<< "deleted something" <<endl;
                 }
+                // for (vector<Person*>::iterator i = vec.begin(); i != vec.end(); ++i) {
+                //         delete *i;
+                // }
                 vec.clear();
                 cout<<"Deconstructed secretary"<<endl;
         }
 
         void Secretary::add(Person p) {
-                Person* newp;
-                newp = new Person;
+                Person* newp = new Person;
                 newp = &p;
                 vec.push_back(newp);
                 cout<<"Added Person in vector"<<endl;
