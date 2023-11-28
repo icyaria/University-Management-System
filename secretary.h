@@ -8,7 +8,6 @@ using namespace std;
 class Secretary {
 private:
     vector<Person*> vec;
-    // vec.push_back();
     
 public:
 
@@ -18,7 +17,17 @@ public:
     // destructor
     ~Secretary();
 
-    void add(Person p);
-    
+    void add(Person &p);
 
+    bool find_person(Secretary sec, string fn, string ln);
+    
+    // Υπερφόρτωση τελεστών << και >> για είσοδο και έξοδο
+
+    friend istream &operator>>(istream &istr, Secretary &secretary);
+
+    friend ostream &operator<<(ostream &ostr, Secretary &secretary);
+
+    friend Secretary operator+(Person &person);
+
+    
 };

@@ -52,8 +52,15 @@ int main() {
     cin >> C;
     cout << C;
 
+    cout << "Count of Person is: "<<Person::getCount()<<endl;
+
     Secretary sec;
     sec.add(A);
+    cout<< sec;
+
+    cout << "Count of Person is: "<<Person::getCount()<<endl;
+    cout<< A;
+    cout << "Count of Person is: "<<Person::getCount()<<endl;
 
     return 0;
 }
