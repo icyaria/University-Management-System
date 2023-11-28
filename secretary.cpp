@@ -27,7 +27,7 @@ using namespace std;
 
         bool Secretary::find_person(Secretary sec, Person &person) {
                 for (int i = 0; i<sec.vec.size(); i++) {
-                        cout << "Comparing: " << sec.vec.at(i)->getFirstName() << " with " << person.getFirstName() << endl;
+                        //cout << "Comparing: " << sec.vec.at(i)->getFirstName() << " with " << person.getFirstName() << endl;
                         if (sec.vec.at(i)->getFirstName() == person.getFirstName() &&
                             sec.vec.at(i)->getLastName() == person.getLastName() &&
                             sec.vec.at(i)->getEmail() == person.getEmail() &&
@@ -38,7 +38,7 @@ using namespace std;
                 return false;
         }
 
-
+        
 
         ostream &operator<<(ostream &ostr, Secretary &secretary) {
                 ostr << "All people: " << endl;
