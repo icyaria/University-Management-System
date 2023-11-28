@@ -24,8 +24,8 @@ using namespace std;
         }
 
         void Secretary::add(Person p) {
-                Person* newp = new Person;
-                newp = &p;
+                Person* newp = new Person(p);
+                // newp = &p;
                 vec.push_back(newp);
                 cout<<"Added Person in vector"<<endl;
         }

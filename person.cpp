@@ -38,7 +38,7 @@ using namespace std;
 
 
     Person::~Person() {
-        cout << "Deconstructed person" <<endl;
+        cout << "Deconstructed person:" << first_name<<endl;
         count--;
     }
 
