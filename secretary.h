@@ -15,23 +15,10 @@ public:
     // default constructor 
     Secretary();
 
-    // constructor with parameters
-    Secretary();
-
-
     // destructor
-    ~Secretary() {
-        
-    }
+    ~Secretary();
 
-    //υπερφόρτωση input και output
-    //
-    //
-    //
-
-    //υπερφόρτωση τελεστή +
-    //
-    //
-    //
+    void add(Person p);
+    
 
 };

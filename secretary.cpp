@@ -1,14 +1,27 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "person.h"
+
 #include "secretary.h"
 
 using namespace std;
 
+        Secretary::Secretary() {
+                
+        }
 
+        Secretary::~Secretary() {                
+                for (vector<Person*>::iterator pObj = vec.begin(); pObj != vec.end(); ++pObj) {
+                        delete *pObj;
+                }
+                vec.clear();
+                cout<<"Deconstructed secretary"<<endl;
+        }
 
-    Secretary::Secretary() {
-            vector<Person*> vec;
-    // vec.push_back();
-    }
+        void Secretary::add(Person p) {
+                Person* newp;
+                newp = new Person;
+                newp = &p;
+                vec.push_back(newp);
+                cout<<"Added Person in vector"<<endl;
+        }

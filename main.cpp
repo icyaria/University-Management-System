@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "person.h"
-#include "secretary.h"
 
+//#include "person.h"
+#include "secretary.h"
+using namespace std;
 // Αρχικοποίηση του count
 int Person::count = 0;
 
@@ -49,6 +50,9 @@ int main() {
     Person C;
     cin >> C;
     cout << C;
+
+    Secretary sec;
+    sec.add(A);
 
     return 0;
 }
