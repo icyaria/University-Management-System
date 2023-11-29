@@ -33,11 +33,11 @@ using namespace std;
                             sec.vec.at(i)->getLastName() == person.getLastName() &&
                             sec.vec.at(i)->getEmail() == person.getEmail() &&
                             sec.vec.at(i)->getPhone() == person.getPhone()) {
-                                cout << "Found Person in Secretary" << endl;
+                                cout << "Found Person "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
                                 return true;
                         }
                 }
-                cout << "Couldn't find Person in Secretary" << endl;
+                cout << "Couldn't find Person "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
                 return false;
         }
 
