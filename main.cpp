@@ -27,7 +27,7 @@ int main() {
 
 
     Person B ("Bob", "Williams", "bobwill@gmail.com");
-    cout << "enter phone number:";  //ελεγχος προσθήκης στοιχείου στη κλάση
+    cout << "enter phone number:";  //έλεγχος προσθήκης στοιχείου στη κλάση
     long int phoneB;
     cin >> phoneB;
     B.setPhone(phoneB);

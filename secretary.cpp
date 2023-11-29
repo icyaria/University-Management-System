@@ -44,7 +44,7 @@ using namespace std;
 
 
         ostream &operator<<(ostream &ostr, Secretary &secretary) {
-                ostr << "All people: " << endl;
+                ostr << "People in secretary are: " << endl;
                 for (int i = 0; i<secretary.vec.size(); i++) {
                      cout<< *secretary.vec.at(i)<< endl;
                 }
