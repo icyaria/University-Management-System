@@ -42,6 +42,7 @@ using namespace std;
         }
 
         istream &operator>>(istream &istr, Secretary &secretary) {
+                cout << "Enter person's details to add to secretary: " << endl;
                 Person* newPerson = new Person;  
                 istr >> *newPerson;           
                 secretary.add(*newPerson);
