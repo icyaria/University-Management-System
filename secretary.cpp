@@ -63,3 +63,7 @@ using namespace std;
                 return *this;                 
         }
 
+        Secretary::Secretary(const Secretary &sec) {
+                
+        }
+

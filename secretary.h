@@ -29,5 +29,7 @@ public:
 
     Secretary& operator+(Person &person);
 
+    Secretary(const Secretary &sec);
+
     
 };
