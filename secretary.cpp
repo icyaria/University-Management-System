@@ -53,7 +53,6 @@ using namespace std;
 
         Secretary& Secretary::operator+(Person &person) {
                 add(person);
-                //cout<<"Added Person B in vector"<<endl; ( δεν χρειαζεται γιατι κανει πριντ η add)
                 return *this;                 
         }
 
