@@ -51,11 +51,10 @@ int main() {
 
 
     Secretary sec;
-    sec.add(A);
-    sec.add(B);
+    sec + A;
     sec + C;
     sec.find_person(sec, A);
-    sec.find_person(sec, C);
+    sec.find_person(sec, B);
 
 
     cout << "Count of Person is: "<<Person::getCount()<<endl;
