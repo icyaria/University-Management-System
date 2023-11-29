@@ -70,3 +70,10 @@ using namespace std;
                 }
         }
 
+        Secretary Secretary::operator=(const Secretary &sec) {
+                for (int i = 0; i<sec.vec.size(); i++) {
+                        Person* newPerson = new Person(*sec.vec.at(i));  
+                        vec.push_back(newPerson);
+                }
+                return *this;
+        }

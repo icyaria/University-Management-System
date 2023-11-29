@@ -31,5 +31,7 @@ public:
 
     Secretary(const Secretary &sec);
 
+    Secretary operator=(const Secretary &sec);
+
     
 };
