@@ -19,7 +19,7 @@ public:
 
     void add(Person &p);
 
-    bool find_person(Secretary sec, string fn, string ln);
+    bool find_person(Secretary &sec, Person &person);
     
     // Υπερφόρτωση τελεστών << και >> για είσοδο και έξοδο
 

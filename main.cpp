@@ -26,8 +26,7 @@ int main() {
     cout << A;
 
 
-    Person B ("Bob", "William", "bobwill@gmail.com");
-    B.setLastName("Williams");
+    Person B ("Bob", "Williams", "bobwill@gmail.com");
     cout << "enter phone number:";  //ελεγχος προσθήκης στοιχείου στη κλάση
     long int phoneB;
     cin >> phoneB;
@@ -36,31 +35,31 @@ int main() {
     string first_nameB = B.getFirstName();
     string last_nameB = B.getLastName();
     string emailB = B.getEmail();
-    long int getphoneB;
-    getphoneB = B.getPhone();
+    long int getphoneB = B.getPhone();
 
-    cout << "Name of Person B is: "<<first_nameB <<" "<< last_nameB <<endl;
-    cout << "Email of Person B is: "<<emailB <<endl;
-    cout << "Phone of Person B is: "<<phoneB <<endl;
+    // cout << "Name of Person B is: "<<first_nameB <<" "<< last_nameB <<endl;
+    // cout << "Email of Person B is: "<<emailB <<endl;
+    // cout << "Phone of Person B is: "<<phoneB <<endl;
 
-    int count;
-    count = A.getCount();
-    cout << "Count of Person is: "<<count <<endl;
+
 
 
     Person C;
     cin >> C;
-    cout << C;
+    //cout << C;
 
-    cout << "Count of Person is: "<<Person::getCount()<<endl;
+
 
     Secretary sec;
     sec.add(A);
-    cout<< sec;
+    sec.add(B);
+    sec.find_person(sec, A);
+    sec.find_person(sec, C);
+
 
     cout << "Count of Person is: "<<Person::getCount()<<endl;
-    cout<< A;
-    cout << "Count of Person is: "<<Person::getCount()<<endl;
+    cout<< sec;
+
 
     return 0;
 }

@@ -38,7 +38,7 @@ using namespace std;
 
 
     Person::~Person() {
-        cout << "Deconstructed person:" << first_name<<endl; //να το σβησουμεεε!
+        cout << "Deconstructed person: " << first_name<<endl; //να το σβησουμεεε!
         count--;
     }
 
@@ -49,6 +49,7 @@ using namespace std;
     }
 
     void Person::setFirstName(string newFName) {
+        cout << "First name changed to: " << newFName << endl;
         first_name = newFName;
     }
 
@@ -58,6 +59,7 @@ using namespace std;
 
     void Person::setLastName(string newLName) {
         last_name = newLName;
+        cout << "Last name changed to: " << last_name << endl;
     }
 
     string Person::getEmail() const {
@@ -65,6 +67,7 @@ using namespace std;
     }
 
     void Person::setEmail(string newEmail) {
+        cout << "Email changed to: " << newEmail << endl;
         email = newEmail;
     }
 
@@ -73,6 +76,7 @@ using namespace std;
     }
 
     void Person::setPhone(long int newPhone) {
+        cout << "Phone changed to: " << newPhone << endl;
         phone = newPhone;
     }
 

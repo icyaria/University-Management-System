@@ -10,32 +10,36 @@ using namespace std;
                 
         }
 
-        Secretary::~Secretary() {  
+        Secretary::~Secretary() {
                 int size = vec.size();              
                  for (int i = 0; i < size; i++) {
                         delete vec.at(i);
-                         cout<< "deleted something" <<endl;
+                         cout<< "deleted pointer" <<endl;
                 }
-                // for (vector<Person*>::iterator i = vec.begin(); i != vec.end(); ++i) {
-                //         delete *i;
-                // }
-                vec.clear();
-                // delete[] newp;
-                cout<<"Deconstructed secretary"<<endl;
+                cout << "Deconstructed secretary" << endl;
+                vec.clear();  // Clear the vector after deleting its elements
         }
 
         void Secretary::add(Person &p) {
                 Person* newp = new Person(p);
-                // newp = &p;
                 vec.push_back(newp);
                 cout<<"Added Person in vector"<<endl;
         }
 
-        // bool Secretary::find_person(Secretary sec, string fn, string ln) {
-        //         for (int i = 0; i<sec.vec.size(); i++) {
-
-        //         }
-        // }
+        bool Secretary::find_person(Secretary &sec, Person &person) {
+                int size = sec.vec.size();
+                for (int i = 0; i<size; i++) {
+                        if (sec.vec.at(i)->getFirstName() == person.getFirstName() &&
+                            sec.vec.at(i)->getLastName() == person.getLastName() &&
+                            sec.vec.at(i)->getEmail() == person.getEmail() &&
+                            sec.vec.at(i)->getPhone() == person.getPhone()) {
+                                cout << "Found Person "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
+                                return true;
+                        }
+                }
+                cout << "Couldn't find Person "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
+                return false;
+        }
 
 
 
@@ -48,5 +52,7 @@ using namespace std;
         }
 
         Secretary Secretary::operator+(Person &person) {
-                add(person);
+                Secretary newsec(*this);
+                newsec.add(person);
+                return newsec;
         }
