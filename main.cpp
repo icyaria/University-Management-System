@@ -56,7 +56,7 @@ int main() {
     sec.find_person(sec, A);
     sec.find_person(sec, B);
 
-
+    cin >> sec;
     cout << "Count of Person is: "<<Person::getCount()<<endl;
     cout<< sec;
 

@@ -41,6 +41,12 @@ using namespace std;
                 return false;
         }
 
+        istream &operator>>(istream &istr, Secretary &secretary) {
+                Person* newPerson = new Person;  
+                istr >> *newPerson;           
+                secretary.add(*newPerson);
+                return istr;
+        }
 
 
         ostream &operator<<(ostream &ostr, Secretary &secretary) {
