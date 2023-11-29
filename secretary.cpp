@@ -51,8 +51,16 @@ using namespace std;
                 return ostr;
         }
 
+        // Secretary Secretary::operator+(Person &person) {
+        //         Secretary newsec(*this);
+        //         newsec.add(person);
+        //         return newsec;
+        // }
+
         Secretary Secretary::operator+(Person &person) {
-                Secretary newsec(*this);
-                newsec.add(person);
-                return newsec;
+                add(person);
+                return *this; //
+                cout<<"Added Person B in vector"<<endl; //
+
         }
+
