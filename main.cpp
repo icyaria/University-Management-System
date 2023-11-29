@@ -60,6 +60,13 @@ int main() {
     cout << "Count of Person is: "<<Person::getCount()<<endl;
     cout<< sec;
 
+    cout << "Count of Person is: "<<Person::getCount()<<endl;
+
+    Secretary new_sec(sec);
+    cout << new_sec;
+
+    cout << "Count of Person is: "<<Person::getCount()<<endl;
+
 
     return 0;
 }

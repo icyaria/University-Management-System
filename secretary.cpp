@@ -64,6 +64,8 @@ using namespace std;
         }
 
         Secretary::Secretary(const Secretary &sec) {
-                
+                for (int i = 0; i<sec.vec.size(); i++) {
+                     vec.push_back(sec.vec.at(i));
+                }
         }
 
