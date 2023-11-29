@@ -14,7 +14,7 @@ using namespace std;
                 int size = vec.size();              
                  for (int i = 0; i < size; i++) {
                         delete vec.at(i);
-                         cout<< "deleted something" <<endl;
+                         cout<< "deleted pointer" <<endl;
                 }
                 cout << "Deconstructed secretary" << endl;
                 vec.clear();  // Clear the vector after deleting its elements
@@ -27,15 +27,17 @@ using namespace std;
         }
 
         bool Secretary::find_person(Secretary &sec, Person &person) {
-                for (int i = 0; i<sec.vec.size(); i++) {
-                        //cout << "Comparing: " << sec.vec.at(i)->getFirstName() << " with " << person.getFirstName() << endl;
+                int size = sec.vec.size();
+                for (int i = 0; i<size; i++) {
                         if (sec.vec.at(i)->getFirstName() == person.getFirstName() &&
                             sec.vec.at(i)->getLastName() == person.getLastName() &&
                             sec.vec.at(i)->getEmail() == person.getEmail() &&
                             sec.vec.at(i)->getPhone() == person.getPhone()) {
+                                cout << "Found Person in Secretary" << endl;
                                 return true;
                         }
                 }
+                cout << "Couldn't find Person in Secretary" << endl;
                 return false;
         }
 

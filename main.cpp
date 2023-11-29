@@ -27,7 +27,6 @@ int main() {
 
 
     Person B ("Bob", "Williams", "bobwill@gmail.com");
-    //B.setLastName("Williams");
     cout << "enter phone number:";  //ελεγχος προσθήκης στοιχείου στη κλάση
     long int phoneB;
     cin >> phoneB;
@@ -42,29 +41,24 @@ int main() {
     // cout << "Email of Person B is: "<<emailB <<endl;
     // cout << "Phone of Person B is: "<<phoneB <<endl;
 
-    int count = A.getCount();
-    cout << "Count of Person is: "<<count <<endl;
+
 
 
     Person C;
     cin >> C;
-    cout << C;
+    //cout << C;
 
-    cout << "Count of Person is: "<<Person::getCount()<<endl;
+
 
     Secretary sec;
     sec.add(A);
-    if(sec.find_person(sec, A)) {
-        cout << "Found Person A in Secretary" << endl;
-    } else {
-        cout << "Not Found Person A in Secretary" << endl;
-    }
+    sec.add(B);
+    sec.find_person(sec, A);
 
+
+    cout << "Count of Person is: "<<Person::getCount()<<endl;
     cout<< sec;
 
-    cout << "Count of Person is: "<<Person::getCount()<<endl;
-    cout<< A;
-    cout << "Count of Person is: "<<Person::getCount()<<endl;
 
     return 0;
 }
