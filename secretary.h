@@ -11,27 +11,30 @@ private:
     
 public:
 
-    // default constructor 
+    // constructor 
     Secretary();
+
+    // Copy constructor
+    Secretary(const Secretary &sec);
 
     // destructor
     ~Secretary();
 
+    // Function to add new person
     void add(Person &p);
 
+    // Searches for person in secretary
     bool find_person(Secretary &sec, Person &person);
     
-    // Υπερφόρτωση τελεστών << και >> για είσοδο και έξοδο
-
+    // Overloading operator >> and << for output and input
     friend istream &operator>>(istream &istr, Secretary &secretary);
 
     friend ostream &operator<<(ostream &ostr, Secretary &secretary);
 
+    // Overloading operator + for adding person to secretary
     Secretary& operator+(Person &person);
 
-    Secretary(const Secretary &sec);
-
+    // Overloading operator = for assignment
     Secretary operator=(const Secretary &sec);
-
-    
+ 
 };

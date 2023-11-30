@@ -4,8 +4,6 @@
 
 using namespace std;
 
-
-    // default constructor
     Person::Person() {
         first_name = "";
         last_name = "";
@@ -14,7 +12,6 @@ using namespace std;
         count++;
     }
 
-    // 1st constructor 
     Person::Person(string f, string l, string e) {
         first_name = f;
         last_name = l;
@@ -23,7 +20,6 @@ using namespace std;
         count++;
     }
 
-    // 2nd constructor
     Person::Person(string f, string l, string e, long int ph) {
         first_name = f;
         last_name = l;
@@ -32,14 +28,11 @@ using namespace std;
         count++;
     }
 
-
-
     Person::~Person() {
         count--;
     }
 
-
-
+    // getters and setters
     string Person::getFirstName() const {
         return first_name;
     }
@@ -80,9 +73,7 @@ using namespace std;
         phone = newPhone;
     }
 
-
-
-
+    // Operators overloading
     istream &operator>>(istream &istr, Person &person) {
         cout << "Enter first name: ";
         istr >> person.first_name;
@@ -99,8 +90,6 @@ using namespace std;
         ostr << "First name: " << person.first_name << endl << "Last name: " << person.last_name << endl << "Email: " << person.email << endl << "Phone: " << person.phone << endl;
         return ostr;
     }
-
-
 
     int Person::getCount() {
         return count;
