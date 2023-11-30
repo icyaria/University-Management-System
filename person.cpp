@@ -12,7 +12,6 @@ using namespace std;
         email = "";
         phone = 0;
         count++;
-        cout << "Constructed person without parameters" <<endl;
     }
 
     // 1st constructor 
@@ -22,7 +21,6 @@ using namespace std;
         email = e;
         phone = 0;
         count++;
-        cout << "Constructed person without phone number" <<endl;
     }
 
     // 2nd constructor
@@ -32,13 +30,11 @@ using namespace std;
         email = e;
         phone = ph;
         count++;
-        cout << "Constructed person with all information" <<endl;
     }
 
 
 
     Person::~Person() {
-        cout << "Deconstructed person: " << first_name<<endl; //να το σβησουμεεε!
         count--;
     }
 
@@ -50,6 +46,7 @@ using namespace std;
 
     void Person::setFirstName(string newFName) {
         cout << "First name changed to: " << newFName << endl;
+        cout << "\n" << endl;
         first_name = newFName;
     }
 
@@ -58,8 +55,9 @@ using namespace std;
     }
 
     void Person::setLastName(string newLName) {
-        last_name = newLName;
         cout << "Last name changed to: " << last_name << endl;
+        cout << "\n" << endl;
+        last_name = newLName;
     }
 
     string Person::getEmail() const {
@@ -68,6 +66,7 @@ using namespace std;
 
     void Person::setEmail(string newEmail) {
         cout << "Email changed to: " << newEmail << endl;
+        cout << "\n" << endl;
         email = newEmail;
     }
 
@@ -77,6 +76,7 @@ using namespace std;
 
     void Person::setPhone(long int newPhone) {
         cout << "Phone changed to: " << newPhone << endl;
+        cout << "\n" << endl;
         phone = newPhone;
     }
 

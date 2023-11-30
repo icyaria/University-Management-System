@@ -14,19 +14,18 @@ using namespace std;
                 int size = vec.size();              
                  for (int i = 0; i < size; i++) {
                         delete vec.at(i);
-                         cout<< "deleted pointer" <<endl;
                 }
-                cout << "Deconstructed secretary" << endl;
                 vec.clear();  // Clear the vector after deleting its elements
         }
 
         void Secretary::add(Person &p) {
                 Person* newp = new Person(p);
                 vec.push_back(newp);
-                cout<<"Added Person in vector"<<endl;
+                cout<<"\nAdded "<<p.getFirstName()<<" "<<p.getLastName() <<" in Secretary"<<endl;
         }
 
         bool Secretary::find_person(Secretary &sec, Person &person) {
+                cout << "\nSearching for "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
                 int size = sec.vec.size();
                 for (int i = 0; i<size; i++) {
                         if (sec.vec.at(i)->getFirstName() == person.getFirstName() &&
@@ -34,10 +33,12 @@ using namespace std;
                             sec.vec.at(i)->getEmail() == person.getEmail() &&
                             sec.vec.at(i)->getPhone() == person.getPhone()) {
                                 cout << "Found Person "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
+                                cout << "\n" << endl;
                                 return true;
                         }
                 }
                 cout << "Couldn't find Person "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
+                cout << "\n" << endl;
                 return false;
         }
 
