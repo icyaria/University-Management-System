@@ -1,0 +1,16 @@
+Grammiki_Algebra K03 1 6 1 0
+Diakrita_Mathimatika K09 1 7 1 0
+Programmatismos K04 1 7 1 0
+Logiki_Sxediasi K02 1 6 1 0
+Analisi1 K01 2 8 1 0
+Domes_Dedomenon K08 2 7 1 0
+Fysiki K12 2 8 1 0
+Arxitektoniki_Ypologiston K14 2 7 1 0
+Analisi2 K06 3 8 1 0
+Pithanotites K13 3 6 1 0
+Simata K11 3 6 1 0
+Efarmosmena_Mathimatika K20 3 6 0 1
+Diktya K16 4 6 1 0
+Systimata K21 4 7 1 0
+Ergastirio_Diktia K17 4 6 0 1
+Algorithmoi K18 4 8 1 0
