@@ -41,6 +41,8 @@ int main() {
     sec.add(A);
     sec.add(B);
     sec.find_person(sec, A);
+    sec.find_professor(sec, A);
+    sec.find_student(sec, A);
     cin >> sec;
     cout << sec;    
 

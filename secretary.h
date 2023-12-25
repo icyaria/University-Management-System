@@ -29,10 +29,10 @@ public:
     void add(Student &s);
 
     // Searches for a professor from the professor vector
-    bool find_professor(Secretary &sec, Professor &professor);
+    bool find_professor(Secretary &sec, Person &professor);
 
     // Searches for a student from the student vector
-    bool find_student(Secretary &sec, Student &student);
+    bool find_student(Secretary &sec, Person &student);
 
     //Searches for a person in all secretary either professor or student
     bool find_person(Secretary &sec, Person &person);

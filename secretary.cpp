@@ -46,8 +46,8 @@ using namespace std;
         }
 
 
-        bool Secretary::find_professor(Secretary &sec, Professor &professor) {
-                cout << "\nSearching for "<< professor.getFirstName() << " " << professor.getLastName() << " in Secretary" << endl;
+        bool Secretary::find_professor(Secretary &sec, Person &professor) {
+                cout << "\nSearching for "<< professor.getFirstName() << " " << professor.getLastName() << " in proffesors" << endl;
                 int size = sec.vecp.size();
                 for (int i = 0; i<size; i++) {
                         if (sec.vecp.at(i)->getFirstName() == professor.getFirstName() &&
@@ -64,16 +64,14 @@ using namespace std;
                 return false;
         }
 
-        bool Secretary::find_student(Secretary &sec, Student &student) {
-                cout << "\nSearching for "<< student.getFirstName() << " " << student.getLastName() << " in Secretary" << endl;
+        bool Secretary::find_student(Secretary &sec, Person &student) {
+                cout << "\nSearching for "<< student.getFirstName() << " " << student.getLastName() << " in students" << endl;
                 int size = sec.vecs.size();
                 for (int i = 0; i<size; i++) {
                         if (sec.vecs.at(i)->getFirstName() == student.getFirstName() &&
                             sec.vecs.at(i)->getLastName() == student.getLastName() &&
                             sec.vecs.at(i)->getEmail() == student.getEmail() &&
-                            sec.vecs.at(i)->getPhone() == student.getPhone() &&
-                            sec.vecs.at(i)->getSem() == student.getSem() &&
-                            sec.vecs.at(i)->getEcts() == student.getEcts()) {
+                            sec.vecs.at(i)->getPhone() == student.getPhone()) {
                                 cout << "Found Student "<< student.getFirstName() << " " << student.getLastName() << " in Secretary" << endl;
                                 cout << "\n" << endl;
                                 return true;
