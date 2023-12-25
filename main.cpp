@@ -17,25 +17,51 @@ int main() {
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
+    //idea: διαφορετικο μενου για καθε χρηστη γιατι δεν βγαζει νοημα αλλιως
+    //(δεν γινεται ο φοιτητης να βλεπει ολα τα options που εχει και η γραμματεια πχ)
     //cout << "Login as: " << endl;
+
+    //for secretary:
 
     // int choice=0;
 
-    // while (choice != 11) {
+    // while (choice != 7) {
     //     cout << "1. Edit students" << endl;
     //     cout << "2. Edit professors" << endl;
     //     cout << "3. Edit courses" << endl;
-    //     cout << "4. Assign courses to professors" << endl;
-    //     cout << "5. Enroll student" << endl;
-    //     cout << "6. Get a list of students that passed a course" << endl;
-    //     cout << "7. See semester statistics (for professors)" << endl;
-    //     cout << "8. See my grades (for students)" << endl;
-    //     cout << "9. See students that can graduate" << endl;
-    //     cout << "10. New semester" << endl;
-    //     cout << "11. Exit" << endl;
-    //     cout << "Enter your choice: ";
+    //     cout << "4. New semester (Assign courses to professors)" << endl;
+    //     cout << "5. Get a list of students that passed a course" << endl;
+    //     cout << "6. See students that can graduate" << endl;
+    //     cout << "7. Exit" << endl;
+    
+    //     cin >> choice;
+    //}
+
+
+
+    //for professor:
+
+    // int choice=0;
+
+    // while (choice != 2) {
+    //     cout << "1. See semester statistics" << endl;
+    //     cout << "2. Exit" << endl;
+    
+    //     cin >> choice;
+    // }
+
+
+
+    //for student:
+    // int choice=0;
+
+    // while (choice != 3) {
+    //     cout << "1. Enroll in classes" << endl;
+    //     cout << "2. See my grades " << endl;
+    //     cout << "3. Exit" << endl;
 
     //     cin >> choice;
+    // }
 
     Professor A = Professor("A", "A", "A", 123);
     Student B = Student("B", "B", "B", 123, 1, 1);
