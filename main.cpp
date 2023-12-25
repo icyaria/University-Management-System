@@ -36,6 +36,11 @@ int main() {
 
     //     cin >> choice;
 
+    Professor A = Professor("A", "A", "A", 123);
+    Student B = Student("B", "B", "B", 123, 1, 1);
+    sec.add(A);
+    sec.add(B);
+    sec.find_person(sec, A);
     cin >> sec;
     cout << sec;    
 

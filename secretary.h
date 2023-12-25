@@ -28,9 +28,14 @@ public:
     void add(Professor &p);
     void add(Student &s);
 
-    // Searches for professor or student in secretary
+    // Searches for a professor from the professor vector
     bool find_professor(Secretary &sec, Professor &professor);
+
+    // Searches for a student from the student vector
     bool find_student(Secretary &sec, Student &student);
+
+    //Searches for a person in all secretary either professor or student
+    bool find_person(Secretary &sec, Person &person);
     
     // Overloading operator >> and << for output and input
     friend istream &operator>>(istream &istr, Secretary &secretary);

@@ -84,6 +84,35 @@ using namespace std;
                 return false;
         }
 
+        bool Secretary::find_person(Secretary &sec, Person &person) {
+                cout << "\nSearching for "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
+                int sizep = sec.vecp.size();
+                int sizes = sec.vecs.size();
+                for (int i = 0; i<sizep; i++) {
+                        if (sec.vecp.at(i)->getFirstName() == person.getFirstName() &&
+                            sec.vecp.at(i)->getLastName() == person.getLastName() &&
+                            sec.vecp.at(i)->getEmail() == person.getEmail() &&
+                            sec.vecp.at(i)->getPhone() == person.getPhone()) {
+                                cout << "Found "<< person.getFirstName() << " " << person.getLastName() << " in Secretary. They are a Professor" << endl;
+                                cout << "\n" << endl;
+                                return true;
+                        }
+                }
+                for (int i = 0; i<sizes; i++) {
+                        if (sec.vecs.at(i)->getFirstName() == person.getFirstName() &&
+                            sec.vecs.at(i)->getLastName() == person.getLastName() &&
+                            sec.vecs.at(i)->getEmail() == person.getEmail() &&
+                            sec.vecs.at(i)->getPhone() == person.getPhone()) {
+                                cout << "Found "<< person.getFirstName() << " " << person.getLastName() << " in Secretary. They are a student" << endl;
+                                cout << "\n" << endl;
+                                return true;
+                        }
+                }
+                cout << "Couldn't find "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
+                cout << "\n" << endl;
+                return false;
+        }
+
         //Operators overloading
         istream &operator>>(istream &istr, Secretary &secretary) {
                 cout << "Enter professor or student? (p/s)" << endl;
