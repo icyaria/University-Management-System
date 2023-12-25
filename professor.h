@@ -5,6 +5,7 @@
 using namespace std;
 
 class Professor: public Person {
-private:
-
+public:
+    Professor();
+    Professor(string f, string l, string e, long int ph);
 };
