@@ -9,7 +9,9 @@
                 "-g",           
                 "main.cpp",  
                 "person.cpp",
-                "secretary.cpp",  
+                "secretary.cpp",
+                "professor.cpp",
+                "student.cpp",  
                 "-o",
                 "main"
             ],

@@ -11,3 +11,23 @@ using namespace std;
             sem_s = sem;
             ects_s = ects;
         }
+
+        int Student::getSem() const {
+            return sem_s;
+        }
+
+        void Student::setSem(int newSem) {
+            cout << "Semester changed to: " << newSem << endl;
+            cout << "\n" << endl;
+            sem_s = newSem;
+        }
+
+        int Student::getEcts() const {
+            return ects_s;
+        }
+
+        void Student::setEcts(int newEcts) {
+            cout << "ECTS changed to: " << newEcts << endl;
+            cout << "\n" << endl;
+            ects_s = newEcts;
+        }
