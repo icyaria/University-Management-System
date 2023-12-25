@@ -21,7 +21,7 @@ int main() {
 
     // int choice=0;
 
-    // while (choice != 10) {
+    // while (choice != 11) {
     //     cout << "1. Edit students" << endl;
     //     cout << "2. Edit professors" << endl;
     //     cout << "3. Edit courses" << endl;
@@ -31,7 +31,8 @@ int main() {
     //     cout << "7. See semester statistics (for professors)" << endl;
     //     cout << "8. See my grades (for students)" << endl;
     //     cout << "9. See students that can graduate" << endl;
-    //     cout << "10. Exit" << endl;
+    //     cout << "10. New semester" << endl;
+    //     cout << "11. Exit" << endl;
     //     cout << "Enter your choice: ";
 
     //     cin >> choice;

@@ -4,6 +4,7 @@
 #include "person.h"
 #include "student.h"
 #include "professor.h"
+#include "course.h"
 #pragma once
 
 using namespace std;
@@ -49,4 +50,6 @@ public:
     // Overloading operator = for assignment
     Secretary operator=(const Secretary &sec);
  
+    // sets up a new semester
+    void new_semester(Secretary &sec);
 };

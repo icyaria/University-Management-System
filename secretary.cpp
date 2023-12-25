@@ -170,3 +170,26 @@ using namespace std;
                 }
                 return *this;
         }
+
+        void Secretary::new_semester(Secretary &sec) {
+                //changes the students' semester to the next one
+                int size = sec.vecs.size();
+                for (int i = 0; i<size; i++) {
+                        int sem = sec.vecs.at(i)->getSem();
+                        sem++;
+                        sec.vecs.at(i)->setSem(sem);
+                }
+                // assigns professors to courses
+                //??? σημαντικη απορια
+                //??? θα αποθηκευουμε τους καθηγητές μεσα στο μαθημα ή το 
+                //??? μαθημα μεσα στον καθηγητη
+                // idea:
+                // shows professors one by one and prompts
+                // user to enter the course code for each 
+                // ή 
+                // create vector of courses in secretary
+                // shows courses one by one and prompts
+                // user to enter the professor's name for each
+
+
+        }

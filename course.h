@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include "professor.h"
+#include "student.h"
 
 using namespace std;
 
@@ -10,12 +12,11 @@ private:
     int sem;
     int ects;
     bool comp;
-    bool opt;
 public:
     // default constructor
     Course();
 
-    Course(string cn, string c, int s, int e, bool co, bool o);
+    Course(string cn, string c, int s, int e, bool co);
 
     // destructor
     ~Course();
@@ -34,9 +35,6 @@ public:
     //void setEcts(int newEcts);
 
     bool getComp() const;
-    //void setComp(bool newComp);
-
-    bool getOpt() const;
-    //void setOpt(bool newOpt);
+    //void setComp(bool newComp); 
 
 };
