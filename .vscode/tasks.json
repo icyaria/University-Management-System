@@ -6,16 +6,12 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g",           
-                "main.cpp",  
-                "person.cpp",
-                "secretary.cpp",
-                "professor.cpp",
-                "student.cpp",  
-                "course.cpp",
-                "menu.cpp",
+                "-g",
+                "${workspaceFolder}/src/*.cpp",
+                "-I",
+                "${workspaceFolder}/include",
                 "-o",
-                "main"
+                "${workspaceFolder}/main"
             ],
             "group": {
                 "kind": "build",
@@ -24,3 +20,4 @@
         }
     ]
 }
+
