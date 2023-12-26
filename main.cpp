@@ -2,10 +2,11 @@
 #include <string>
 #include <vector>
 #include <fstream>
+
 #include "secretary.h"
+#include "menu.h"
 
 using namespace std;
-
 
 // Αρχικοποίηση του count
 int Person::count = 0;
@@ -17,52 +18,39 @@ int main() {
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
-    //idea: διαφορετικο μενου για καθε χρηστη γιατι δεν βγαζει νοημα αλλιως
-    //(δεν γινεται ο φοιτητης να βλεπει ολα τα options που εχει και η γραμματεια πχ)
-    //cout << "Login as: " << endl;
 
-    //for secretary:
+    int login = 0; 
 
-    // int choice=0;
+    while (login != 4) {
+        cout << "Login as: " << endl;
+        cout << "1. Secretary" << endl;
+        cout << "2. Professor" << endl;
+        cout << "3. Student" << endl;
+        cout << "4. Exit" << endl;
+        cout << "(Type 1, 2, 3 or 4):" << endl;
+        cin >> login;
 
-    // while (choice != 7) {
-    //     cout << "1. Edit students" << endl;
-    //     cout << "2. Edit professors" << endl;
-    //     cout << "3. Edit courses" << endl;
-    //     cout << "4. New semester (Assign courses to professors)" << endl;
-    //     cout << "5. Get a list of students that passed a course" << endl;
-    //     cout << "6. See students that can graduate" << endl;
-    //     cout << "7. Exit" << endl;
-    
-    //     cin >> choice;
-    //}
-
-
-
-    //for professor:
-
-    // int choice=0;
-
-    // while (choice != 2) {
-    //     cout << "1. See semester statistics" << endl;
-    //     cout << "2. Exit" << endl;
-    
-    //     cin >> choice;
-    // }
+        switch (login) {
+            case 1:
+                secretaryMenu();
+                break;
+            case 2:
+                professorMenu();
+                break;
+            case 3:
+                studentMenu();
+                break;
+            case 4:
+                cout << "Exiting..." << endl;
+                break;
+            default:
+                cout << "Wrong input" << endl;
+                break;
+        }
+    }
 
 
-
-    //for student:
-    // int choice=0;
-
-    // while (choice != 3) {
-    //     cout << "1. Enroll in classes" << endl;
-    //     cout << "2. See my grades " << endl;
-    //     cout << "3. Exit" << endl;
-
-    //     cin >> choice;
-    // }
-
+    // TESTS
     Professor A = Professor("A", "A", "A", 123);
     Student B = Student("B", "B", "B", 123, 1, 1);
     sec.add(A);
@@ -73,12 +61,12 @@ int main() {
     cin >> sec;
     cout << sec;    
 
+    //οι νεες συναρτησεις σιγουρα εχουν leaks, δεν εχω κανει delete
+    //τιποτα στα courses & professors :')
+
     Course course = Course("Math", "MATH", 1, 5, true);
 
-    // Assign professor to course through the secretary
     sec.assignProfessorToCourse(A, course);
-
-    // Print statistics for the professor
     A.printCourseStatistics();
 
     return 0;

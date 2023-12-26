@@ -13,6 +13,7 @@
                 "professor.cpp",
                 "student.cpp",  
                 "course.cpp",
+                "menu.cpp",
                 "-o",
                 "main"
             ],
