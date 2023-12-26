@@ -49,6 +49,28 @@ using namespace std;
                 cout<<"\nAdded "<<s.getFirstName()<<" "<<s.getLastName() <<" in Secretary"<<endl;
         }
 
+        void Secretary::remove(Student &s) {
+                size_t size = vecs.size();
+                for (size_t i = 0; i<size; i++) {
+                        if (vecs.at(i)->getFirstName() == s.getFirstName() &&
+                            vecs.at(i)->getLastName() == s.getLastName() &&
+                            vecs.at(i)->getEmail() == s.getEmail() &&
+                            vecs.at(i)->getPhone() == s.getPhone()) {
+                                cout<<"\nRemoved "<<s.getFirstName()<<" "<<s.getLastName() <<" from Secretary"<<endl;
+                                delete vecs.at(i);
+                                
+                                // Shift all elements after the erased one to the left
+                                for (size_t j = i; j < vecs.size() - 1; j++) {
+                                        vecs.at(j) = vecs.at(j + 1);
+                                }
+                                //remove the last element
+                                vecs.pop_back();
+
+                                return;
+                        }
+                }
+        }
+
 
         bool Secretary::find_professor(Secretary &sec, Person &professor) {
                 //cout << "\nSearching for "<< professor.getFirstName() << " " << professor.getLastName() << " in professors" << endl;

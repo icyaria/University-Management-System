@@ -35,6 +35,10 @@ public:
     void add(Professor &p);
     void add(Student &s);
 
+    // Function to delete a professor or student from secretary
+    void remove(Professor &p);
+    void remove(Student &s);
+
     // Searches for a professor from the professor vector
     bool find_professor(Secretary &sec, Person &professor);
 

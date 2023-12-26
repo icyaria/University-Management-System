@@ -18,8 +18,8 @@ int main() {
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
-    Student B = Student("B", "B", "B", 123, 1, 1, 123);
-    sec.add(B);
+    // Student B = Student("B", "B", "B", 123, 1, 1, 123);
+    // sec.add(B);
 
 
     int login = 0; 
@@ -53,24 +53,24 @@ int main() {
     }
 
 
-    // TESTS
-    Professor A = Professor("A", "A", "A", 123);
-    // Student B = Student("B", "B", "B", 123, 1, 1);
-    sec.add(A);
-    // sec.add(B);
-    sec.find_person(sec, A);
-    sec.find_professor(sec, A);
-    sec.find_student(sec, B);
-    cin >> sec;
-    cout << sec;    
+    // // TESTS
+    // Professor A = Professor("A", "A", "A", 123);
+    // // Student B = Student("B", "B", "B", 123, 1, 1);
+    // sec.add(A);
+    // // sec.add(B);
+    // sec.find_person(sec, A);
+    // sec.find_professor(sec, A);
+    // sec.find_student(sec, B);
+    // cin >> sec;
+    // cout << sec;    
 
-    //οι νεες συναρτησεις σιγουρα εχουν leaks, δεν εχω κανει delete
-    //τιποτα στα courses & professors :')
+    // //οι νεες συναρτησεις σιγουρα εχουν leaks, δεν εχω κανει delete
+    // //τιποτα στα courses & professors :')
 
-    Course course = Course("Math", "MATH", 1, 5, true);
+    // Course course = Course("Math", "MATH", 1, 5, true);
 
-    sec.assignProfessorToCourse(A, course);
-    A.printCourseStatistics();
+    // sec.assignProfessorToCourse(A, course);
+    // A.printCourseStatistics();
 
     return 0;
 }

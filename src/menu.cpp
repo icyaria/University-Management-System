@@ -10,8 +10,8 @@ void secretaryMenu(Secretary &sec) {
     while (choice != 8) {
         cout << "Secretary Menu" << endl;
         cout << "*****************" << endl;
-        cout << "1. Edit students" << endl;
-        cout << "2. Edit professors" << endl;
+        cout << "1. Edit student list" << endl;
+        cout << "2. Edit professor list" << endl;
         cout << "3. Edit courses" << endl;
         cout << "4. New semester" << endl;
         cout << "5. Assign courses to professors" << endl;
@@ -26,13 +26,14 @@ void secretaryMenu(Secretary &sec) {
 
         switch (choice) {
             case 1:
-                while (ch != 4) {
+                while (ch != 5) {
                     cout << "Edit Students" << endl;
                     cout << "*****************" << endl;
                     cout << "1. Add a new student" << endl;
                     cout << "2. Edit a student" << endl;
                     cout << "3. Delete a student" << endl;
-                    cout << "4. Back" << endl;
+                    cout << "4. View student list" << endl;
+                    cout << "5. Back" << endl;
                     cin >> ch;
 
                     switch (ch) {
@@ -51,10 +52,14 @@ void secretaryMenu(Secretary &sec) {
                             cout << "*****************" << endl;
                             break;
                         case 3:
-                            cout << "deleted student" << endl;
+                            deleteStudent(sec);
                             cout << "*****************" << endl;
                             break;
                         case 4:
+                            cout << sec;
+                            cout << "*****************" << endl;
+                            break;
+                        case 5:
                             break;
                         default:
                             cout << "Wrong input" << endl;
@@ -228,6 +233,30 @@ void editStudent(Secretary &sec) {
         cout << "Enter new student information:" << endl;
         cin >> *foundStudent;
         cout << "Edited Successfully!" << endl;
+    } else {
+        cout << "Student not found!" << endl;
+    }
+}
+
+void deleteStudent(Secretary &sec) {
+    if (sec.getStudents().size() == 0) {
+        cout << "No students to delete!" << endl;
+        return;
+    }
+    cout << "Enter the AM of the student you want to delete:" << endl;
+
+    Student* foundStudent = find_student_fromAM(sec);
+
+    if (foundStudent) {
+        cout << "Student Info: \n" << *foundStudent << endl;
+        cout << "Proceed with deleting? (y/n)" << endl;
+        char choice;
+        cin >> choice;
+        if (choice == 'n') {
+            return;
+        }
+        sec.remove(*foundStudent);
+        cout << "Deleted Successfully!" << endl;
     } else {
         cout << "Student not found!" << endl;
     }
