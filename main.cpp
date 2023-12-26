@@ -73,5 +73,13 @@ int main() {
     cin >> sec;
     cout << sec;    
 
+    Course course = Course("Math", "MATH", 1, 5, true);
+
+    // Assign professor to course through the secretary
+    sec.assignProfessorToCourse(A, course);
+
+    // Print statistics for the professor
+    A.printCourseStatistics();
+
     return 0;
 }

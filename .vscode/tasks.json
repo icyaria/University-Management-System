@@ -12,6 +12,7 @@
                 "secretary.cpp",
                 "professor.cpp",
                 "student.cpp",  
+                "course.cpp",
                 "-o",
                 "main"
             ],

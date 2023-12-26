@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+
 #pragma once
 #include "person.h"
 #include "course.h"
@@ -16,5 +17,6 @@ public:
     void printCourseStatistics() const; //const beacause it does not change the object it is called on (it is a getter)
 
     // Function to assign a course to the professor
+    // (καλειται απο την assignProfessor της Course)
     void assignCourse(Course& course);
 };

@@ -2,10 +2,17 @@
 #include <string>
 #include <vector>
 
-#include "professor.h"
 #include "student.h"
+#pragma once
 
 using namespace std;
+
+class Professor; // forward declaration
+// it tells the compiler that the class Professor exists before the actual definition becomes available
+// *ΓΙΑ ΕΜΑΣ ΜΟΝΟ*
+// This is sufficient for the compiler to know that such a class exists, 
+// which allows you to use pointers or references to that class in your 
+// header file without requiring the full definition
 
 class Course {
 private:
@@ -40,6 +47,10 @@ public:
     bool getComp() const;
     //void setComp(bool newComp); 
 
+    
+    // assigns a professor to the course and calls function
+    // to add the course to the professor's teaching courses 
+    // (η secretary καλεί αυτή τη συνάρτηση)
     void assignProfessor(Professor &professor);
 
 };

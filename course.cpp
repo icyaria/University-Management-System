@@ -1,6 +1,5 @@
-#include <iostream>
-#include <string>
 #include "course.h"
+#include "professor.h"
 
 using namespace std;
 

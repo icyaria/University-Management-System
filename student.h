@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
-#pragma once
+
 #include "person.h"
+#pragma once
 
 using namespace std;
 

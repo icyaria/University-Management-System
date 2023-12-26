@@ -1,7 +1,9 @@
+#ifndef PERSON_H
+#define PERSON_H
+
 #include <iostream>
 #include <string>
 #include <vector>
-#pragma once
 
 using namespace std;
 
@@ -48,3 +50,6 @@ public:
     // Count of objects type Person
     static int getCount(); 
 };
+
+
+#endif // PERSON_H

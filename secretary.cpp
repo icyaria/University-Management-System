@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string>
-#include <vector>
-
 #include "secretary.h"
 
 using namespace std;
@@ -47,7 +43,7 @@ using namespace std;
 
 
         bool Secretary::find_professor(Secretary &sec, Person &professor) {
-                cout << "\nSearching for "<< professor.getFirstName() << " " << professor.getLastName() << " in proffesors" << endl;
+                cout << "\nSearching for "<< professor.getFirstName() << " " << professor.getLastName() << " in professors" << endl;
                 int size = sec.vecp.size();
                 for (int i = 0; i<size; i++) {
                         if (sec.vecp.at(i)->getFirstName() == professor.getFirstName() &&
@@ -179,4 +175,8 @@ using namespace std;
                         sem++;
                         sec.vecs.at(i)->setSem(sem);
                 }
+        }
+
+        void Secretary::assignProfessorToCourse(Professor& professor, Course& course) {
+                course.assignProfessor(professor);
         }

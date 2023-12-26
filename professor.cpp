@@ -19,5 +19,4 @@ using namespace std;
 
         void Professor::assignCourse(Course& course) {
                 coursesTeaching.push_back(&course);
-                course.assignProfessor(*this);
         }

@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "person.h"
+
+
 #include "student.h"
 #include "professor.h"
 #include "course.h"
@@ -52,4 +53,7 @@ public:
  
     // sets up a new semester
     void new_semester(Secretary &sec);
+
+    // calls assignCourse of professor which calls assignProfessor of course
+    void assignProfessorToCourse(Professor& professor, Course& course);
 };
