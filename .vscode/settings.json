@@ -45,5 +45,12 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/icyaria/oop2324/Bmeros",
+            "binaryPath": "/home/icyaria/oop2324/Bmeros/main",
+            "binaryArgs": []
+        }
+    ]
 }
