@@ -5,13 +5,11 @@ using namespace std;
         Student::Student() {
             sem_s = 1;
             ects_s = 0;
-            AM = 0;
         }
 
-        Student::Student(string f, string l, string e, long int ph, int sem, int ects, long int am) : Person(f, l, e, ph) {
+        Student::Student(string f, string l, string e, long int ph, int sem, int ects) : Person(f, l, e, ph) {
             sem_s = sem;
             ects_s = ects;
-            AM = am;
         }
 
         int Student::getSem() const {
