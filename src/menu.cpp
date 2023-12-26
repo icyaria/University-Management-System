@@ -21,6 +21,8 @@ void secretaryMenu(Secretary &sec) {
         cin >> choice;
 
         int ch = 0;
+        Student student;
+        Professor professor;
 
         switch (choice) {
             case 1:
@@ -32,8 +34,6 @@ void secretaryMenu(Secretary &sec) {
                     cout << "3. Delete a student" << endl;
                     cout << "4. Back" << endl;
                     cin >> ch;
-
-                    Student student;
 
                     switch (ch) {
                         case 1:
@@ -63,9 +63,41 @@ void secretaryMenu(Secretary &sec) {
                 }
                 break;
             case 2:
-                // blabla
-                cout << "edited professors" << endl;
-                cout << "*****************" << endl;
+                while (ch != 4) {
+                    cout << "Edit Professors" << endl;
+                    cout << "*****************" << endl;
+                    cout << "1. Add a new professor" << endl;
+                    cout << "2. Edit a professor" << endl;
+                    cout << "3. Delete a professor" << endl;
+                    cout << "4. Back" << endl;
+                    cin >> ch;
+
+                    switch (ch) {
+                        case 1:
+                            cout << "Enter the new Professor's information:" << endl;    
+                            cin >> professor;
+                            if(sec.find_professor(sec, professor)) {
+                                cout << "\nProfessor already exists\n" << endl;
+                                break;
+                            }
+                            sec + professor;
+                            cout << "\n" << endl;
+                            break;
+                        case 2:
+                            cout << "edited professor" << endl;
+                            cout << "*****************" << endl;
+                            break;
+                        case 3:
+                            cout << "deleted professor" << endl;
+                            cout << "*****************" << endl;
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            cout << "Wrong input" << endl;
+                            break;
+                    }
+                }
                 break;
             case 3:
                 //blabla
