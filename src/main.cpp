@@ -18,6 +18,9 @@ int main() {
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
+    Student B = Student("B", "B", "B", 123, 1, 1);
+    sec.add(B);
+
 
     int login = 0; 
 
@@ -32,7 +35,7 @@ int main() {
 
         switch (login) {
             case 1:
-                secretaryMenu();
+                secretaryMenu(sec);
                 break;
             case 2:
                 professorMenu();
@@ -52,12 +55,12 @@ int main() {
 
     // TESTS
     Professor A = Professor("A", "A", "A", 123);
-    Student B = Student("B", "B", "B", 123, 1, 1);
+    // Student B = Student("B", "B", "B", 123, 1, 1);
     sec.add(A);
-    sec.add(B);
+    // sec.add(B);
     sec.find_person(sec, A);
     sec.find_professor(sec, A);
-    sec.find_student(sec, A);
+    sec.find_student(sec, B);
     cin >> sec;
     cout << sec;    
 

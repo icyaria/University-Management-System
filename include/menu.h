@@ -6,7 +6,11 @@
 #include <vector>
 #include <fstream>
 
-void secretaryMenu();
+class Secretary;
+class Student;
+class Professor;
+
+void secretaryMenu(Secretary &sec);
 void professorMenu();
 void studentMenu();
 

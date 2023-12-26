@@ -1,9 +1,11 @@
 #include "menu.h"
 #include "secretary.h"
+#include "student.h"
+#include "professor.h"
 
 using namespace std;
 
-void secretaryMenu() {
+void secretaryMenu(Secretary &sec) {
     int choice = 0;
     while (choice != 8) {
         cout << "Secretary Menu" << endl;
@@ -18,11 +20,47 @@ void secretaryMenu() {
         cout << "8. Logout" << endl;
         cin >> choice;
 
+        int ch = 0;
+
         switch (choice) {
             case 1:
-                //blabla
-                cout << "edited students" << endl;
-                cout << "*****************" << endl;
+                while (ch != 4) {
+                    cout << "Edit Students" << endl;
+                    cout << "*****************" << endl;
+                    cout << "1. Add a new student" << endl;
+                    cout << "2. Edit a student" << endl;
+                    cout << "3. Delete a student" << endl;
+                    cout << "4. Back" << endl;
+                    cin >> ch;
+
+                    Student student;
+
+                    switch (ch) {
+                        case 1:
+                            cout << "Enter new student information:" << endl;    
+                            cin >> student;
+                            if(sec.find_student(sec, student)) {
+                                cout << "\nStudent already exists\n" << endl;
+                                break;
+                            }
+                            sec + student;
+                            cout << "\n" << endl;
+                            break;
+                        case 2:
+                            cout << "edited student" << endl;
+                            cout << "*****************" << endl;
+                            break;
+                        case 3:
+                            cout << "deleted student" << endl;
+                            cout << "*****************" << endl;
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            cout << "Wrong input" << endl;
+                            break;
+                    }
+                }
                 break;
             case 2:
                 // blabla

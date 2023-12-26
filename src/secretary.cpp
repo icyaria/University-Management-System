@@ -43,38 +43,38 @@ using namespace std;
 
 
         bool Secretary::find_professor(Secretary &sec, Person &professor) {
-                cout << "\nSearching for "<< professor.getFirstName() << " " << professor.getLastName() << " in professors" << endl;
+                //cout << "\nSearching for "<< professor.getFirstName() << " " << professor.getLastName() << " in professors" << endl;
                 int size = sec.vecp.size();
                 for (int i = 0; i<size; i++) {
                         if (sec.vecp.at(i)->getFirstName() == professor.getFirstName() &&
                             sec.vecp.at(i)->getLastName() == professor.getLastName() &&
                             sec.vecp.at(i)->getEmail() == professor.getEmail() &&
                             sec.vecp.at(i)->getPhone() == professor.getPhone()) {
-                                cout << "Found Professor "<< professor.getFirstName() << " " << professor.getLastName() << " in Secretary" << endl;
+                                //cout << "Found Professor "<< professor.getFirstName() << " " << professor.getLastName() << " in Secretary" << endl;
                                 cout << "\n" << endl;
                                 return true;
                         }
                 }
-                cout << "Couldn't find Professor "<< professor.getFirstName() << " " << professor.getLastName() << " in Secretary" << endl;
+                //cout << "Couldn't find Professor "<< professor.getFirstName() << " " << professor.getLastName() << " in Secretary" << endl;
                 cout << "\n" << endl;
                 return false;
         }
 
         bool Secretary::find_student(Secretary &sec, Person &student) {
-                cout << "\nSearching for "<< student.getFirstName() << " " << student.getLastName() << " in students" << endl;
+                //cout << "\nSearching for "<< student.getFirstName() << " " << student.getLastName() << " in students" << endl;
                 int size = sec.vecs.size();
                 for (int i = 0; i<size; i++) {
                         if (sec.vecs.at(i)->getFirstName() == student.getFirstName() &&
                             sec.vecs.at(i)->getLastName() == student.getLastName() &&
                             sec.vecs.at(i)->getEmail() == student.getEmail() &&
                             sec.vecs.at(i)->getPhone() == student.getPhone()) {
-                                cout << "Found Student "<< student.getFirstName() << " " << student.getLastName() << " in Secretary" << endl;
-                                cout << "\n" << endl;
+                                //cout << "Found Student "<< student.getFirstName() << " " << student.getLastName() << " in Secretary" << endl;
+                                //cout << "\n" << endl;
                                 return true;
                         }
                 }
-                cout << "Couldn't find Student "<< student.getFirstName() << " " << student.getLastName() << " in Secretary" << endl;
-                cout << "\n" << endl;
+                //cout << "Couldn't find Student "<< student.getFirstName() << " " << student.getLastName() << " in Secretary" << endl;
+                //cout << "\n" << endl;
                 return false;
         }
 
