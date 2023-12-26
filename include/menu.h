@@ -10,6 +10,7 @@ class Secretary;
 class Student;
 class Professor;
 
+void editStudent(Secretary &sec);
 void secretaryMenu(Secretary &sec);
 void professorMenu();
 void studentMenu();

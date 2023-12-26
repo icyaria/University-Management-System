@@ -5,6 +5,31 @@
 
 using namespace std;
 
+void editStudent(Secretary &sec) {
+    long int targetAM = 0;
+    cout << "Enter the AM of the student you want to edit:" << endl;
+    cin >> targetAM;
+
+    Student* foundStudent = nullptr;
+    vector<Student*> const &students = sec.getStudents();
+
+    for (size_t i = 0; i < students.size(); i++) {
+        if (students[i]->getAM() == targetAM) {
+            foundStudent = students[i];
+            break;
+        }
+    }
+
+    if (foundStudent) {
+        cout << "Editing student with AM: " << targetAM << endl;
+        cout << "student info: " << *foundStudent << endl;
+        cout << "Enter new student information:" << endl;
+        cin >> *foundStudent;
+    } else {
+        cout << "Student not found!" << endl;
+    }
+}
+
 void secretaryMenu(Secretary &sec) {
     int choice = 0;
     while (choice != 8) {
@@ -47,6 +72,7 @@ void secretaryMenu(Secretary &sec) {
                             cout << "\n" << endl;
                             break;
                         case 2:
+                            editStudent(sec);
                             cout << "edited student" << endl;
                             cout << "*****************" << endl;
                             break;

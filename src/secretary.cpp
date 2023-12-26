@@ -29,6 +29,14 @@ using namespace std;
                 vecs.clear();// Clear the vector after deleting its elements
         }
 
+        vector<Professor*> Secretary::getProfessors() const {
+                return vecp;
+        }
+
+        vector<Student*> Secretary::getStudents() const {
+                return vecs;
+        }
+
         void Secretary::add(Professor &p) {
                 Professor* newp = new Professor(p);
                 vecp.push_back(newp);

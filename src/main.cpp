@@ -18,7 +18,7 @@ int main() {
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
-    Student B = Student("B", "B", "B", 123, 1, 1);
+    Student B = Student("B", "B", "B", 123, 1, 1, 123);
     sec.add(B);
 
 

@@ -27,6 +27,10 @@ public:
     // destructor
     ~Secretary();
 
+    // Getters
+    vector<Professor*> getProfessors() const;
+    vector<Student*> getStudents() const;
+
     // Function to add new professor or student to secretary
     void add(Professor &p);
     void add(Student &s);
