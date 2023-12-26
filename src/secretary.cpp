@@ -6,11 +6,11 @@ using namespace std;
         }
 
         Secretary::Secretary(const Secretary &sec) { //copy constructor
-                for (int i = 0; i<sec.vecp.size(); i++) {
+                for (size_t i = 0; i<sec.vecp.size(); i++) {
                         Professor* newProfessor = new Professor(*sec.vecp.at(i));  
                         vecp.push_back(newProfessor);
                 }
-                for (int i = 0; i<sec.vecs.size(); i++) {
+                for (size_t i = 0; i<sec.vecs.size(); i++) {
                         Student* newStudent = new Student(*sec.vecs.at(i));  
                         vecs.push_back(newStudent);
                 }
@@ -135,11 +135,11 @@ using namespace std;
 
         ostream &operator<<(ostream &ostr, Secretary &secretary) {
                 ostr << "Professors in secretary are: " << endl;
-                for (int i = 0; i<secretary.vecp.size(); i++) {
+                for (size_t i = 0; i<secretary.vecp.size(); i++) {
                      cout<< *secretary.vecp.at(i)<< endl; // prints all professors in secretary
                 }
                 ostr << "Students in secretary are: " << endl;
-                for (int i = 0; i<secretary.vecs.size(); i++) {
+                for (size_t i = 0; i<secretary.vecs.size(); i++) {
                      cout<< *secretary.vecs.at(i)<< endl; // prints all students in secretary
                 }
                 return ostr;
@@ -156,11 +156,11 @@ using namespace std;
         }
 
         Secretary Secretary::operator=(const Secretary &sec) {
-                for (int i = 0; i<sec.vecp.size(); i++) {
+                for (size_t i = 0; i<sec.vecp.size(); i++) {
                         Professor* newProfessor = new Professor(*sec.vecp.at(i));  
                         vecp.push_back(newProfessor);
                 }
-                for (int i = 0; i<sec.vecs.size(); i++) {
+                for (size_t i = 0; i<sec.vecs.size(); i++) {
                         Student* newStudent = new Student(*sec.vecs.at(i));  
                         vecs.push_back(newStudent);
                 }

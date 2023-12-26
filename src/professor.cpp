@@ -10,7 +10,7 @@ using namespace std;
 
         void Professor::printCourseStatistics() const {
                 cout << "Professor " << getFirstName() << " " << getLastName() << " teaches " << coursesTeaching.size() << " courses" << endl;
-                for (int i = 0; i < coursesTeaching.size(); i++) {
+                for (size_t i = 0; i < coursesTeaching.size(); i++) {
                         cout << coursesTeaching.at(i)->getCourseName() << endl;
                         // οταν βαλουμε βαθμο κλπ να το προσθεσουμε
                 }
