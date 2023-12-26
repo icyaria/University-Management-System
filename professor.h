@@ -1,7 +1,9 @@
+#ifndef PROFESSOR_H
+#define PROFESSOR_H
+
 #include <iostream>
 #include <string>
 
-#pragma once
 #include "person.h"
 #include "course.h"
 
@@ -20,3 +22,5 @@ public:
     // (καλειται απο την assignProfessor της Course)
     void assignCourse(Course& course);
 };
+
+#endif

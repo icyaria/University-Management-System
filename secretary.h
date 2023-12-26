@@ -1,12 +1,13 @@
+#ifndef SECRETARY_H
+#define SECRETARY_H
+
 #include <iostream>
 #include <string>
 #include <vector>
 
-
 #include "student.h"
 #include "professor.h"
 #include "course.h"
-#pragma once
 
 using namespace std;
 
@@ -57,3 +58,5 @@ public:
     // calls assignCourse of professor which calls assignProfessor of course
     void assignProfessorToCourse(Professor& professor, Course& course);
 };
+
+#endif

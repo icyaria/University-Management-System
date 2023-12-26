@@ -1,9 +1,11 @@
+#ifndef COURSE_H
+#define COURSE_H
+
 #include <iostream>
 #include <string>
 #include <vector>
 
 #include "student.h"
-#pragma once
 
 using namespace std;
 
@@ -54,3 +56,5 @@ public:
     void assignProfessor(Professor &professor);
 
 };
+
+#endif 

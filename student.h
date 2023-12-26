@@ -1,8 +1,10 @@
+#ifndef STUDENT_H
+#define STUDENT_H
+
 #include <iostream>
 #include <string>
 
 #include "person.h"
-#pragma once
 
 using namespace std;
 
@@ -18,3 +20,5 @@ public:
     int getEcts() const;
     void setEcts(int newEcts);
 };
+
+#endif
