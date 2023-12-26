@@ -179,17 +179,4 @@ using namespace std;
                         sem++;
                         sec.vecs.at(i)->setSem(sem);
                 }
-                // assigns professors to courses
-                //??? σημαντικη απορια
-                //??? θα αποθηκευουμε τους καθηγητές μεσα στο μαθημα ή το 
-                //??? μαθημα μεσα στον καθηγητη
-                // idea:
-                // shows professors one by one and prompts
-                // user to enter the course code for each 
-                // ή 
-                // create vector of courses in secretary
-                // shows courses one by one and prompts
-                // user to enter the professor's name for each
-
-
         }

@@ -51,5 +51,11 @@ using namespace std;
         sem = newSem;
     }
 
+    void Course::assignProfessor(Professor &professor) {
+        cout << "Assigning " << professor.getFirstName() << " " << professor.getLastName() << " to " << course_name << endl;
+        professorsTeaching.push_back(&professor);
+        professor.assignCourse(*this);
+    }
+
 
 

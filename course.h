@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <vector>
+
 #include "professor.h"
 #include "student.h"
 
@@ -12,6 +14,7 @@ private:
     int sem;
     int ects;
     bool comp;
+    vector<Professor*> professorsTeaching;
 public:
     // default constructor
     Course();
@@ -36,5 +39,7 @@ public:
 
     bool getComp() const;
     //void setComp(bool newComp); 
+
+    void assignProfessor(Professor &professor);
 
 };
