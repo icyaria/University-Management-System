@@ -1,4 +1,5 @@
 #include "professor.h"
+#include "course.h"
 
 using namespace std;
 
@@ -19,4 +20,17 @@ using namespace std;
 
         void Professor::assignCourse(Course& course) {
                 coursesTeaching.push_back(&course);
+        }
+
+        vector<Course*> Professor::getCoursesTeaching() const {
+                return coursesTeaching;
+        }
+
+        ostream &operator<<(ostream &ostr, Professor &professor) {
+                ostr << "\nMy courses are: " << endl;
+                
+                for (size_t i = 0; i<professor.coursesTeaching.size(); i++) {
+                     cout << *professor.coursesTeaching.at(i) << endl; // prints all professors in secretary
+                }
+                return ostr;
         }

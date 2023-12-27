@@ -145,12 +145,13 @@ void secretaryMenu(Secretary &sec) {
 
 void professorMenu() {
     int choice = 0;
-    while (choice != 3) {
+    while (choice != 4) {
         cout << "Professor Menu: " << endl;
         cout << "*****************" << endl;
         cout << "1. See semester statistics" << endl;
         cout << "2. Grade students" << endl;
-        cout << "3. Logout" << endl;
+        cout << "3. My courses" << endl;
+        cout << "4. Logout" << endl;
         cin >> choice;
 
         switch (choice) {
@@ -160,11 +161,14 @@ void professorMenu() {
                 cout << "*****************" << endl;
                 break;
             case 2:
-                // blabla
-                cout << "graded students" << endl;
+                cout << "Choose course to grade: " << endl;
+                 
                 cout << "*****************" << endl;
                 break;
             case 3:
+                //blabla
+                break;
+            case 4:
                 cout << "Logging out..." << endl;
                 break;
             default:

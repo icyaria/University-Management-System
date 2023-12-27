@@ -247,3 +247,7 @@ using namespace std;
         void Secretary::assignProfessorToCourse(Professor& professor, Course& course) {
                 course.assignProfessor(professor);
         }
+
+        void Secretary::assignStudentToCourse(Student& student, Course& course) {
+                course.assignStudent(student);
+        }

@@ -1,5 +1,6 @@
 #include "course.h"
 #include "professor.h"
+#include "student.h"
 
 using namespace std;
 
@@ -54,6 +55,17 @@ using namespace std;
         cout << "Assigning " << professor.getFirstName() << " " << professor.getLastName() << " to " << course_name << endl;
         professorsTeaching.push_back(&professor);
         professor.assignCourse(*this);
+    }
+
+    void Course::assignStudent(Student &student) {
+        cout << "Assigning " << student.getFirstName() << " " << student.getLastName() << " to " << course_name << endl;
+        students.push_back(&student);
+        student.assignCourse(*this);
+    }
+
+    ostream &operator<<(ostream &ostr, Course &course) {
+        ostr << "Course:" << course.course_name << endl << "Code: " << course.code << endl;
+        return ostr;
     }
 
 

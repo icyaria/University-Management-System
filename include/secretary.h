@@ -69,6 +69,8 @@ public:
 
     // calls assignCourse of professor which calls assignProfessor of course
     void assignProfessorToCourse(Professor& professor, Course& course);
+
+    void assignStudentToCourse(Student& student, Course& course);
 };
 
 #endif

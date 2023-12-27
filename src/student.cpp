@@ -84,3 +84,8 @@ using namespace std;
 
             return ostr;
         }
+
+        void Student::assignCourse(Course& course) {
+            my_courses.push_back(&course);
+            //course.assignStudent(*this);
+        }

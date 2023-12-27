@@ -9,7 +9,8 @@
 
 using namespace std;
 
-class Professor; // forward declaration
+class Professor;
+class Student; // forward declaration
 // it tells the compiler that the class Professor exists before the actual definition becomes available
 // *ΓΙΑ ΕΜΑΣ ΜΟΝΟ*
 // This is sufficient for the compiler to know that such a class exists, 
@@ -24,6 +25,7 @@ private:
     int ects;
     bool comp;
     vector<Professor*> professorsTeaching;
+    vector<Student*> students;
 public:
     // default constructor
     Course();
@@ -55,6 +57,10 @@ public:
     // (η secretary καλεί αυτή τη συνάρτηση)
     void assignProfessor(Professor &professor);
 
+    void assignStudent(Student &student);
+
+
+    friend ostream &operator<<(ostream &ostr, Course &course);
 };
 
 #endif 

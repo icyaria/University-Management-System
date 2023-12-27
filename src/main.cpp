@@ -54,7 +54,8 @@ int main() {
 
 
     // // TESTS
-    // Professor A = Professor("A", "A", "A", 123);
+    Professor A = Professor("A", "A", "A", 123);
+
     // // Student B = Student("B", "B", "B", 123, 1, 1);
     // sec.add(A);
     // // sec.add(B);
@@ -67,9 +68,10 @@ int main() {
     // //οι νεες συναρτησεις σιγουρα εχουν leaks, δεν εχω κανει delete
     // //τιποτα στα courses & professors :')
 
-    // Course course = Course("Math", "MATH", 1, 5, true);
+    Course course = Course("Math", "MATH", 1, 5, true);
 
-    // sec.assignProfessorToCourse(A, course);
+    sec.assignProfessorToCourse(A, course);
+    cout << A;
     // A.printCourseStatistics();
 
     return 0;

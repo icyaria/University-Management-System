@@ -3,11 +3,14 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "person.h"
 #include "course.h"
 
 using namespace std;
+
+class Course;
 
 class Professor: public Person {
 private:
@@ -21,6 +24,11 @@ public:
     // Function to assign a course to the professor
     // (καλειται απο την assignProfessor της Course)
     void assignCourse(Course& course);
+
+    // getter
+    vector<Course*> getCoursesTeaching() const;
+
+    friend ostream &operator<<(ostream &ostr, Professor &professor);
 };
 
 #endif
