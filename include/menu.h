@@ -9,6 +9,7 @@
 class Secretary;
 class Student;
 class Professor;
+class Course;
 
 void secretaryMenu(Secretary &sec);
 void professorMenu(Secretary &sec);

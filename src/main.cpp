@@ -18,7 +18,14 @@ int main() {
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
-    // Student B = Student("B", "B", "B", 123, 1, 1, 123);
+    Professor A = Professor("A", "A", "A", 123);
+    sec.add(A);
+    Course course = Course("Math", "MATH", 1, 5, true);
+    Course course2 = Course("Math2", "MATH2", 1, 5, true);
+    sec.assignProfessorToCourse(A, course);
+    sec.assignProfessorToCourse(A, course2);
+    printProfessors(cout, sec);
+    cout << A;
     // sec.add(B);
 
 
@@ -54,7 +61,7 @@ int main() {
 
 
     // // TESTS
-    Professor A = Professor("A", "A", "A", 123);
+    //Professor A = Professor("A", "A", "A", 123);
 
     // // Student B = Student("B", "B", "B", 123, 1, 1);
     // sec.add(A);
@@ -68,10 +75,10 @@ int main() {
     // //οι νεες συναρτησεις σιγουρα εχουν leaks, δεν εχω κανει delete
     // //τιποτα στα courses & professors :')
 
-    Course course = Course("Math", "MATH", 1, 5, true);
+    //Course course = Course("Math", "MATH", 1, 5, true);
 
-    sec.assignProfessorToCourse(A, course);
-    cout << A;
+    //sec.assignProfessorToCourse(A, course);
+    //cout << A;
     // A.printCourseStatistics();
 
     return 0;
