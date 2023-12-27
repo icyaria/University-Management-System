@@ -49,6 +49,28 @@ using namespace std;
                 cout<<"\nAdded "<<s.getFirstName()<<" "<<s.getLastName() <<" in Secretary"<<endl;
         }
 
+        void Secretary::remove(Professor &p) {
+                size_t size = vecp.size();
+                for (size_t i = 0; i<size; i++) {
+                        if (vecp.at(i)->getFirstName() == p.getFirstName() &&
+                            vecp.at(i)->getLastName() == p.getLastName() &&
+                            vecp.at(i)->getEmail() == p.getEmail() &&
+                            vecp.at(i)->getPhone() == p.getPhone()) {
+                                cout<<"\nRemoved "<<p.getFirstName()<<" "<<p.getLastName() <<" from Secretary"<<endl;
+                                delete vecp.at(i);
+                                
+                                // Shift all elements after the erased one to the left
+                                for (size_t j = i; j < vecp.size() - 1; j++) {
+                                        vecp.at(j) = vecp.at(j + 1);
+                                }
+                                //remove the last element
+                                vecp.pop_back();
+
+                                return;
+                        }
+                }
+        }
+
         void Secretary::remove(Student &s) {
                 size_t size = vecs.size();
                 for (size_t i = 0; i<size; i++) {

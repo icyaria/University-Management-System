@@ -90,11 +90,11 @@ void secretaryMenu(Secretary &sec) {
                             cout << "\n" << endl;
                             break;
                         case 2:
-                            cout << "edited professor" << endl;
+                            editProfessor(sec);
                             cout << "*****************" << endl;
                             break;
                         case 3:
-                            cout << "deleted professor" << endl;
+                            deleteProfessor(sec);
                             cout << "*****************" << endl;
                             break;
                         case 4:
@@ -264,5 +264,67 @@ void deleteStudent(Secretary &sec) {
         cout << "Deleted Successfully!" << endl;
     } else {
         cout << "Student not found!" << endl;
+    }
+}
+
+
+Professor* find_professor_from_phone(Secretary &sec) {
+    long int targetPhone = 0;
+    cin >> targetPhone;
+
+    Professor* foundProfessor = nullptr;
+    vector<Professor*> const &professors = sec.getProfessors();
+
+    for (size_t i = 0; i < professors.size(); i++) {
+        if (professors[i]->getPhone() == targetPhone) {
+            foundProfessor = professors[i];
+            break;
+        }
+    }
+    return foundProfessor;
+}
+
+void editProfessor(Secretary &sec) {
+    cout << "Enter the phone number of the professor you want to edit:" << endl;
+
+    Professor* foundProfessor = find_professor_from_phone(sec);
+
+    if (foundProfessor) {
+        cout << "Professor Info: \n" << *foundProfessor << endl;
+        cout << "Proceed with editing? (y/n)" << endl;
+        char choice;
+        cin >> choice;
+        if (choice == 'n') {
+            return;
+        }
+        cout << "Enter new professor information:" << endl;
+        cin >> *foundProfessor;
+        cout << "Edited Successfully!" << endl;
+    } else {
+        cout << "Professor not found!" << endl;
+    }
+}
+
+void deleteProfessor(Secretary &sec) {
+    if (sec.getProfessors().size() == 0) {
+        cout << "No professors to delete!" << endl;
+        return;
+    }
+    cout << "Enter the phone number of the professor you want to delete:" << endl;
+
+    Professor* foundProfessor = find_professor_from_phone(sec);
+
+    if (foundProfessor) {
+        cout << "Professor Info: \n" << *foundProfessor << endl;
+        cout << "Proceed with deleting? (y/n)" << endl;
+        char choice;
+        cin >> choice;
+        if (choice == 'n') {
+            return;
+        }
+        sec.remove(*foundProfessor);
+        cout << "Deleted Successfully!" << endl;
+    } else {
+        cout << "Professor not found!" << endl;
     }
 }

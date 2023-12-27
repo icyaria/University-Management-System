@@ -11,6 +11,7 @@ class Student;
 class Professor;
 
 Student* find_student_fromAM(Secretary &sec);
+Professor* find_professor_from_phone(Secretary &sec);
 void editStudent(Secretary &sec);
 void deleteStudent(Secretary &sec);
 void editProfessor(Secretary &sec);
