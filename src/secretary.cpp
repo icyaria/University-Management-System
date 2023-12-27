@@ -162,13 +162,28 @@ using namespace std;
                 }
         }
 
-
         ostream &operator<<(ostream &ostr, Secretary &secretary) {
-                ostr << "Professors in secretary are: " << endl;
+                ostr << "\nProfessors in secretary are: " << endl;
                 for (size_t i = 0; i<secretary.vecp.size(); i++) {
                      cout<< *secretary.vecp.at(i)<< endl; // prints all professors in secretary
                 }
-                ostr << "Students in secretary are: " << endl;
+                ostr << "\nStudents in secretary are:" << endl;
+                for (size_t i = 0; i<secretary.vecs.size(); i++) {
+                     cout<< *secretary.vecs.at(i)<< endl; // prints all students in secretary
+                }
+                return ostr;
+        }
+
+        ostream &printProfessors(ostream &ostr, Secretary &secretary) {
+                ostr << "\nProfessors in secretary are: " << endl;
+                for (size_t i = 0; i<secretary.vecp.size(); i++) {
+                     cout<< *secretary.vecp.at(i)<< endl; // prints all professors in secretary
+                }
+                return ostr;
+        }
+
+        ostream &printStudents(ostream &ostr, Secretary &secretary) {
+                ostr << "\nStudents in secretary are:" << endl;
                 for (size_t i = 0; i<secretary.vecs.size(); i++) {
                      cout<< *secretary.vecs.at(i)<< endl; // prints all students in secretary
                 }

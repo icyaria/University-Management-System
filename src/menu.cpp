@@ -56,7 +56,7 @@ void secretaryMenu(Secretary &sec) {
                             cout << "*****************" << endl;
                             break;
                         case 4:
-                            cout << sec;
+                            printStudents(cout, sec);
                             cout << "*****************" << endl;
                             break;
                         case 5:
@@ -74,7 +74,8 @@ void secretaryMenu(Secretary &sec) {
                     cout << "1. Add a new professor" << endl;
                     cout << "2. Edit a professor" << endl;
                     cout << "3. Delete a professor" << endl;
-                    cout << "4. Back" << endl;
+                    cout << "4. View professor list" << endl;
+                    cout << "5. Back" << endl;
                     cin >> ch;
 
                     switch (ch) {
@@ -97,6 +98,10 @@ void secretaryMenu(Secretary &sec) {
                             cout << "*****************" << endl;
                             break;
                         case 4:
+                            printProfessors(cout, sec);
+                            cout << "*****************" << endl;
+                            break;
+                        case 5:
                             break;
                         default:
                             cout << "Wrong input" << endl;
