@@ -68,7 +68,7 @@ void secretaryMenu(Secretary &sec) {
                 }
                 break;
             case 2:
-                while (ch != 4) {
+                while (ch != 5) {
                     cout << "Edit Professors" << endl;
                     cout << "*****************" << endl;
                     cout << "1. Add a new professor" << endl;
@@ -143,30 +143,42 @@ void secretaryMenu(Secretary &sec) {
     }
 }
 
-void professorMenu() {
+void professorMenu(Secretary &sec) {
     int choice = 0;
+    cout << "Login with your email:" << endl;
+    Professor* professor = find_professor_from_email(sec);
+    if (professor) {
+        cout << "Logged in successfully!" << endl;
+    } else {
+        cout << "Wrong email!" << endl;
+        return;
+    }
     while (choice != 4) {
         cout << "Professor Menu: " << endl;
         cout << "*****************" << endl;
-        cout << "1. See semester statistics" << endl;
+        cout << "1. My courses" << endl;
         cout << "2. Grade students" << endl;
-        cout << "3. My courses" << endl;
+        cout << "3. View semester statistics" << endl;
         cout << "4. Logout" << endl;
         cin >> choice;
 
+        string code;
+
         switch (choice) {
             case 1:
-                //blabla
-                cout << "semester statistics" << endl;
+                cout << professor;
                 cout << "*****************" << endl;
                 break;
             case 2:
-                cout << "Choose course to grade: " << endl;
-                 
+                cout << "\n" << endl;
+                cout << professor;
+                cout << "Type the code of the course you want to grade: " << endl;
+                cin >> code;
+
                 cout << "*****************" << endl;
                 break;
             case 3:
-                //blabla
+                professor->printCourseStatistics();
                 break;
             case 4:
                 cout << "Logging out..." << endl;
@@ -272,15 +284,15 @@ void deleteStudent(Secretary &sec) {
 }
 
 
-Professor* find_professor_from_phone(Secretary &sec) {
-    long int targetPhone = 0;
-    cin >> targetPhone;
+Professor* find_professor_from_email(Secretary &sec) {
+    string targetEmail = " ";
+    cin >> targetEmail;
 
     Professor* foundProfessor = nullptr;
     vector<Professor*> const &professors = sec.getProfessors();
 
     for (size_t i = 0; i < professors.size(); i++) {
-        if (professors[i]->getPhone() == targetPhone) {
+        if (professors[i]->getEmail() == targetEmail) {
             foundProfessor = professors[i];
             break;
         }
@@ -289,10 +301,9 @@ Professor* find_professor_from_phone(Secretary &sec) {
 }
 
 void editProfessor(Secretary &sec) {
-    cout << "Enter the phone number of the professor you want to edit:" << endl;
+    cout << "Enter the email of the professor you want to edit:" << endl;
 
-    Professor* foundProfessor = find_professor_from_phone(sec);
-
+    Professor* foundProfessor = find_professor_from_email(sec);
     if (foundProfessor) {
         cout << "Professor Info: \n" << *foundProfessor << endl;
         cout << "Proceed with editing? (y/n)" << endl;
@@ -314,9 +325,9 @@ void deleteProfessor(Secretary &sec) {
         cout << "No professors to delete!" << endl;
         return;
     }
-    cout << "Enter the phone number of the professor you want to delete:" << endl;
+    cout << "Enter the email of the professor you want to delete:" << endl;
 
-    Professor* foundProfessor = find_professor_from_phone(sec);
+    Professor* foundProfessor = find_professor_from_email(sec);
 
     if (foundProfessor) {
         cout << "Professor Info: \n" << *foundProfessor << endl;
@@ -331,4 +342,20 @@ void deleteProfessor(Secretary &sec) {
     } else {
         cout << "Professor not found!" << endl;
     }
+}
+
+Course* findCourseFromCode(Professor &prof) {
+    string targetCode = " ";
+    cin >> targetCode;
+
+    Course* foundCourse = nullptr;
+    vector<Course*> const &courses = prof.getCoursesTeaching();
+
+    for (size_t i = 0; i < courses.size(); i++) {
+        if (courses.at(i)->getCode() == targetCode) {
+            foundCourse = courses[i];
+            break;
+        }
+    }
+    return foundCourse;
 }

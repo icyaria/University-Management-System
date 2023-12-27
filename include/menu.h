@@ -10,15 +10,17 @@ class Secretary;
 class Student;
 class Professor;
 
+void secretaryMenu(Secretary &sec);
+void professorMenu(Secretary &sec);
+void studentMenu();
+
 Student* find_student_fromAM(Secretary &sec);
-Professor* find_professor_from_phone(Secretary &sec);
+Professor* find_professor_from_email(Secretary &sec);
+Course* findCourseFromCode(Professor &prof);
+
 void editStudent(Secretary &sec);
 void deleteStudent(Secretary &sec);
 void editProfessor(Secretary &sec);
 void deleteProfessor(Secretary &sec);
-void secretaryMenu(Secretary &sec);
-void professorMenu();
-void studentMenu();
-
 
 #endif

@@ -38,7 +38,7 @@ int main() {
                 secretaryMenu(sec);
                 break;
             case 2:
-                professorMenu();
+                professorMenu(sec);
                 break;
             case 3:
                 studentMenu();

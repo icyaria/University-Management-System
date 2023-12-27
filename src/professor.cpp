@@ -14,8 +14,7 @@ using namespace std;
                 for (size_t i = 0; i < coursesTeaching.size(); i++) {
                         cout << coursesTeaching.at(i)->getCourseName() << endl;
                         // οταν βαλουμε βαθμο κλπ να το προσθεσουμε
-                }
-                
+                }        
         }
 
         void Professor::assignCourse(Course& course) {
