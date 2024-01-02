@@ -22,12 +22,11 @@ void secretaryMenu(Secretary &sec) {
         cin >> choice;
 
         int ch = 0;
-        Student student;
-        Professor professor;
 
         switch (choice) {
             case 1:
                 while (ch != 5) {
+                    Student* student = new Student;
                     cout << "Edit Students" << endl;
                     cout << "*****************" << endl;
                     cout << "1. Add a new student" << endl;
@@ -40,12 +39,12 @@ void secretaryMenu(Secretary &sec) {
                     switch (ch) {
                         case 1:
                             cout << "Enter new student information:" << endl;    
-                            cin >> student;
-                            if(sec.find_student(sec, student)) {
+                            cin >> *student;
+                            if(sec.find_student(sec, *student)) {
                                 cout << "\nStudent already exists\n" << endl;
                                 break;
                             }
-                            sec + student;
+                            sec + *student;
                             cout << "\n" << endl;
                             break;
                         case 2:
@@ -70,6 +69,7 @@ void secretaryMenu(Secretary &sec) {
                 break;
             case 2:
                 while (ch != 5) {
+                    Professor* professor = new Professor;
                     cout << "Edit Professors" << endl;
                     cout << "*****************" << endl;
                     cout << "1. Add a new professor" << endl;
@@ -82,12 +82,12 @@ void secretaryMenu(Secretary &sec) {
                     switch (ch) {
                         case 1:
                             cout << "Enter the new Professor's information:" << endl;    
-                            cin >> professor;
-                            if(sec.find_professor(sec, professor)) {
+                            cin >> *professor;
+                            if(sec.find_professor(sec, *professor)) {
                                 cout << "\nProfessor already exists\n" << endl;
                                 break;
                             }
-                            sec + professor;
+                            sec + *professor;
                             cout << "\n" << endl;
                             break;
                         case 2:
