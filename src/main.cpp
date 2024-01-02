@@ -192,5 +192,28 @@ int main() {
                 break;
         }
     }
+
+    //bring up to date students.txt file
+    ofstream fout("txt/students.txt");
+    if (!fout) {
+        cout << "Failed to open the file students." << endl;
+        return 1;
+    }
+    for (std::size_t i = 0; i < sec.getStudents().size(); i++) {
+        fout << sec.getStudents()[i]->getFirstName() << " " << sec.getStudents()[i]->getLastName() << " " << sec.getStudents()[i]->getEmail() << " " << sec.getStudents()[i]->getPhone() << " " << sec.getStudents()[i]->getSem() << " " << sec.getStudents()[i]->getEcts() << " " << sec.getStudents()[i]->getAM() << endl;
+    }
+    fout.close();
+
+    //bring up to date professors.txt file
+    ofstream foutp("txt/professors.txt");
+    if (!foutp) {
+        cout << "Failed to open the file professors." << endl;
+        return 1;
+    }
+    for (std::size_t i = 0; i < sec.getProfessors().size(); i++) {
+        foutp << sec.getProfessors()[i]->getFirstName() << " " << sec.getProfessors()[i]->getLastName() << " " << sec.getProfessors()[i]->getEmail() << " " << sec.getProfessors()[i]->getPhone() << endl;
+    }
+    foutp.close();
+
     return 0;
 }
