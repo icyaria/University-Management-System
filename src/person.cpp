@@ -91,5 +91,3 @@ using namespace std;
     int Person::getCount() {
         return count;
     }
-    
-
