@@ -54,8 +54,8 @@ public:
     friend ostream &operator<<(ostream &ostr, Secretary &secretary);
 
     // print professors or students
-    friend ostream &printProfessors(ostream &ostr, Secretary &secretary);
-    friend ostream &printStudents(ostream &ostr, Secretary &secretary);
+    ostream &printProfessors(ostream &ostr);
+    ostream &printStudents(ostream &ostr);
 
     // Overloading operator + for adding person to secretary
     Secretary& operator+(Professor &professor);
