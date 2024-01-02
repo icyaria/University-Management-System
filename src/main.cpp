@@ -68,6 +68,41 @@ int main() {
     // Close the file
     fin.close();
 
+    //Input for professors
+
+    // Open the file
+    ifstream finp("txt/professors.txt");
+    if (!finp) {
+        cout << "Failed to open the file professors." << endl;
+        return 1;
+    }
+
+    // Read the file
+
+    while (getline(finp, line)) {
+        first_name = line.substr(0, line.find(" "));
+        line.erase(0, line.find(" ") + 1);
+            
+        last_name = line.substr(0, line.find(" "));
+        line.erase(0, line.find(" ") + 1);
+
+        email = line.substr(0, line.find(" "));
+        line.erase(0, line.find(" ") + 1);
+
+        phone = stol(line.substr(0, line.find(" ")));
+        line.erase(0, line.find(" ") + 1);
+
+        // Creates a professor
+        Professor professor(first_name, last_name, email, phone);
+
+        //Adds professor to secretary
+        sec + professor;
+
+    }
+
+    // Close the file
+    finp.close();
+
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
