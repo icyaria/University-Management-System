@@ -19,6 +19,10 @@ public:
     Professor();
     Professor(string f, string l, string e, long int ph);
 
+    
+
+    void printCoursesTeaching(ostream& ostr);
+
     void printCourseStatistics() const; //const beacause it does not change the object it is called on (it is a getter)
 
     // Function to assign a course to the professor
@@ -27,8 +31,6 @@ public:
 
     // getter
     vector<Course*> getCoursesTeaching() const;
-
-    friend ostream &operator<<(ostream &ostr, Professor &professor);
 };
 
 #endif

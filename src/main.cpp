@@ -10,6 +10,7 @@ using namespace std;
 
 // Αρχικοποίηση του count
 int Person::count = 0;
+Professor* loginn(Secretary &sec);
 
 int main() {
 
@@ -18,14 +19,17 @@ int main() {
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
-    Professor A = Professor("A", "A", "A", 123);
-    sec.add(A);
+    Professor* A = new Professor("A", "A", "a@a", 123);
+    Professor* B = new Professor("B", "B", "b@b", 123);
+    sec.add(*A);
+    sec.add(*B);
     Course course = Course("Math", "MATH", 1, 5, true);
     Course course2 = Course("Math2", "MATH2", 1, 5, true);
-    sec.assignProfessorToCourse(A, course);
-    sec.assignProfessorToCourse(A, course2);
-    printProfessors(cout, sec);
-    cout << A;
+    sec.assignProfessorToCourse(*A, course);
+    sec.assignProfessorToCourse(*A, course2);
+    sec.assignProfessorToCourse(*B, course);
+    cout << "Number of courses: " << A->getCoursesTeaching().size() << endl;
+    //sec.printProfessors(cout);
     // sec.add(B);
 
 
@@ -39,13 +43,25 @@ int main() {
         cout << "4. Exit" << endl;
         cout << "(Type 1, 2, 3 or 4):" << endl;
         cin >> login;
+        //string email;
+        Professor* loggedInProfessor; //= &A;
 
         switch (login) {
             case 1:
                 secretaryMenu(sec);
                 break;
             case 2:
-                professorMenu(sec);
+                loggedInProfessor = dynamic_cast<Professor*>(loginn(sec));;
+                if (loggedInProfessor) {
+                    professorMenu(sec, loggedInProfessor);
+                } else {
+                    cout << "Wrong email!" << endl;
+                }
+
+                // foundProfessor = find_professor_from_email(sec);
+                // if (foundProfessor) {
+                //     professorMenu(sec, foundProfessor);
+                // }
                 break;
             case 3:
                 studentMenu();
@@ -58,7 +74,7 @@ int main() {
                 break;
         }
     }
-
+    cout << "Number of courses: " << A->getCoursesTeaching().size() << endl;
 
     // // TESTS
     //Professor A = Professor("A", "A", "A", 123);
@@ -83,3 +99,4 @@ int main() {
 
     return 0;
 }
+
