@@ -11,7 +11,7 @@ using namespace std;
 
 // Αρχικοποίηση του count
 int Person::count = 0;
-Professor* loginn(Secretary &sec);
+Professor* login_p(Secretary &sec);
 
 int main() {
 
@@ -19,69 +19,70 @@ int main() {
 
     //Input
 
-        // Open the file
-        ifstream fin("txt/students.txt");
-        if (!fin) {
-            cout << "Failed to open the file students." << endl;
-            return 1;
-        }
+    // Open the file
+    ifstream fin("txt/students.txt");
+    if (!fin) {
+        cout << "Failed to open the file students." << endl;
+        return 1;
+    }
 
-        // Read the file
-        string line;
-        string first_name;
-        string last_name;
-        string email;
-        long int phone;
-        int sem;
-        int ects;
-        long int am;
-        while (getline(fin, line)) {
-            first_name = line.substr(0, line.find(" "));
-            line.erase(0, line.find(" ") + 1);
+    // Read the file
+    string line;
+    string first_name;
+    string last_name;
+    string email;
+    long int phone;
+    int sem;
+    int ects;
+    long int am;
+    while (getline(fin, line)) {
+        first_name = line.substr(0, line.find(" "));
+        line.erase(0, line.find(" ") + 1);
             
-            last_name = line.substr(0, line.find(" "));
-            line.erase(0, line.find(" ") + 1);
+        last_name = line.substr(0, line.find(" "));
+        line.erase(0, line.find(" ") + 1);
 
-            email = line.substr(0, line.find(" "));
-            line.erase(0, line.find(" ") + 1);
+        email = line.substr(0, line.find(" "));
+        line.erase(0, line.find(" ") + 1);
 
-            phone = stol(line.substr(0, line.find(" ")));
-            line.erase(0, line.find(" ") + 1);
+        phone = stol(line.substr(0, line.find(" ")));
+        line.erase(0, line.find(" ") + 1);
 
-            sem = stoi(line.substr(0, line.find(" ")));
-            line.erase(0, line.find(" ") + 1);
+        sem = stoi(line.substr(0, line.find(" ")));
+        line.erase(0, line.find(" ") + 1);
 
-            ects = stoi(line.substr(0, line.find(" ")));
-            line.erase(0, line.find(" ") + 1);
+        ects = stoi(line.substr(0, line.find(" ")));
+        line.erase(0, line.find(" ") + 1);
 
-            am = stol(line.substr(0, line.find(" ")));
-            line.erase(0, line.find(" ") + 1);
+        am = stol(line.substr(0, line.find(" ")));
+        line.erase(0, line.find(" ") + 1);
             
-            // Creates a student
-            Student student(first_name, last_name, email, phone, sem, ects, am);
+        // Creates a student
+        Student student(first_name, last_name, email, phone, sem, ects, am);
 
-            //Adds student to secretary
-            sec + student;
+        //Adds student to secretary
+        sec + student;
 
-        }
+    }
 
-        // Close the file
-        fin.close();
+    // Close the file
+    fin.close();
 
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
-    //Professor* A = new Professor("A", "A", "a@a", 123);
-    //Professor* B = new Professor("B", "B", "b@b", 123);
-    //sec.add(*A);
-    //sec.add(*B);
-    //Course course = Course("Math", "MATH", 1, 5, true);
-    //Course course2 = Course("Math2", "MATH2", 1, 5, true);
-    //sec.assignProfessorToCourse(*A, course);
-    //sec.assignProfessorToCourse(*A, course2);
-    //sec.assignProfessorToCourse(*B, course);
+    //tests
+    Professor A = Professor("A", "A", "a@a", 123);
+    Professor* B = new Professor("B", "B", "b@b", 123);
+    sec + A;
+    sec.add(*B);
+    Course course = Course("Math", "MATH", 1, 5, true);
+    Course course2 = Course("Math2", "MATH2", 1, 5, true);
+    sec.assignProfessorToCourse(A, course);
+    sec.assignProfessorToCourse(A, course2);
+    sec.assignProfessorToCourse(*B, course);
     //cout << "Number of courses: " << A->getCoursesTeaching().size() << endl;
-    //sec.printProfessors(cout);
+    sec.printProfessors(cout);
     // sec.add(B);
 
 
@@ -103,7 +104,7 @@ int main() {
                 secretaryMenu(sec);
                 break;
             case 2:
-                loggedInProfessor = dynamic_cast<Professor*>(loginn(sec));;
+                loggedInProfessor = dynamic_cast<Professor*>(login_p(sec));;
                 if (loggedInProfessor) {
                     professorMenu(sec, loggedInProfessor);
                 } else {
@@ -151,4 +152,3 @@ int main() {
 
     return 0;
 }
-

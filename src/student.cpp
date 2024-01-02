@@ -14,6 +14,12 @@ using namespace std;
             AM = am;
         }
 
+        Student::Student(const Student &student) : Person(student) {
+            sem_s = student.sem_s;
+            ects_s = student.ects_s;
+            AM = student.AM;
+        }
+
         int Student::getSem() const {
             return sem_s;
         }

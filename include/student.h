@@ -21,6 +21,8 @@ private:
 public:
     Student();
     Student(string f, string l, string e, long int ph, int sem, int ects, long int am);
+    //copy constructor
+    Student(const Student &student);
     int getSem() const;
     void setSem(int newSem);
     int getEcts() const;

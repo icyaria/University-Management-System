@@ -10,6 +10,10 @@ using namespace std;
                 coursesTeaching = {};
         } 
 
+        Professor::Professor(const Professor &professor) : Person(professor) {
+                coursesTeaching = professor.coursesTeaching;
+        }
+
         void Professor::printCoursesTeaching(ostream& ostr) {
                 ostr << "\nMy courses are: " << endl;
 
