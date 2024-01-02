@@ -17,16 +17,16 @@ using namespace std;
         }
 
         Secretary::~Secretary() {
-                int sizep = vecp.size();
-                int sizes = vecs.size();              
-                 for (int i = 0; i < sizep; i++) {
-                        delete vecp.at(i);
-                }
-                for (int i = 0; i < sizes; i++) {
-                        delete vecs.at(i);
-                }
+                // int sizep = vecp.size();
+                // int sizes = vecs.size();              
+                //  for (int i = 0; i < sizep; i++) {
+                //         delete vecp.at(i);
+                // }
+                // for (int i = 0; i < sizes; i++) {
+                //         delete vecs.at(i);
+                // }
                 vecp.clear();  
-                vecs.clear();// Clear the vector after deleting its elements
+                vecs.clear();
         }
 
         vector<Professor*> Secretary::getProfessors() const {
