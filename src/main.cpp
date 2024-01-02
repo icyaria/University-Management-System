@@ -71,6 +71,7 @@ int main() {
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
+    //tests
     Professor A = Professor("A", "A", "a@a", 123);
     Professor* B = new Professor("B", "B", "b@b", 123);
     sec + A;
