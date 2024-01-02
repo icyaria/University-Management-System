@@ -2,6 +2,7 @@
 #include "secretary.h"
 #include "student.h"
 #include "professor.h"
+#include "course.h"
 
 using namespace std;
 
@@ -166,12 +167,12 @@ void professorMenu(Secretary &sec) {
 
         switch (choice) {
             case 1:
-                cout << professor;
+                cout << *professor;
                 cout << "*****************" << endl;
                 break;
             case 2:
                 cout << "\n" << endl;
-                cout << professor;
+                cout << *professor;
                 cout << "Type the code of the course you want to grade: " << endl;
                 cin >> code;
 
