@@ -5,6 +5,7 @@
 
 #include "secretary.h"
 #include "student.h"
+#include "professor.h"
 #include "menu.h"
 
 using namespace std;
