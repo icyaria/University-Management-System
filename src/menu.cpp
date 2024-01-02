@@ -145,24 +145,9 @@ void secretaryMenu(Secretary &sec) {
 }
 
 void professorMenu(Secretary &sec, Professor* &professor) {
-    //int choice = 0;
-    // cout << "Login with your email:" << endl;
-    // Professor* professor = find_professor_from_email(sec);
-    // if (professor) {
-    //     cout << "Logged in successfully!" << endl;
-    //     cout << "Welcome " << professor->getFirstName() << " " << professor->getLastName() << endl;
-
-    //     cout << "Before getCoursesTeaching" << endl;
-    //     vector <Course*> courses = professor->getCoursesTeaching();
-    //     cout << "After getCoursesTeaching" << endl;
-        
-    //     cout << "You are teaching " << courses.size() << " courses" << endl;
-    // } else {
-    //     cout << "Wrong email!" << endl;
-    //     return;
-    // }
 
     int choice = 0;
+
     cout << "Logged in successfully!" << endl;
     cout << "Welcome " << professor->getFirstName() << " " << professor->getLastName() << endl;
 
@@ -204,8 +189,13 @@ void professorMenu(Secretary &sec, Professor* &professor) {
     }
 }
 
-void studentMenu() {
+void studentMenu(Secretary &sec, Student* &student) {
+
     int choice = 0;
+
+    cout << "Logged in successfully!" << endl;
+    cout << "Welcome " << student->getFirstName() << " " << student->getLastName() << endl;
+
     while (choice != 3) {
         cout << "Student Menu" << endl;
         cout << "****************" << endl;
@@ -235,7 +225,6 @@ void studentMenu() {
     }
 }
 
-
 Student* find_student_fromAM(Secretary &sec) {
     long int targetAM = 0;
     cin >> targetAM;
@@ -250,6 +239,22 @@ Student* find_student_fromAM(Secretary &sec) {
         }
     }
     return foundStudent;
+}
+
+Professor* find_professor_from_email(Secretary &sec) {
+    string targetEmail;
+    cin >> targetEmail;
+
+    Professor* foundProfessor = nullptr;
+    vector<Professor*> const &professors = sec.getProfessors();
+
+    for (size_t i = 0; i < professors.size(); i++) {
+        if (professors[i]->getEmail() == targetEmail) {
+            foundProfessor = professors[i];
+            break;
+        }
+    }
+    return foundProfessor;
 }
 
 void editStudent(Secretary &sec) {
@@ -270,6 +275,27 @@ void editStudent(Secretary &sec) {
         cout << "Edited Successfully!" << endl;
     } else {
         cout << "Student not found!" << endl;
+    }
+}
+
+void editProfessor(Secretary &sec) {
+    cout << "Enter the email of the professor you want to edit:" << endl;
+
+    Professor* foundProfessor = find_professor_from_email(sec);
+
+    if (foundProfessor) {
+        cout << "Professor Info: \n" << *foundProfessor << endl;
+        cout << "Proceed with editing? (y/n)" << endl;
+        char choice;
+        cin >> choice;
+        if (choice == 'n') {
+            return;
+        }
+        cout << "Enter new professor information:" << endl;
+        cin >> *foundProfessor;
+        cout << "Edited Successfully!" << endl;
+    } else {
+        cout << "Professor not found!" << endl;
     }
 }
 
@@ -297,46 +323,6 @@ void deleteStudent(Secretary &sec) {
     }
 }
 
-
-Professor* find_professor_from_email(Secretary &sec) {
-    string targetEmail;
-    cin >> targetEmail;
-
-    Professor* foundProfessor = nullptr;
-    vector<Professor*> const &professors = sec.getProfessors();
-    cout << " Number of professors: " << professors.size() << endl;
-
-    for (size_t i = 0; i < professors.size(); i++) {
-        cout << "professor email: " << professors[i]->getEmail() << endl;
-
-        if (professors[i]->getEmail() == targetEmail) {
-            foundProfessor = professors[i];
-            break;
-        }
-    }
-    return foundProfessor;
-}
-
-void editProfessor(Secretary &sec) {
-    cout << "Enter the email of the professor you want to edit:" << endl;
-
-    // Professor* foundProfessor = find_professor_from_email(sec);
-    // if (foundProfessor) {
-    //     cout << "Professor Info: \n" << *foundProfessor << endl;
-    //     cout << "Proceed with editing? (y/n)" << endl;
-    //     char choice;
-    //     cin >> choice;
-    //     if (choice == 'n') {
-    //         return;
-    //     }
-    //     cout << "Enter new professor information:" << endl;
-    //     cin >> *foundProfessor;
-    //     cout << "Edited Successfully!" << endl;
-    // } else {
-    //     cout << "Professor not found!" << endl;
-    // }
-}
-
 void deleteProfessor(Secretary &sec) {
     if (sec.getProfessors().size() == 0) {
         cout << "No professors to delete!" << endl;
@@ -344,21 +330,37 @@ void deleteProfessor(Secretary &sec) {
     }
     cout << "Enter the email of the professor you want to delete:" << endl;
 
-    // Professor* foundProfessor = find_professor_from_email(sec);
+    Professor* foundProfessor = find_professor_from_email(sec);
 
-    // if (foundProfessor) {
-    //     cout << "Professor Info: \n" << *foundProfessor << endl;
-    //     cout << "Proceed with deleting? (y/n)" << endl;
-    //     char choice;
-    //     cin >> choice;
-    //     if (choice == 'n') {
-    //         return;
-    //     }
-    //     sec.remove(*foundProfessor);
-    //     cout << "Deleted Successfully!" << endl;
-    // } else {
-    //     cout << "Professor not found!" << endl;
-    //}
+    if (foundProfessor) {
+        cout << "Professor Info: \n" << *foundProfessor << endl;
+        cout << "Proceed with deleting? (y/n)" << endl;
+        char choice;
+        cin >> choice;
+        if (choice == 'n') {
+            return;
+        }
+        sec.remove(*foundProfessor);
+        cout << "Deleted Successfully!" << endl;
+    } else {
+        cout << "Professor not found!" << endl;
+    }
+}
+
+Student* login_s(Secretary &sec) {
+
+    cout << "Enter your AM:" << endl; 
+    Student* foundStudent = find_student_fromAM(sec);
+
+    return foundStudent; // Returns nullptr if no match is found
+}
+
+Professor* login_p(Secretary &sec) {
+   
+    cout << "Enter your email:" << endl;
+    Professor* foundProfessor = find_professor_from_email(sec);
+
+    return foundProfessor; // Returns nullptr if no match is found
 }
 
 Course* findCourseFromCode(Professor &prof) {
@@ -375,25 +377,4 @@ Course* findCourseFromCode(Professor &prof) {
         }
     }
     return foundCourse;
-}
-
-Professor* login_p(Secretary &sec) {
-    string targetEmail;
-    cout << "Enter your email:" << endl;
-    cin >> targetEmail;
-
-    // Search for professors
-    Professor* foundProfessor = nullptr;
-    vector<Professor*> const &professors = sec.getProfessors();
-
-    for (size_t i = 0; i < professors.size(); i++) {
-        if (professors[i]->getEmail() == targetEmail) {
-            foundProfessor = professors[i];
-            break;
-        }
-    }
-
-    // Add similar checks for other roles (students, etc.) if needed
-
-    return foundProfessor; // Returns nullptr if no match is found
 }

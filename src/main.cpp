@@ -12,6 +12,7 @@ using namespace std;
 // Αρχικοποίηση του count
 int Person::count = 0;
 Professor* login_p(Secretary &sec);
+Student* login_s(Secretary &sec);
 
 int main() {
 
@@ -58,10 +59,10 @@ int main() {
             line.erase(0, line.find(" ") + 1);
             
             // Creates a student
-            Student student(first_name, last_name, email, phone, sem, ects, am);
+            Student* student = new Student(first_name, last_name, email, phone, sem, ects, am);
 
             //Adds student to secretary
-            sec + student;
+            sec + *student;
 
         }
 
@@ -72,18 +73,16 @@ int main() {
     cout << "***************************************" << endl;
 
     //tests
-    Professor A = Professor("A", "A", "a@a", 123);
+    Professor* A = new Professor("A", "A", "a@a", 123);
     Professor* B = new Professor("B", "B", "b@b", 123);
-    sec + A;
+    sec + *A;
     sec.add(*B);
     Course course = Course("Math", "MATH", 1, 5, true);
     Course course2 = Course("Math2", "MATH2", 1, 5, true);
-    sec.assignProfessorToCourse(A, course);
-    sec.assignProfessorToCourse(A, course2);
+    sec.assignProfessorToCourse(*A, course);
+    sec.assignProfessorToCourse(*A, course2);
     sec.assignProfessorToCourse(*B, course);
-    //cout << "Number of courses: " << A->getCoursesTeaching().size() << endl;
-    sec.printProfessors(cout);
-    // sec.add(B);
+    
 
 
     int login = 0; 
@@ -96,28 +95,28 @@ int main() {
         cout << "4. Exit" << endl;
         cout << "(Type 1, 2, 3 or 4):" << endl;
         cin >> login;
-        //string email;
-        Professor* loggedInProfessor; //= &A;
+        Professor* loggedInProfessor;
+        Student* loggedInStudent;
 
         switch (login) {
             case 1:
                 secretaryMenu(sec);
                 break;
             case 2:
-                loggedInProfessor = dynamic_cast<Professor*>(login_p(sec));;
+                loggedInProfessor = login_p(sec);
                 if (loggedInProfessor) {
                     professorMenu(sec, loggedInProfessor);
                 } else {
                     cout << "Wrong email!" << endl;
                 }
-
-                // foundProfessor = find_professor_from_email(sec);
-                // if (foundProfessor) {
-                //     professorMenu(sec, foundProfessor);
-                // }
                 break;
             case 3:
-                studentMenu();
+                loggedInStudent = login_s(sec);
+                if (loggedInStudent) {
+                    studentMenu(sec, loggedInStudent);
+                } else {
+                    cout << "Wrong AM!" << endl;
+                }
                 break;
             case 4:
                 cout << "Exiting..." << endl;
@@ -127,28 +126,6 @@ int main() {
                 break;
         }
     }
-    //cout << "Number of courses: " << A->getCoursesTeaching().size() << endl;
-
-    // // TESTS
-    //Professor A = Professor("A", "A", "A", 123);
-
-    // // Student B = Student("B", "B", "B", 123, 1, 1);
-    // sec.add(A);
-    // // sec.add(B);
-    // sec.find_person(sec, A);
-    // sec.find_professor(sec, A);
-    // sec.find_student(sec, B);
-    // cin >> sec;
-    // cout << sec;    
-
-    // //οι νεες συναρτησεις σιγουρα εχουν leaks, δεν εχω κανει delete
-    // //τιποτα στα courses & professors :')
-
-    //Course course = Course("Math", "MATH", 1, 5, true);
-
-    //sec.assignProfessorToCourse(A, course);
-    //cout << A;
-    // A.printCourseStatistics();
 
     return 0;
 }

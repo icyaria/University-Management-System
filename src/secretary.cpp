@@ -38,14 +38,14 @@ using namespace std;
         }
 
         void Secretary::add(Professor &p) {
-                Professor* newp = new Professor(p);
-                vecp.push_back(newp);
-                cout<<"\nAdded "<<newp->getFirstName()<<" "<<p.getLastName() <<" in Secretary"<<endl;
+                //Professor* newp = new Professor(p);
+                vecp.push_back(&p);
+                cout<<"\nAdded "<<p.getFirstName()<<" "<<p.getLastName() <<" in Secretary"<<endl;
         }
         
         void Secretary::add(Student &s) {
-                Student* news = new Student(s);
-                vecs.push_back(news);
+                //Student* news = new Student(s);
+                vecs.push_back(&s);
                 cout<<"\nAdded "<<s.getFirstName()<<" "<<s.getLastName() <<" in Secretary"<<endl;
         }
 
