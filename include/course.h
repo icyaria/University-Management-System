@@ -50,7 +50,6 @@ public:
 
     bool getComp() const;
     //void setComp(bool newComp); 
-
     
     // assigns a professor to the course and calls function
     // to add the course to the professor's teaching courses 
