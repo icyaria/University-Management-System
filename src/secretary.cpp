@@ -38,14 +38,14 @@ using namespace std;
         }
 
         void Secretary::add(Professor &p) {
-                Professor* newp = new Professor(p);
-                vecp.push_back(newp);
+                //Professor* newp = new Professor(p);
+                vecp.push_back(&p);
                 cout<<"\nAdded "<<p.getFirstName()<<" "<<p.getLastName() <<" in Secretary"<<endl;
         }
         
         void Secretary::add(Student &s) {
-                Student* news = new Student(s);
-                vecs.push_back(news);
+                //Student* news = new Student(s);
+                vecs.push_back(&s);
                 cout<<"\nAdded "<<s.getFirstName()<<" "<<s.getLastName() <<" in Secretary"<<endl;
         }
 
@@ -196,18 +196,18 @@ using namespace std;
                 return ostr;
         }
 
-        ostream &printProfessors(ostream &ostr, Secretary &secretary) {
+        ostream& Secretary::printProfessors(ostream &ostr) {
                 ostr << "\nProfessors in secretary are: " << endl;
-                for (size_t i = 0; i<secretary.vecp.size(); i++) {
-                     cout<< *secretary.vecp.at(i)<< endl; // prints all professors in secretary
+                for (size_t i = 0; i< vecp.size(); i++) {
+                     cout<< *vecp.at(i)<< endl; // prints all professors in secretary
                 }
                 return ostr;
         }
 
-        ostream &printStudents(ostream &ostr, Secretary &secretary) {
+        ostream& Secretary::printStudents(ostream &ostr) {
                 ostr << "\nStudents in secretary are:" << endl;
-                for (size_t i = 0; i<secretary.vecs.size(); i++) {
-                     cout<< *secretary.vecs.at(i)<< endl; // prints all students in secretary
+                for (size_t i = 0; i<vecs.size(); i++) {
+                     cout<< *vecs.at(i)<< endl; // prints all students in secretary
                 }
                 return ostr;
         }
@@ -246,6 +246,7 @@ using namespace std;
 
         void Secretary::assignProfessorToCourse(Professor& professor, Course& course) {
                 course.assignProfessor(professor);
+                professor.assignCourse(course);
         }
 
         void Secretary::assignStudentToCourse(Student& student, Course& course) {

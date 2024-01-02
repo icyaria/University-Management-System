@@ -12,7 +12,7 @@ class Professor;
 class Course;
 
 void secretaryMenu(Secretary &sec);
-void professorMenu(Secretary &sec);
+void professorMenu(Secretary &sec, Professor* &professor);
 void studentMenu();
 
 Student* find_student_fromAM(Secretary &sec);
@@ -23,5 +23,7 @@ void editStudent(Secretary &sec);
 void deleteStudent(Secretary &sec);
 void editProfessor(Secretary &sec);
 void deleteProfessor(Secretary &sec);
+
+Professor* loginn(Secretary &sec);
 
 #endif
