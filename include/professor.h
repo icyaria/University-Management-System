@@ -19,7 +19,8 @@ public:
     Professor();
     Professor(string f, string l, string e, long int ph);
 
-    
+    // copy constructor
+    Professor(const Professor &professor);    
 
     void printCoursesTeaching(ostream& ostr);
 

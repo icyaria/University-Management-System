@@ -26,6 +26,13 @@ using namespace std;
         count++;
     }
 
+    Person::Person(const Person &person) {
+        first_name = person.first_name;
+        last_name = person.last_name;
+        email = person.email;
+        phone = person.phone;
+    }
+
     Person::~Person() {
         count--;
     }

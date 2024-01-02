@@ -26,6 +26,9 @@ public:
     // 2nd constructor, with all parameters
     Person(string f, string l, string e, long int ph);
 
+    // copy constructor
+    Person(const Person &person);
+
     // destructor
     ~Person();
 
