@@ -377,7 +377,7 @@ Course* findCourseFromCode(Professor &prof) {
     return foundCourse;
 }
 
-Professor* loginn(Secretary &sec) {
+Professor* login_p(Secretary &sec) {
     string targetEmail;
     cout << "Enter your email:" << endl;
     cin >> targetEmail;
