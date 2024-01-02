@@ -71,16 +71,16 @@ int main() {
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;
 
-    Professor* A = new Professor("A", "A", "a@a", 123);
-    Professor* B = new Professor("B", "B", "b@b", 123);
-    sec.add(*A);
-    sec.add(*B);
-    Course course = Course("Math", "MATH", 1, 5, true);
-    Course course2 = Course("Math2", "MATH2", 1, 5, true);
-    sec.assignProfessorToCourse(*A, course);
-    sec.assignProfessorToCourse(*A, course2);
-    sec.assignProfessorToCourse(*B, course);
-    cout << "Number of courses: " << A->getCoursesTeaching().size() << endl;
+    //Professor* A = new Professor("A", "A", "a@a", 123);
+    //Professor* B = new Professor("B", "B", "b@b", 123);
+    //sec.add(*A);
+    //sec.add(*B);
+    //Course course = Course("Math", "MATH", 1, 5, true);
+    //Course course2 = Course("Math2", "MATH2", 1, 5, true);
+    //sec.assignProfessorToCourse(*A, course);
+    //sec.assignProfessorToCourse(*A, course2);
+    //sec.assignProfessorToCourse(*B, course);
+    //cout << "Number of courses: " << A->getCoursesTeaching().size() << endl;
     //sec.printProfessors(cout);
     // sec.add(B);
 
@@ -126,7 +126,7 @@ int main() {
                 break;
         }
     }
-    cout << "Number of courses: " << A->getCoursesTeaching().size() << endl;
+    //cout << "Number of courses: " << A->getCoursesTeaching().size() << endl;
 
     // // TESTS
     //Professor A = Professor("A", "A", "A", 123);
