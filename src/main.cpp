@@ -94,10 +94,10 @@ int main() {
         line.erase(0, line.find(" ") + 1);
 
         // Creates a professor
-        Professor professor(first_name, last_name, email, phone);
+        Professor* professor = new Professor(first_name, last_name, email, phone);
 
         //Adds professor to secretary
-        sec + professor;
+        sec + *professor;
 
     }
 
