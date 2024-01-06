@@ -80,7 +80,7 @@ void secretaryMenu(Secretary &sec) {
                     cin >> ch;
 
                     switch (ch) {
-                        case 1:
+                        case 1: {
                             cout << "Enter the new Professor's information:" << endl;    
                             cin >> *professor;
                             if(sec.find_professor(sec, *professor)) {
@@ -89,8 +89,9 @@ void secretaryMenu(Secretary &sec) {
                             }
                             sec + *professor;
                             cout << "\n" << endl;
+                        }
                             break;
-                        case 2:
+                        case 2: 
                             editProfessor(sec);
                             cout << "*****************" << endl;
                             break;
@@ -111,7 +112,7 @@ void secretaryMenu(Secretary &sec) {
                 }
                 break;
             case 3:
-                while (ch != 5) {
+                while (ch != 6) {
                     Course* course = new Course;
                     cout << "Edit Courses" << endl;
                     cout << "*****************" << endl;
@@ -119,11 +120,12 @@ void secretaryMenu(Secretary &sec) {
                     cout << "2. Edit a course" << endl;
                     cout << "3. Delete a course" << endl;
                     cout << "4. View course list" << endl;
-                    cout << "5. Back" << endl;
+                    cout << "5. View professors that teach a course" << endl;
+                    cout << "6. Back" << endl;
                     cin >> ch;
 
                     switch (ch) {
-                        case 1:
+                        case 1: {
                             cout << "Enter the new Professor's information:" << endl;    
                             cin >> *course;
                             if(sec.find_course(sec, *course)) {
@@ -132,6 +134,7 @@ void secretaryMenu(Secretary &sec) {
                             }
                             sec + *course;
                             cout << "\n" << endl;
+                            }
                             break;
                         case 2:
                             editCourse(sec);
@@ -146,6 +149,18 @@ void secretaryMenu(Secretary &sec) {
                             cout << "*****************" << endl;
                             break;
                         case 5:
+                            {
+                            cout << "Enter the code of the course you want to see the professors of:" << endl;
+                            Course* foundCourse = find_course_from_code(sec);
+                            if (foundCourse) {
+                                foundCourse->printProfessorsTeaching();
+                            } else {
+                                cout << "Course not found!" << endl;
+                            }
+                            cout << "*****************" << endl;
+                            }
+                            break;
+                        case 6:
                             break;
                         default:
                             cout << "Wrong input" << endl;
@@ -153,14 +168,81 @@ void secretaryMenu(Secretary &sec) {
                     }
                 }
                 break;
-            case 4:
-                //blabla
-                cout << "new semester" << endl;
+            case 4: {
+                cout << "Do you want to change the semester to the next one? (y/n)" << endl;
+                char choice;
+                cin >> choice;
+                if (choice == 'n') {
+                    break;
+                }
+                else if (choice == 'y') {
+                    sec.new_semester();
+                    cout << "Semester changed successfully!" << endl;
+                    cout << "Please proceed to assign professors to courses!" << endl;
+                }
+                else {
+                    cout << "Wrong input" << endl;
+                }
                 cout << "*****************" << endl;
+            }
                 break;
-            case 5:
-                //blabla
-                cout << "assigned courses to professors" << endl;
+            case 5: {
+                cout << "Do you want to assign one professor for each course of the semester or the professor(s) for a specific course? (1 for all, 2 for specific)" << endl;
+                int choice;
+                cin >> choice;
+                if (choice == 1) {
+                    for (size_t i = 0; i < sec.getCourses().size(); i++) {
+                        if (sec.getCourses()[i]->getSem()%2 == sec.getSemester() + 1) {
+                            bool validInput = false;
+                            while (!validInput) {
+                                if (sec.getCourses()[i]->getSem()%2 == sec.getSemester() + 1) {
+                                    cout << "Choose a professor to assign to " << sec.getCourses()[i]->getCourseName() << endl;
+                                    Professor* professor = find_professor_from_email(sec);
+                                    if (professor) {
+                                        sec.assignProfessorToCourse(*professor, *sec.getCourses()[i]);
+                                        cout << "Course assigned successfully!" << endl;
+                                        validInput = true;
+                                    } 
+                                    else {
+                                        cout << "Wrong professor, try again!" << endl;    
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                }
+                else if (choice == 2) {
+                    cout << "Choose a course to assign:" << endl;
+                    Course* course = find_course_from_code(sec);
+                    if (course) {
+                        bool doneAssigning = false;
+                        while (!doneAssigning) {
+                            cout << "Choose a professor to assign to " << course->getCourseName() << endl;
+                            Professor* professor = find_professor_from_email(sec);
+                            if (professor) {
+                                sec.assignProfessorToCourse(*professor, *course);
+                                cout << "Course assigned successfully!" << endl;
+                                cout << "Do you want to assign another professor to this course? (y/n)" << endl;
+                                char choice;
+                                cin >> choice;
+                                if (choice != 'y' && choice != 'Y') {
+                                    doneAssigning = true;
+                                }
+                            } 
+                            else {
+                                cout << "Wrong professor!" << endl;
+                            }
+                        }
+                    } 
+                    else {
+                        cout << "Wrong course!" << endl;
+                    }
+                } 
+                else {
+                    cout << "Wrong input" << endl;
+                }
+                cout << "*****************" << endl;
+            }
                 break;
             case 6:
                 // blabla
@@ -211,10 +293,12 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                 cout << professor;
                 cout << "Type the code of the course you want to grade: " << endl;
                 cin >> code;
-
+                find_course_from_code(sec);
+                //blabla
                 cout << "*****************" << endl;
                 break;
             case 3:
+                //not ready yet
                 professor->printCourseStatistics();
                 break;
             case 4:
@@ -244,6 +328,7 @@ void studentMenu(Secretary &sec, Student* &student) {
 
         switch (choice) {
             case 1:
+                cout << "Your available courses:" << endl;
                 //blabla
                 cout << "enrolled in classes" << endl;
                 cout << "*****************" << endl;

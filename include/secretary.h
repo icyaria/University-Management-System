@@ -16,7 +16,7 @@ private:
     vector<Student*> vecs;
     vector<Professor*> vecp;
     vector<Course*> vecc;
-    
+    bool semester_type; // 0 for winter, 1 for spring
 public:
 
     // constructor 
@@ -32,6 +32,7 @@ public:
     vector<Professor*> getProfessors() const;
     vector<Student*> getStudents() const;
     vector<Course*> getCourses() const;
+    bool getSemester() const;
 
     // Function to add new professor or student to secretary
     void add(Professor &p);
@@ -74,7 +75,7 @@ public:
     Secretary operator=(const Secretary &sec);
  
     // sets up a new semester
-    void new_semester(Secretary &sec);
+    void new_semester();
 
     // calls assignCourse of professor which calls assignProfessor of course
     void assignProfessorToCourse(Professor& professor, Course& course);

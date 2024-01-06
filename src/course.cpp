@@ -46,6 +46,10 @@ using namespace std;
         return comp;
     }
 
+    vector<Professor*> Course::getProfessorsTeaching() const {
+        return professorsTeaching;
+    }
+
     //setter (θα πρέπει να δίνεται η δυνατότητα να μετακινηθούν μεταξύ semesters)
     void Course::setSem(int newSem) {
         sem = newSem;
@@ -60,6 +64,19 @@ using namespace std;
         cout << "Assigning " << student.getFirstName() << " " << student.getLastName() << " to " << course_name << endl;
         students.push_back(&student);
         student.assignCourse(*this);
+    }
+
+    void Course::printProfessorsTeaching() {
+        cout << "\nProfessors teaching this course: " << endl;
+
+        if(!professorsTeaching.empty()) {
+            for (size_t i = 0; i < professorsTeaching.size(); i++) {
+                cout << professorsTeaching.at(i)->getFirstName() << " "<< professorsTeaching.at(i)->getFirstName() << endl;
+            }
+        }
+        else {
+            cout << "No professors available." << std::endl;
+        }
     }
 
     istream &operator>>(istream &istr, Course &course) {

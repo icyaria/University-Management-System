@@ -3,6 +3,7 @@
 using namespace std;
 
         Secretary::Secretary() {
+                semester_type = 0;
         }
 
         Secretary::Secretary(const Secretary &sec) { //copy constructor
@@ -14,6 +15,11 @@ using namespace std;
                         Student* newStudent = new Student(*sec.vecs.at(i));  
                         vecs.push_back(newStudent);
                 }
+                for (size_t i = 0; i<sec.vecc.size(); i++) {
+                        Course* newCourse = new Course(*sec.vecc.at(i));  
+                        vecc.push_back(newCourse);
+                }
+                semester_type = sec.semester_type;
         }
 
         Secretary::~Secretary() {
@@ -27,6 +33,7 @@ using namespace std;
                 // }
                 vecp.clear();  
                 vecs.clear();
+                vecc.clear();
         }
 
         vector<Professor*> Secretary::getProfessors() const {
@@ -39,6 +46,10 @@ using namespace std;
 
         vector<Course*> Secretary::getCourses() const {
                 return vecc;
+        }
+
+        bool Secretary::getSemester() const {
+                return semester_type;
         }
 
         void Secretary::add(Professor &p) {
@@ -299,14 +310,26 @@ using namespace std;
                 return *this;
         }
 
-        void Secretary::new_semester(Secretary &sec) {
+        void Secretary::new_semester() {
                 //changes the students' semester to the next one
-                int size = sec.vecs.size();
+                int size = vecs.size();
                 for (int i = 0; i<size; i++) {
-                        int sem = sec.vecs.at(i)->getSem();
+                        int sem = vecs.at(i)->getSem();
                         sem++;
-                        sec.vecs.at(i)->setSem(sem);
+                        vecs.at(i)->setSem(sem);
                 }
+                // clears the courses a professor teaches and the teaching professors of a course
+                // doesnt work
+                size = vecp.size();
+                for (int i = 0; i<size; i++) {
+                        vecp.at(i)->getCoursesTeaching().clear();
+                }
+                size = vecc.size();
+                for (int i = 0; i<size; i++) {
+                        vecc.at(i)->getProfessorsTeaching().clear();
+                }
+                // changes the semester of the secretary
+                semester_type = !semester_type;
         }
 
         void Secretary::assignProfessorToCourse(Professor& professor, Course& course) {

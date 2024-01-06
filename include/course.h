@@ -10,7 +10,9 @@
 using namespace std;
 
 class Professor;
-class Student; // forward declaration
+class Student; 
+class Secretary;
+// forward declaration
 // it tells the compiler that the class Professor exists before the actual definition becomes available
 // *ΓΙΑ ΕΜΑΣ ΜΟΝΟ*
 // This is sufficient for the compiler to know that such a class exists, 
@@ -50,6 +52,8 @@ public:
 
     bool getComp() const;
     //void setComp(bool newComp); 
+
+    vector<Professor*> getProfessorsTeaching() const;
     
     // assigns a professor to the course and calls function
     // to add the course to the professor's teaching courses 
@@ -57,6 +61,9 @@ public:
     void assignProfessor(Professor &professor);
 
     void assignStudent(Student &student);
+
+    // prints the professors teaching the course
+    void printProfessorsTeaching();
 
     friend istream &operator>>(istream &istr, Course &course);
     friend ostream &operator<<(ostream &ostr, Course &course);

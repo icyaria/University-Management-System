@@ -25,7 +25,6 @@ using namespace std;
         }
 
         void Student::setSem(int newSem) {
-            cout << "Semester changed to: " << newSem << endl;
             cout << "\n" << endl;
             sem_s = newSem;
         }
@@ -35,7 +34,6 @@ using namespace std;
         }
 
         void Student::setEcts(int newEcts) {
-            cout << "ECTS changed to: " << newEcts << endl;
             cout << "\n" << endl;
             ects_s = newEcts;
         }
@@ -45,7 +43,6 @@ using namespace std;
         }
 
         void Student::setAM(long int newAM) {
-            cout << "AM changed to: " << newAM << endl;
             cout << "\n" << endl;
             AM = newAM;
         }
