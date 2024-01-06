@@ -62,6 +62,20 @@ using namespace std;
         student.assignCourse(*this);
     }
 
+    istream &operator>>(istream &istr, Course &course) {
+        cout << "Course name: ";
+        istr >> course.course_name;
+        cout << "Code: ";
+        istr >> course.code;
+        cout << "Semester: ";
+        istr >> course.sem;
+        cout << "ECTS: ";
+        istr >> course.ects;
+        cout << "Compulsory (1 for yes, 0 for no): ";
+        istr >> course.comp;
+        return istr;
+    }
+
     ostream &operator<<(ostream &ostr, Course &course) {
         ostr << "Course:" << course.course_name << endl << "Code: " << course.code << endl;
         return ostr;

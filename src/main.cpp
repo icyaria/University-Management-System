@@ -106,46 +106,46 @@ int main() {
     // Close the file
     finp.close();
 
-    // //Input for courses
+    //Input for courses
 
-    // // Open the file
-    // ifstream finc("txt/courses.txt");
-    // if (!finc) {
-    //     cout << "Failed to open the file professors." << endl;
-    //     return 1;
-    // }
+    // Open the file
+    ifstream finc("txt/courses.txt");
+    if (!finc) {
+        cout << "Failed to open the file professors." << endl;
+        return 1;
+    }
 
-    // // Read the file
-    // string course_name;
-    // string code;
-    // bool comp; //μπορεί να θέλει int
-    // while (getline(finc, line)) {
-    //     course_name = line.substr(0, line.find(" "));
-    //     line.erase(0, line.find(" ") + 1);
+    // Read the file
+    string course_name;
+    string code;
+    bool comp; //μπορεί να θέλει int
+    while (getline(finc, line)) {
+        course_name = line.substr(0, line.find(" "));
+        line.erase(0, line.find(" ") + 1);
             
-    //     code = line.substr(0, line.find(" "));
-    //     line.erase(0, line.find(" ") + 1);
+        code = line.substr(0, line.find(" "));
+        line.erase(0, line.find(" ") + 1);
 
-    //     sem = stoi(line.substr(0, line.find(" ")));
-    //     line.erase(0, line.find(" ") + 1);
+        sem = stoi(line.substr(0, line.find(" ")));
+        line.erase(0, line.find(" ") + 1);
 
-    //     ects = stoi(line.substr(0, line.find(" ")));
-    //     line.erase(0, line.find(" ") + 1);
+        ects = stoi(line.substr(0, line.find(" ")));
+        line.erase(0, line.find(" ") + 1);
 
-    //     comp = stoi(line.substr(0, line.find(" ")));
-    //     line.erase(0, line.find(" ") + 1);
+        comp = stoi(line.substr(0, line.find(" ")));
+        line.erase(0, line.find(" ") + 1);
 
-    //     // Creates a course
-    //     Course* course = new Course(course_name, code, sem, ects, comp);
+        // Creates a course
+        Course* course = new Course(course_name, code, sem, ects, comp);
 
-    //     //Adds course to secretary.....Αν θέλουμε να γίνεται add το course στο secretary
-    //     //να φτιάξουμε overloading operator + στη secretary, course κλπ
-    //     sec + *course;
+        //Adds course to secretary.....Αν θέλουμε να γίνεται add το course στο secretary
+        //να φτιάξουμε overloading operator + στη secretary, course κλπ
+        sec + *course;
 
-    // }
+    }
 
-    // // Close the file
-    // finc.close();
+    // Close the file
+    finc.close();
 
     cout << "Welcome to University Management System" << endl;
     cout << "***************************************" << endl;   

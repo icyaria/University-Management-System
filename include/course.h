@@ -58,7 +58,7 @@ public:
 
     void assignStudent(Student &student);
 
-
+    friend istream &operator>>(istream &istr, Course &course);
     friend ostream &operator<<(ostream &ostr, Course &course);
 };
 

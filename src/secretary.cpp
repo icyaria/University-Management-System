@@ -37,6 +37,10 @@ using namespace std;
                 return vecs;
         }
 
+        vector<Course*> Secretary::getCourses() const {
+                return vecc;
+        }
+
         void Secretary::add(Professor &p) {
                 //Professor* newp = new Professor(p);
                 vecp.push_back(&p);
@@ -47,6 +51,12 @@ using namespace std;
                 //Student* news = new Student(s);
                 vecs.push_back(&s);
                 cout<<"\nAdded "<<s.getFirstName()<<" "<<s.getLastName() <<" in Secretary"<<endl;
+        }
+
+        void Secretary::add(Course &c) {
+                //Course* newc = new Course(c);
+                vecc.push_back(&c);
+                cout<<"\nAdded "<<c.getCourseName()<<" in Secretary"<<endl;
         }
 
         void Secretary::remove(Professor &p) {
@@ -87,6 +97,29 @@ using namespace std;
                                 }
                                 //remove the last element
                                 vecs.pop_back();
+
+                                return;
+                        }
+                }
+        }
+
+        void Secretary::remove(Course &c) {
+                size_t size = vecc.size();
+                for (size_t i = 0; i<size; i++) {
+                        if (vecc.at(i)->getCourseName() == c.getCourseName() &&
+                            vecc.at(i)->getCode() == c.getCode() &&
+                            vecc.at(i)->getSem() == c.getSem() &&
+                            vecc.at(i)->getEcts() == c.getEcts() &&
+                            vecc.at(i)->getComp() == c.getComp()) {
+                                cout<<"\nRemoved "<<c.getCourseName()<<" from Secretary"<<endl;
+                                delete vecc.at(i);
+                                
+                                // Shift all elements after the erased one to the left
+                                for (size_t j = i; j < vecc.size() - 1; j++) {
+                                        vecc.at(j) = vecc.at(j + 1);
+                                }
+                                //remove the last element
+                                vecc.pop_back();
 
                                 return;
                         }
@@ -159,6 +192,25 @@ using namespace std;
                 return false;
         }
 
+        bool Secretary::find_course(Secretary &sec, Course &course) {
+                //cout << "\nSearching for "<< course.getCourseName() << " in courses" << endl;
+                int size = sec.vecc.size();
+                for (int i = 0; i<size; i++) {
+                        if (sec.vecc.at(i)->getCourseName() == course.getCourseName() &&
+                            sec.vecc.at(i)->getCode() == course.getCode() &&
+                            sec.vecc.at(i)->getSem() == course.getSem() &&
+                            sec.vecc.at(i)->getEcts() == course.getEcts() &&
+                            sec.vecc.at(i)->getComp() == course.getComp()) {
+                                //cout << "Found Course "<< course.getCourseName() << " in Secretary" << endl;
+                                cout << "\n" << endl;
+                                return true;
+                        }
+                }
+                //cout << "Couldn't find Course "<< course.getCourseName() << " in Secretary" << endl;
+                cout << "\n" << endl;
+                return false;
+        }
+
         //Operators overloading
         istream &operator>>(istream &istr, Secretary &secretary) {
                 cout << "Enter professor or student? (p/s)" << endl;
@@ -212,6 +264,14 @@ using namespace std;
                 return ostr;
         }
 
+        ostream& Secretary::printCourses(ostream &ostr) {
+                ostr << "\nCourses in secretary are:" << endl;
+                for (size_t i = 0; i<vecc.size(); i++) {
+                     cout<< *vecc.at(i)<< endl; // prints all courses in secretary
+                }
+                return ostr;
+        }
+
         Secretary& Secretary::operator+(Professor &professor) {
                 add(professor);
                 return *this;                 
@@ -219,6 +279,11 @@ using namespace std;
 
         Secretary& Secretary::operator+(Student &student) {
                 add(student);
+                return *this;                 
+        }
+
+        Secretary& Secretary::operator+(Course &course) {
+                add(course);
                 return *this;                 
         }
 

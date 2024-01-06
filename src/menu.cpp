@@ -111,9 +111,47 @@ void secretaryMenu(Secretary &sec) {
                 }
                 break;
             case 3:
-                //blabla
-                cout << "edited courses" << endl;
-                cout << "*****************" << endl;
+                while (ch != 5) {
+                    Course* course = new Course;
+                    cout << "Edit Courses" << endl;
+                    cout << "*****************" << endl;
+                    cout << "1. Add a new course" << endl;
+                    cout << "2. Edit a course" << endl;
+                    cout << "3. Delete a course" << endl;
+                    cout << "4. View course list" << endl;
+                    cout << "5. Back" << endl;
+                    cin >> ch;
+
+                    switch (ch) {
+                        case 1:
+                            cout << "Enter the new Professor's information:" << endl;    
+                            cin >> *course;
+                            if(sec.find_course(sec, *course)) {
+                                cout << "\nProfessor already exists\n" << endl;
+                                break;
+                            }
+                            sec + *course;
+                            cout << "\n" << endl;
+                            break;
+                        case 2:
+                            editCourse(sec);
+                            cout << "*****************" << endl;
+                            break;
+                        case 3:
+                            deleteCourse(sec);
+                            cout << "*****************" << endl;
+                            break;
+                        case 4:
+                            sec.printCourses(cout);
+                            cout << "*****************" << endl;
+                            break;
+                        case 5:
+                            break;
+                        default:
+                            cout << "Wrong input" << endl;
+                            break;
+                    }
+                }
                 break;
             case 4:
                 //blabla
@@ -257,6 +295,22 @@ Professor* find_professor_from_email(Secretary &sec) {
     return foundProfessor;
 }
 
+Course* find_course_from_code(Secretary &sec) {
+    string targetCode = " ";
+    cin >> targetCode;
+
+    Course* foundCourse = nullptr;
+    vector<Course*> const &courses = sec.getCourses();
+
+    for (size_t i = 0; i < courses.size(); i++) {
+        if (courses.at(i)->getCode() == targetCode) {
+            foundCourse = courses[i];
+            break;
+        }
+    }
+    return foundCourse;
+}
+
 void editStudent(Secretary &sec) {
     cout << "Enter the AM of the student you want to edit:" << endl;
 
@@ -296,6 +350,27 @@ void editProfessor(Secretary &sec) {
         cout << "Edited Successfully!" << endl;
     } else {
         cout << "Professor not found!" << endl;
+    }
+}
+
+void editCourse(Secretary &sec) {
+    cout << "Enter the code of the course you want to edit:" << endl;
+
+    Course* foundCourse = find_course_from_code(sec);
+
+    if (foundCourse) {
+        cout << "Course Info: \n" << *foundCourse << endl;
+        cout << "Proceed with editing? (y/n)" << endl;
+        char choice;
+        cin >> choice;
+        if (choice == 'n') {
+            return;
+        }
+        cout << "Enter new course information:" << endl;
+        cin >> *foundCourse;
+        cout << "Edited Successfully!" << endl;
+    } else {
+        cout << "Course not found!" << endl;
     }
 }
 
@@ -347,6 +422,30 @@ void deleteProfessor(Secretary &sec) {
     }
 }
 
+void deleteCourse(Secretary &sec) {
+    if (sec.getCourses().size() == 0) {
+        cout << "No courses to delete!" << endl;
+        return;
+    }
+    cout << "Enter the code of the course you want to delete:" << endl;
+
+    Course* foundCourse = find_course_from_code(sec);
+
+    if (foundCourse) {
+        cout << "Course Info: \n" << *foundCourse << endl;
+        cout << "Proceed with deleting? (y/n)" << endl;
+        char choice;
+        cin >> choice;
+        if (choice == 'n') {
+            return;
+        }
+        sec.remove(*foundCourse);
+        cout << "Deleted Successfully!" << endl;
+    } else {
+        cout << "Course not found!" << endl;
+    }
+}
+
 Student* login_s(Secretary &sec) {
 
     cout << "Enter your AM:" << endl; 
@@ -363,18 +462,3 @@ Professor* login_p(Secretary &sec) {
     return foundProfessor; // Returns nullptr if no match is found
 }
 
-Course* findCourseFromCode(Professor &prof) {
-    string targetCode = " ";
-    cin >> targetCode;
-
-    Course* foundCourse = nullptr;
-    vector<Course*> const &courses = prof.getCoursesTeaching();
-
-    for (size_t i = 0; i < courses.size(); i++) {
-        if (courses.at(i)->getCode() == targetCode) {
-            foundCourse = courses[i];
-            break;
-        }
-    }
-    return foundCourse;
-}
