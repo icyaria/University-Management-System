@@ -41,6 +41,6 @@ using namespace std;
                 coursesTeaching.push_back(&course);
         }
 
-        vector<Course*> Professor::getCoursesTeaching() const {
+        vector<Course*>& Professor::getCoursesTeaching() {
                 return coursesTeaching;
         }

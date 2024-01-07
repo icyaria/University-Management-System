@@ -53,7 +53,7 @@ public:
     bool getComp() const;
     //void setComp(bool newComp); 
 
-    vector<Professor*> getProfessorsTeaching() const;
+    vector<Professor*> &getProfessorsTeaching();
     
     // assigns a professor to the course and calls function
     // to add the course to the professor's teaching courses 

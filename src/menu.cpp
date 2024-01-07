@@ -409,11 +409,14 @@ void editStudent(Secretary &sec) {
         if (choice == 'n') {
             return;
         }
-        cout << "Enter new student information:" << endl;
-        cin >> *foundStudent;
-        cout << "Edited Successfully!" << endl;
-    } else {
-        cout << "Student not found!" << endl;
+        else if (choice == 'y') {
+            cout << "Enter new student information:" << endl;
+            cin >> *foundStudent;
+            cout << "Edited Successfully!" << endl;
+        }
+        else {
+            cout << "Student not found!" << endl;
+        }
     }
 }
 
@@ -430,11 +433,14 @@ void editProfessor(Secretary &sec) {
         if (choice == 'n') {
             return;
         }
-        cout << "Enter new professor information:" << endl;
-        cin >> *foundProfessor;
-        cout << "Edited Successfully!" << endl;
-    } else {
-        cout << "Professor not found!" << endl;
+        else if (choice == 'y') {
+            cout << "Enter new professor information:" << endl;
+            cin >> *foundProfessor;
+            cout << "Edited Successfully!" << endl;
+        }
+        else {
+            cout << "Professor not found!" << endl;
+        }
     }
 }
 
@@ -451,11 +457,14 @@ void editCourse(Secretary &sec) {
         if (choice == 'n') {
             return;
         }
-        cout << "Enter new course information:" << endl;
-        cin >> *foundCourse;
-        cout << "Edited Successfully!" << endl;
-    } else {
-        cout << "Course not found!" << endl;
+        else if (choice == 'y') {
+            cout << "Enter new course information:" << endl;
+            cin >> *foundCourse;
+            cout << "Edited Successfully!" << endl;
+        } 
+        else {
+            cout << "Course not found!" << endl;
+        }
     }
 }
 
@@ -476,10 +485,13 @@ void deleteStudent(Secretary &sec) {
         if (choice == 'n') {
             return;
         }
-        sec.remove(*foundStudent);
-        cout << "Deleted Successfully!" << endl;
-    } else {
-        cout << "Student not found!" << endl;
+        else if (choice == 'y') {
+            sec.remove(*foundStudent);
+            cout << "Deleted Successfully!" << endl;
+        } 
+        else {
+            cout << "Student not found!" << endl;
+        }
     }
 }
 
@@ -500,10 +512,13 @@ void deleteProfessor(Secretary &sec) {
         if (choice == 'n') {
             return;
         }
-        sec.remove(*foundProfessor);
-        cout << "Deleted Successfully!" << endl;
-    } else {
-        cout << "Professor not found!" << endl;
+        else if (choice == 'y') {
+            sec.remove(*foundProfessor);
+            cout << "Deleted Successfully!" << endl;
+        } 
+        else {
+            cout << "Professor not found!" << endl;
+        }
     }
 }
 
@@ -524,10 +539,13 @@ void deleteCourse(Secretary &sec) {
         if (choice == 'n') {
             return;
         }
-        sec.remove(*foundCourse);
-        cout << "Deleted Successfully!" << endl;
-    } else {
-        cout << "Course not found!" << endl;
+        else if (choice == 'y') {
+            sec.remove(*foundCourse);
+            cout << "Deleted Successfully!" << endl;
+        } 
+        else {
+            cout << "Course not found!" << endl;
+        }
     }
 }
 

@@ -215,16 +215,16 @@ int main() {
     }
     foutp.close();
 
-    //bring up to date courses.txt file
-    // ofstream foutc("txt/courses.txt");
-    // if (!foutc) {
-    //     cout << "Failed to open the file courses." << endl;
-    //     return 1;
-    // }
-    // for (std::size_t i = 0; i < sec.getCourses().size(); i++) {
-    //     foutc << sec.getCourses()[i]->getCourseName() << " " << sec.getCourses()[i]->getCode() << " " << sec.getCourses()[i]->getSem() << " " << sec.getCourses()[i]->getEcts() << " " << sec.getCourses()[i]->getComp() << endl;
-    // }
-    // foutc.close();
+    // bring up to date courses.txt file
+    ofstream foutc("txt/courses.txt");
+    if (!foutc) {
+        cout << "Failed to open the file courses." << endl;
+        return 1;
+    }
+    for (std::size_t i = 0; i < sec.getCourses().size(); i++) {
+        foutc << sec.getCourses()[i]->getCourseName() << " " << sec.getCourses()[i]->getCode() << " " << sec.getCourses()[i]->getSem() << " " << sec.getCourses()[i]->getEcts() << " " << sec.getCourses()[i]->getComp() << endl;
+    }
+    foutc.close();
 
     return 0;
 }

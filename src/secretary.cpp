@@ -139,38 +139,30 @@ using namespace std;
 
 
         bool Secretary::find_professor(Secretary &sec, Person &professor) {
-                //cout << "\nSearching for "<< professor.getFirstName() << " " << professor.getLastName() << " in professors" << endl;
                 int size = sec.vecp.size();
                 for (int i = 0; i<size; i++) {
                         if (sec.vecp.at(i)->getFirstName() == professor.getFirstName() &&
                             sec.vecp.at(i)->getLastName() == professor.getLastName() &&
                             sec.vecp.at(i)->getEmail() == professor.getEmail() &&
                             sec.vecp.at(i)->getPhone() == professor.getPhone()) {
-                                //cout << "Found Professor "<< professor.getFirstName() << " " << professor.getLastName() << " in Secretary" << endl;
                                 cout << "\n" << endl;
                                 return true;
                         }
                 }
-                //cout << "Couldn't find Professor "<< professor.getFirstName() << " " << professor.getLastName() << " in Secretary" << endl;
                 cout << "\n" << endl;
                 return false;
         }
 
         bool Secretary::find_student(Secretary &sec, Person &student) {
-                //cout << "\nSearching for "<< student.getFirstName() << " " << student.getLastName() << " in students" << endl;
                 int size = sec.vecs.size();
                 for (int i = 0; i<size; i++) {
                         if (sec.vecs.at(i)->getFirstName() == student.getFirstName() &&
                             sec.vecs.at(i)->getLastName() == student.getLastName() &&
                             sec.vecs.at(i)->getEmail() == student.getEmail() &&
                             sec.vecs.at(i)->getPhone() == student.getPhone()) {
-                                //cout << "Found Student "<< student.getFirstName() << " " << student.getLastName() << " in Secretary" << endl;
-                                //cout << "\n" << endl;
                                 return true;
                         }
                 }
-                //cout << "Couldn't find Student "<< student.getFirstName() << " " << student.getLastName() << " in Secretary" << endl;
-                //cout << "\n" << endl;
                 return false;
         }
 
@@ -204,7 +196,6 @@ using namespace std;
         }
 
         bool Secretary::find_course(Secretary &sec, Course &course) {
-                //cout << "\nSearching for "<< course.getCourseName() << " in courses" << endl;
                 int size = sec.vecc.size();
                 for (int i = 0; i<size; i++) {
                         if (sec.vecc.at(i)->getCourseName() == course.getCourseName() &&
@@ -212,12 +203,10 @@ using namespace std;
                             sec.vecc.at(i)->getSem() == course.getSem() &&
                             sec.vecc.at(i)->getEcts() == course.getEcts() &&
                             sec.vecc.at(i)->getComp() == course.getComp()) {
-                                //cout << "Found Course "<< course.getCourseName() << " in Secretary" << endl;
                                 cout << "\n" << endl;
                                 return true;
                         }
                 }
-                //cout << "Couldn't find Course "<< course.getCourseName() << " in Secretary" << endl;
                 cout << "\n" << endl;
                 return false;
         }

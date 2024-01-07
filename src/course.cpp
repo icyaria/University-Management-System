@@ -46,7 +46,7 @@ using namespace std;
         return comp;
     }
 
-    vector<Professor*> Course::getProfessorsTeaching() const {
+    vector<Professor*> &Course::getProfessorsTeaching() {
         return professorsTeaching;
     }
 

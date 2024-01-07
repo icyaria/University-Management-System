@@ -31,7 +31,7 @@ public:
     void assignCourse(Course& course);
 
     // getter
-    vector<Course*> getCoursesTeaching() const;
+    vector<Course*> &getCoursesTeaching();
 };
 
 #endif
