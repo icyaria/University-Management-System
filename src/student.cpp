@@ -25,7 +25,6 @@ using namespace std;
         }
 
         void Student::setSem(int newSem) {
-            cout << "\n" << endl;
             sem_s = newSem;
         }
 
@@ -34,7 +33,6 @@ using namespace std;
         }
 
         void Student::setEcts(int newEcts) {
-            cout << "\n" << endl;
             ects_s = newEcts;
         }
 
