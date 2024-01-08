@@ -71,7 +71,7 @@ using namespace std;
 
         if(!professorsTeaching.empty()) {
             for (size_t i = 0; i < professorsTeaching.size(); i++) {
-                cout << professorsTeaching.at(i)->getFirstName() << " "<< professorsTeaching.at(i)->getFirstName() << endl;
+                cout << professorsTeaching.at(i)->getFirstName() << " "<< professorsTeaching.at(i)->getLastName() << endl;
             }
         }
         else {
