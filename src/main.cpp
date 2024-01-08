@@ -20,7 +20,7 @@ int main() {
 
     Secretary sec;
 
-    //Input
+    //Input for students
 
     // Open the file
     ifstream fin("txt/students.txt");
@@ -60,11 +60,11 @@ int main() {
         am = stol(line.substr(0, line.find(" ")));
         line.erase(0, line.find(" ") + 1);
             
-            // Creates a student
-            Student* student = new Student(first_name, last_name, email, phone, sem, ects, am);
+        // Creates a student
+        Student* student = new Student(first_name, last_name, email, phone, sem, ects, am);
 
-            //Adds student to secretary
-            sec + *student;
+        //Adds student to secretary
+        sec + *student;
 
     }
 
@@ -138,8 +138,7 @@ int main() {
         // Creates a course
         Course* course = new Course(course_name, code, sem, ects, comp);
 
-        //Adds course to secretary.....Αν θέλουμε να γίνεται add το course στο secretary
-        //να φτιάξουμε overloading operator + στη secretary, course κλπ
+        //Adds course to secretary
         sec + *course;
 
     }
