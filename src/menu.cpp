@@ -301,18 +301,22 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                 cout << "*****************" << endl;
                 break;
             case 2:
+                {
                 cout << "\n" << endl;
-                cout << professor;
                 cout << "Type the code of the course you want to grade: " << endl;
-                cin >> code;
+                // Έλεγχος ότι το μάθημα ανοίκει στον καθηγητή
                 Course* foundCourse = find_course_from_code(sec);
-                //Print the students of the course
-                // for (size_t i = 0; i < course.().size(); i++) {
-                //     if (sec.getCourses()[i]->getCode() == code) {
-                //         sec.getCourses()[i]->printEnrolledStudents();
-                //     }
-                // }
+                //Print the students of the course and grade them
+                for (size_t i = 0; i < foundCourse->getEnrolledStudents().size(); i++) {
+                    cout << *foundCourse->getEnrolledStudents()[i] << endl;
+                    cout << "Enter grade: " << endl;
+                    int grade;
+                    cin >> grade;
+                    sec.assignGradeToStudent(*foundCourse->getEnrolledStudents()[i], *foundCourse, grade);
+                }
+                cout << "Graded all students!" << endl;
                 cout << "*****************" << endl;
+                }
                 break;
             case 3:
                 //not ready yet

@@ -50,6 +50,10 @@ using namespace std;
         return professorsTeaching;
     }
 
+    vector<Student*> &Course::getEnrolledStudents() {
+        return students;
+    }
+
     //setter (θα πρέπει να δίνεται η δυνατότητα να μετακινηθούν μεταξύ semesters)
     void Course::setSem(int newSem) {
         sem = newSem;
