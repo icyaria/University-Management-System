@@ -61,9 +61,8 @@ using namespace std;
     }
 
     void Course::assignStudent(Student &student) {
-        cout << "Assigning " << student.getFirstName() << " " << student.getLastName() << " to " << course_name << endl;
+        cout << "Enrolled to " << course_name << endl;
         students.push_back(&student);
-        student.assignCourse(*this);
     }
 
     void Course::printProfessorsTeaching() {
@@ -76,6 +75,19 @@ using namespace std;
         }
         else {
             cout << "No professors available." << std::endl;
+        }
+    }
+
+    void Course::printEnrolledStudents() {
+        cout << "\nStudents enrolled to this course: " << endl;
+
+        if(!students.empty()) {
+            for (size_t i = 0; i < students.size(); i++) {
+                cout << students.at(i)->getFirstName() << " "<< students.at(i)->getLastName() << endl;
+            }
+        }
+        else {
+            cout << "No students available." << std::endl;
         }
     }
 

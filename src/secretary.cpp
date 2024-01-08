@@ -19,6 +19,10 @@ using namespace std;
                         Course* newCourse = new Course(*sec.vecc.at(i));  
                         vecc.push_back(newCourse);
                 }
+                for (size_t i = 0; i<sec.vecg.size(); i++) {
+                        Grade* newGrade = new Grade(*sec.vecg.at(i));  
+                        vecg.push_back(newGrade);
+                }
                 semester_type = sec.semester_type;
         }
 
@@ -34,6 +38,7 @@ using namespace std;
                 vecp.clear();  
                 vecs.clear();
                 vecc.clear();
+                vecg.clear();
         }
 
         vector<Professor*> Secretary::getProfessors() const {
@@ -46,6 +51,10 @@ using namespace std;
 
         vector<Course*> Secretary::getCourses() const {
                 return vecc;
+        }
+
+        vector<Grade*> Secretary::getGrades() const {
+                return vecg;
         }
 
         bool Secretary::getSemester() const {
@@ -328,4 +337,13 @@ using namespace std;
 
         void Secretary::assignStudentToCourse(Student& student, Course& course) {
                 course.assignStudent(student);
+                student.assignCourse(course);
         }
+
+        void Secretary::assignGradeToStudent(Student& student, Course& course, int g) {
+                Grade* grade = new Grade(g, student.getAM(), course.getCode());
+                vecg.push_back(grade);
+        }
+
+
+

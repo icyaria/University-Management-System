@@ -88,5 +88,4 @@ using namespace std;
 
         void Student::assignCourse(Course& course) {
             my_courses.push_back(&course);
-            //course.assignStudent(*this);
         }

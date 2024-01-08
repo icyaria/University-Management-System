@@ -8,6 +8,7 @@
 #include "student.h"
 #include "professor.h"
 #include "course.h"
+#include "grade.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ private:
     vector<Student*> vecs;
     vector<Professor*> vecp;
     vector<Course*> vecc;
+    vector<Grade*> vecg;
     bool semester_type; // 0 for winter, 1 for spring
 public:
 
@@ -32,6 +34,7 @@ public:
     vector<Professor*> getProfessors() const;
     vector<Student*> getStudents() const;
     vector<Course*> getCourses() const;
+    vector<Grade*> getGrades() const;
     bool getSemester() const;
 
     // Function to add new professor or student to secretary
@@ -81,6 +84,8 @@ public:
     void assignProfessorToCourse(Professor& professor, Course& course);
 
     void assignStudentToCourse(Student& student, Course& course);
+
+    void assignGradeToStudent(Student& student, Course& course, int grade);
 };
 
 #endif

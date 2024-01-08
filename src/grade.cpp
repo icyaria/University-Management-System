@@ -6,6 +6,12 @@ Grade::Grade() {
     courseCode = "";
 }
 
+Grade::Grade(int newGrade, long int newStudentAM, string newCourseCode) {
+    grade = newGrade;
+    studentAM = newStudentAM;
+    courseCode = newCourseCode;
+}
+
 Grade::~Grade() {
 }
 

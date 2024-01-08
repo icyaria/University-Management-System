@@ -16,6 +16,9 @@ public:
     //default constructor
     Grade();
 
+    //constructor
+    Grade(int newGrade, long int newStudentAM, string newCourseCode);
+
     //destructor
     ~Grade();
 

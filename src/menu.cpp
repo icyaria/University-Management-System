@@ -11,9 +11,9 @@ void secretaryMenu(Secretary &sec) {
     while (choice != 8) {
         cout << "Secretary Menu" << endl;
         cout << "*****************" << endl;
-        cout << "1. Edit student list" << endl;
-        cout << "2. Edit professor list" << endl;
-        cout << "3. Edit courses" << endl;
+        cout << "1. Students" << endl;
+        cout << "2. Professors" << endl;
+        cout << "3. Courses" << endl;
         cout << "4. New semester" << endl;
         cout << "5. Assign courses to professors" << endl;
         cout << "6. Get a list of students that passed a course" << endl;
@@ -27,7 +27,7 @@ void secretaryMenu(Secretary &sec) {
             case 1:
                 while (ch != 5) {
                     Student* student = new Student;
-                    cout << "Edit Students" << endl;
+                    cout << "Students" << endl;
                     cout << "*****************" << endl;
                     cout << "1. Add a new student" << endl;
                     cout << "2. Edit a student" << endl;
@@ -70,7 +70,7 @@ void secretaryMenu(Secretary &sec) {
             case 2:
                 while (ch != 5) {
                     Professor* professor = new Professor;
-                    cout << "Edit Professors" << endl;
+                    cout << "Professors" << endl;
                     cout << "*****************" << endl;
                     cout << "1. Add a new professor" << endl;
                     cout << "2. Edit a professor" << endl;
@@ -112,16 +112,17 @@ void secretaryMenu(Secretary &sec) {
                 }
                 break;
             case 3:
-                while (ch != 6) {
+                while (ch != 7) {
                     Course* course = new Course;
-                    cout << "Edit Courses" << endl;
+                    cout << "Courses" << endl;
                     cout << "*****************" << endl;
                     cout << "1. Add a new course" << endl;
                     cout << "2. Edit a course" << endl;
                     cout << "3. Delete a course" << endl;
-                    cout << "4. View course list" << endl;
+                    cout << "4. View all courses" << endl;
                     cout << "5. View professors that teach a course" << endl;
-                    cout << "6. Back" << endl;
+                    cout << "6. View students that are enrolled in a course" << endl;
+                    cout << "7. Back" << endl;
                     cin >> ch;
 
                     switch (ch) {
@@ -161,6 +162,17 @@ void secretaryMenu(Secretary &sec) {
                             }
                             break;
                         case 6:
+                            {
+                            cout << "Enter the code of the course you want to see the students of:" << endl;
+                            Course* foundCourse = find_course_from_code(sec);
+                            if (foundCourse) {
+                                foundCourse->printEnrolledStudents();
+                            } else {
+                                cout << "Course not found!" << endl;
+                            }
+                            }
+                            break;
+                        case 7:
                             break;
                         default:
                             cout << "Wrong input" << endl;
@@ -293,8 +305,13 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                 cout << professor;
                 cout << "Type the code of the course you want to grade: " << endl;
                 cin >> code;
-                find_course_from_code(sec);
-                //blabla
+                Course* foundCourse = find_course_from_code(sec);
+                //Print the students of the course
+                // for (size_t i = 0; i < course.().size(); i++) {
+                //     if (sec.getCourses()[i]->getCode() == code) {
+                //         sec.getCourses()[i]->printEnrolledStudents();
+                //     }
+                // }
                 cout << "*****************" << endl;
                 break;
             case 3:
@@ -327,19 +344,47 @@ void studentMenu(Secretary &sec, Student* &student) {
         cin >> choice;
 
         switch (choice) {
-            case 1:
+            case 1:{
                 cout << "Your available courses:" << endl;
-                //blabla
-                cout << "enrolled in classes" << endl;
+                //check which courses are available to enroll
+                for (size_t i = 0; i < sec.getCourses().size(); i++) {
+                    // Θέλουμε 2ο έλεγχο για να μην εμφανίζονται μαθήματα που έχουν ήδη περάσει οι φοιτητές
+                    if (sec.getCourses()[i]->getSem()%2 == sec.getSemester() + 1) {
+                        if (student->getSem() >= sec.getCourses()[i]->getSem()) {
+                            cout << *sec.getCourses()[i] << endl;
+                        }
+                    }
+                }
+                cout << "Enter the code of the course you want to enroll in:" << endl;
+                Course* foundCourse = find_course_from_code(sec);
+                if (foundCourse) {
+                    if (student->getSem() >= foundCourse->getSem()) {
+                        if (foundCourse->getSem()%2 == sec.getSemester() + 1) {
+                            sec.assignStudentToCourse(*student, *foundCourse);
+                        }
+                        else {
+                            cout << "You can't enroll in this course this semester!" << endl;
+                        }
+                    }
+                    else {
+                        cout << "You can't enroll in this course!" << endl;
+                    }
+                }
+                else {
+                    cout << "Course not found!" << endl;
+                }
                 cout << "*****************" << endl;
+            }
                 break;
-            case 2:
+            case 2: {
                 // blabla
                 cout << "my grades:" << endl;
                 cout << "*****************" << endl;
+            }
                 break;
-            case 3:
+            case 3: {
                 cout << "Logging out..." << endl;
+            }
                 break;
             default:
                 cout << "Wrong input" << endl;

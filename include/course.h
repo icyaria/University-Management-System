@@ -54,6 +54,8 @@ public:
     //void setComp(bool newComp); 
 
     vector<Professor*> &getProfessorsTeaching();
+
+    vector<Student*> &getEnrolledStudents();
     
     // assigns a professor to the course and calls function
     // to add the course to the professor's teaching courses 
@@ -64,6 +66,9 @@ public:
 
     // prints the professors teaching the course
     void printProfessorsTeaching();
+
+    // prints the students enrolled in the course
+    void printEnrolledStudents();
 
     friend istream &operator>>(istream &istr, Course &course);
     friend ostream &operator<<(ostream &ostr, Course &course);
