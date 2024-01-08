@@ -126,10 +126,10 @@ void secretaryMenu(Secretary &sec) {
 
                     switch (ch) {
                         case 1: {
-                            cout << "Enter the new Professor's information:" << endl;    
+                            cout << "Enter the new Course's information:" << endl;    
                             cin >> *course;
                             if(sec.find_course(sec, *course)) {
-                                cout << "\nProfessor already exists\n" << endl;
+                                cout << "\nCourse already exists\n" << endl;
                                 break;
                             }
                             sec + *course;
@@ -196,7 +196,7 @@ void secretaryMenu(Secretary &sec) {
                             bool validInput = false;
                             while (!validInput) {
                                 if (sec.getCourses()[i]->getSem()%2 == sec.getSemester() + 1) {
-                                    cout << "Choose a professor to assign to " << sec.getCourses()[i]->getCourseName() << endl;
+                                    cout << "Choose a professor to assign to " << sec.getCourses()[i]->getCourseName() << " (enter professor's email):" << endl;
                                     Professor* professor = find_professor_from_email(sec);
                                     if (professor) {
                                         sec.assignProfessorToCourse(*professor, *sec.getCourses()[i]);
@@ -212,12 +212,12 @@ void secretaryMenu(Secretary &sec) {
                     } 
                 }
                 else if (choice == 2) {
-                    cout << "Choose a course to assign:" << endl;
+                    cout << "Choose a course to assign (enter course's code):" << endl;
                     Course* course = find_course_from_code(sec);
                     if (course) {
                         bool doneAssigning = false;
                         while (!doneAssigning) {
-                            cout << "Choose a professor to assign to " << course->getCourseName() << endl;
+                            cout << "Choose a professor to assign to " << course->getCourseName() << " (enter professor's email):" << endl;
                             Professor* professor = find_professor_from_email(sec);
                             if (professor) {
                                 sec.assignProfessorToCourse(*professor, *course);
