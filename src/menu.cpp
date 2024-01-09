@@ -213,7 +213,7 @@ void secretaryMenu(Secretary &sec) {
                                     Professor* professor = find_professor_from_email(sec);
                                     if (professor) {
                                         sec.assignProfessorToCourse(*professor, *sec.getCourses()[i]);
-                                        cout << "Course assigned successfully!" << endl;
+                                        cout << "Professor assigned to course successfully!" << endl;
                                         validInput = true;
                                     } 
                                     else {
