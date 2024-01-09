@@ -8,7 +8,7 @@ using namespace std;
 
 void secretaryMenu(Secretary &sec) {
     int choice = 0;
-    while (choice != 8) {
+    while (choice != 9) {
         cout << "Secretary Menu" << endl;
         cout << "*****************" << endl;
         cout << "1. Students" << endl;
@@ -17,8 +17,9 @@ void secretaryMenu(Secretary &sec) {
         cout << "4. New semester" << endl;
         cout << "5. Assign courses to professors" << endl;
         cout << "6. Get a list of students that passed a course" << endl;
-        cout << "7. See students that can graduate" << endl;
-        cout << "8. Logout" << endl;
+        cout << "7. Get a list of all the courses, with all the students' grades in each one" << endl;
+        cout << "8. See students that can graduate" << endl;
+        cout << "9. Logout" << endl;
         cin >> choice;
 
         int ch = 0;
@@ -271,16 +272,36 @@ void secretaryMenu(Secretary &sec) {
                     }  
                 }
                 foutPassed.close();
-                cout << "Your txt file with all the students that passed the course is ready!" << endl; 
+                cout << "Your text file is ready! File name: passed_students.txt" << endl; 
                 cout << "*****************" << endl;
             }
                 break;
-            case 7:
+            case 7: {
+                // Creates a new txt file to save the students who passed a lesson in a semester
+                ofstream foutPassed("txt/allGrades.txt");
+                foutPassed << "List of courses and students' grades" << endl;
+                for (std::size_t w = 0; w < sec.getCourses().size(); w++) {
+                    foutPassed << " " << endl;
+                    foutPassed << sec.getCourses()[w]->getCourseName() << " " << " Semester: " << sec.getCourses()[w]->getSem() << " " << endl;
+                    string courseCode = sec.getCourses()[w]->getCode();
+                    for (std::size_t i = 0; i < sec.getGrades().size(); i++) {
+                        if ( sec.getGrades()[i]->getCourseCode() == courseCode ) {
+                            Student* foundStudent = find_student_withAM(sec, sec.getGrades()[i]->getStudentAM());
+                            foutPassed << foundStudent->getFirstName() << " " << foundStudent->getLastName() << " " << " AM: " << sec.getGrades()[i]->getStudentAM() << " Grade: " << sec.getGrades()[i]->getGrade() << " " << endl;
+                        }  
+                    }
+                }
+                foutPassed.close();
+                cout << "Your text file is ready! File name: allGrades.txt" << endl; 
+                cout << "*****************" << endl;
+            }
+                break;
+            case 8:
                 // blabla
                 cout << "students that can graduate:" << endl;
                 cout << "*****************" << endl;
                 break;
-            case 8:
+            case 9:
                 cout << "Logging out..." << endl;
                 break;
             default:
