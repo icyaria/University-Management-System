@@ -337,9 +337,8 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                 break;
             case 2:
                 {
-                cout << "\n" << endl;
                 cout << "Type the code of the course you want to grade: " << endl;
-                // Έλεγχος ότι το μάθημα ανοίκει στον καθηγητή
+                //Check if the professor teaches the course, NOT DONE YET
                 Course* foundCourse = find_course_from_code(sec);
                 //Print the students of the course and grade them
                 for (size_t i = 0; i < foundCourse->getEnrolledStudents().size(); i++) {
@@ -416,8 +415,31 @@ void studentMenu(Secretary &sec, Student* &student) {
             }
                 break;
             case 2: {
-                // blabla
-                cout << "my grades:" << endl;
+                int choice_g = 0;
+                while (choice_g != 2) {
+                    cout << "My grades" << endl;
+                    cout << "****************" << endl;
+                    cout << "1. View my grades for the current semester" << endl;
+                    cout << "2. View my grades for all semesters" << endl;
+                    cin >> choice_g;
+                    switch (choice_g) {
+                        case 1: {
+                            cout << "My grades for the current semester are:" << endl;
+                            //blabla
+                            //Να τυπώνει και current semester
+                        }
+                            break;
+                        case 2: {
+                            cout << "My grades for all the semesters are:" << endl;
+                            //blabla
+                        }
+                            break;
+                        default:
+                            cout << "Wrong input" << endl;
+                            break;
+
+                    }
+                }
                 cout << "*****************" << endl;
             }
                 break;
