@@ -7,6 +7,7 @@
 
 #include "person.h"
 #include "course.h"
+#include "secretary.h"
 
 using namespace std;
 
@@ -22,16 +23,16 @@ public:
     // copy constructor
     Professor(const Professor &professor);    
 
-    void printCoursesTeaching(ostream& ostr);
-
-    void printCourseStatistics() const; //const beacause it does not change the object it is called on (it is a getter)
-
-    // Function to assign a course to the professor
-    // (καλειται απο την assignProfessor της Course)
-    void assignCourse(Course& course);
-
     // getter
     vector<Course*> &getCoursesTeaching();
+
+    void printCoursesTeaching(ostream& ostr);
+
+    void printCourseStatistics(Secretary &sec) const;
+
+    // Function to assign a course to the professor
+    void assignCourse(Course& course);
+
 };
 
 #endif

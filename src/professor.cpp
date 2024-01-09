@@ -29,12 +29,40 @@ using namespace std;
                 }
         }
 
-        void Professor::printCourseStatistics() const {
-                cout << "Professor " << getFirstName() << " " << getLastName() << " teaches " << coursesTeaching.size() << " courses" << endl;
+        #include "secretary.h" // Include the header file for the Secretary class
+
+        void Professor::printCourseStatistics(Secretary &sec) const {  
+                cout << "Course statistics for: " << endl;
                 for (size_t i = 0; i < coursesTeaching.size(); i++) {
-                        cout << coursesTeaching.at(i)->getCourseName() << endl;
-                        // οταν βαλουμε βαθμο κλπ να το προσθεσουμε
-                }        
+                        double sum = 0;
+                        int students = 0;
+                        int passed = 0;
+                        for (size_t j = 0; j < sec.getGrades().size(); j++) {
+                                if (sec.getGrades().at(j)->getCourseCode() == coursesTeaching.at(i)->getCode()) {
+                                        sum += sec.getGrades().at(j)->getGrade();
+                                        students++;
+                                        if (sec.getGrades().at(j)->getGrade() >= 5) {
+                                                passed++;
+                                        }
+                                }
+                                else {
+                                        continue;
+                                }
+                        }
+                        int percentage = 0;
+                        double average = 0.0;
+                        if (students != 0) {
+                                cout << coursesTeaching.at(i)->getCourseName()  << endl;
+                                // percentage of students that passed
+                                percentage = (passed * 100) / students;
+                                // average grade
+                                average = sum / students;
+                                // prints average grade if there are students
+                                cout << "Average grade: " << average << endl;
+                                // prints percentage of students that passed
+                                cout << "Percentage of students that passed: " << percentage << "%" << endl;
+                        }
+                }
         }
 
         void Professor::assignCourse(Course& course) {

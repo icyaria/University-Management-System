@@ -227,7 +227,7 @@ void secretaryMenu(Secretary &sec) {
                 else if (choice == 2) {
                     cout << "Choose a course to assign (enter course's code):" << endl;
                     Course* course = find_course_from_code(sec);
-                    if (course) {
+                    if (course->getSem()%2 == sec.getSemester() + 1) {
                         bool doneAssigning = false;
                         while (!doneAssigning) {
                             cout << "Choose a professor to assign to " << course->getCourseName() << " (enter professor's email):" << endl;
@@ -247,6 +247,9 @@ void secretaryMenu(Secretary &sec) {
                             }
                         }
                     } 
+                    else if (course->getSem()%2 != sec.getSemester() + 1) {
+                        cout << "You can't assign a professor to this course this semester!" << endl;
+                    }
                     else {
                         cout << "Wrong course!" << endl;
                     }
@@ -342,7 +345,9 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                 Course* foundCourse = find_course_from_code(sec);
                 //Print the students of the course and grade them
                 for (size_t i = 0; i < foundCourse->getEnrolledStudents().size(); i++) {
-                    cout << *foundCourse->getEnrolledStudents()[i] << endl;
+                    cout << foundCourse->getEnrolledStudents()[i]->getFirstName() << " "  
+                        << foundCourse->getEnrolledStudents()[i]->getLastName() << "\nAM:"
+                        << foundCourse->getEnrolledStudents()[i]->getAM() << endl;
                     cout << "Enter grade: " << endl;
                     int grade;
                     cin >> grade;
@@ -353,8 +358,8 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                 }
                 break;
             case 3:
-                //not ready yet
-                professor->printCourseStatistics();
+                professor->printCourseStatistics(sec);
+                cout << "*****************" << endl;
                 break;
             case 4:
                 cout << "Logging out..." << endl;
