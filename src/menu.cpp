@@ -256,10 +256,24 @@ void secretaryMenu(Secretary &sec) {
                 cout << "*****************" << endl;
             }
                 break;
-            case 6:
-                // blabla
-                cout << "list of students that passed a course:" << endl;
+            case 6: {
+                string courseCode;
+                cout << "Choose a course to see the students that have passed it (enter course's code):" << endl;
+                cin >> courseCode;
+                // Creates a new txt file to save the students who passed a lesson in a semester
+                ofstream foutPassed("txt/passed_students.txt");
+                foutPassed << "List of students who passed " << courseCode << " " << "are:" << endl;
+                foutPassed << " " << endl;
+                for (std::size_t i = 0; i < sec.getGrades().size(); i++) {
+                    if ( (sec.getGrades()[i]->getCourseCode() == courseCode) && (sec.getGrades()[i]->getGrade() >= 5) ) {
+                        Student* foundStudent = find_student_withAM(sec, sec.getGrades()[i]->getStudentAM());
+                        foutPassed << foundStudent->getFirstName() << " " << foundStudent->getLastName() << " " << " AM: " << sec.getGrades()[i]->getStudentAM() << endl;
+                    }  
+                }
+                foutPassed.close();
+                cout << "Your txt file with all the students that passed the course is ready!" << endl; 
                 cout << "*****************" << endl;
+            }
                 break;
             case 7:
                 // blabla
@@ -614,7 +628,7 @@ Professor* login_p(Secretary &sec) {
     return foundProfessor; // Returns nullptr if no match is found
 }
 
-// Function to find a student with a specific AM, needed for the passed_students.txt file
+// Function to find a student with a specific AM
 Student* find_student_withAM(Secretary &sec, long int AM) {
     long int targetAM = AM;
 
