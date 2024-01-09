@@ -34,6 +34,7 @@ public:
     friend ostream &operator<<(ostream &ostr, Student &student);
 
     void assignCourse(Course& course);
+
 };
 
 #endif

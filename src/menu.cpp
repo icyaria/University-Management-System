@@ -614,3 +614,19 @@ Professor* login_p(Secretary &sec) {
     return foundProfessor; // Returns nullptr if no match is found
 }
 
+// Function to find a student with a specific AM, needed for the passed_students.txt file
+Student* find_student_withAM(Secretary &sec, long int AM) {
+    long int targetAM = AM;
+
+    Student* foundStudent = nullptr;
+    vector<Student*> const &students = sec.getStudents();
+
+    for (size_t i = 0; i < students.size(); i++) {
+        if (students[i]->getAM() == targetAM) {
+            foundStudent = students[i];
+            break;
+        }
+    }
+    return foundStudent;
+}
+

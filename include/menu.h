@@ -16,6 +16,7 @@ void professorMenu(Secretary &sec, Professor* &professor);
 void studentMenu(Secretary &sec, Student* &student);
 
 Student* find_student_fromAM(Secretary &sec);
+Student* find_student_withAM(Secretary &sec, long int AM);
 Professor* find_professor_from_email(Secretary &sec);
 Course* find_course_from_code(Secretary &sec);
 

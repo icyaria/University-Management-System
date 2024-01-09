@@ -15,6 +15,7 @@ using namespace std;
 int Person::count = 0;
 Professor* login_p(Secretary &sec);
 Student* login_s(Secretary &sec);
+Student* find_student_withAM(Secretary &sec, long int AM);
 
 int main() {
 
@@ -224,6 +225,28 @@ int main() {
         foutc << sec.getCourses()[i]->getCourseName() << " " << sec.getCourses()[i]->getCode() << " " << sec.getCourses()[i]->getSem() << " " << sec.getCourses()[i]->getEcts() << " " << sec.getCourses()[i]->getComp() << endl;
     }
     foutc.close();
+ 
+    // Creates a new txt file to save the students who passed a lesson in a semester
+    ofstream foutPassed("txt/passed_students.txt");
+    if (!foutPassed) {
+        cout << "Failed to open the file passed_students." << endl;
+        return 1;
+    }
+    foutPassed << "List of students who passed a lesson in a semester:" << endl;
+    foutPassed << " " << endl;
+    for (std::size_t w = 0; w < sec.getCourses().size(); w++) {
+        foutPassed << " " << endl;
+        foutPassed << sec.getCourses()[w]->getCourseName() << " " << " Semester: "<< sec.getCourses()[w]->getSem() << " " << endl;
+        foutPassed << "Students that passed:" << endl;
+        string courseCode = sec.getCourses()[w]->getCode();
+        for (std::size_t i = 0; i < sec.getGrades().size(); i++) {
+            if ( (sec.getGrades()[i]->getCourseCode() == courseCode) && (sec.getGrades()[i]->getGrade() >= 5) ) {
+                Student* foundStudent = find_student_withAM(sec, sec.getGrades()[i]->getStudentAM());
+                foutPassed << foundStudent->getFirstName() << " " << foundStudent->getLastName() << " " << " AM: " << sec.getGrades()[i]->getStudentAM() << endl;
+            }  
+        }
+    }
+    foutPassed.close();
 
     return 0;
 }
