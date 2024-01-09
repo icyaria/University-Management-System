@@ -416,11 +416,12 @@ void studentMenu(Secretary &sec, Student* &student) {
                 break;
             case 2: {
                 int choice_g = 0;
-                while (choice_g != 2) {
+                while (choice_g != 3) {
                     cout << "My grades" << endl;
                     cout << "****************" << endl;
                     cout << "1. View my grades for the current semester" << endl;
                     cout << "2. View my grades for all semesters" << endl;
+                    cout << "3. Back" << endl;
                     cin >> choice_g;
                     switch (choice_g) {
                         case 1: {
@@ -433,6 +434,8 @@ void studentMenu(Secretary &sec, Student* &student) {
                             cout << "My grades for all the semesters are:" << endl;
                             //blabla
                         }
+                            break;
+                        case 3:
                             break;
                         default:
                             cout << "Wrong input" << endl;
