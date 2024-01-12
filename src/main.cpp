@@ -119,7 +119,7 @@ int main() {
     // Read the file
     string course_name;
     string code;
-    bool comp; //μπορεί να θέλει int
+    bool comp;
     while (getline(finc, line)) {
         course_name = line.substr(0, line.find(" "));
         line.erase(0, line.find(" ") + 1);

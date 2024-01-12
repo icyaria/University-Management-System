@@ -35,7 +35,6 @@ void secretaryMenu(Secretary &sec) {
         }
 
         int ch = 0;
-
         switch (choice) {
             case 1:
                 while (ch != 5) {
@@ -368,7 +367,6 @@ void secretaryMenu(Secretary &sec) {
                 break;
             case 8:
                 cout << "Students that can graduate:" << endl;
-                // checks if ects 
                 for (size_t i = 0; i < sec.getStudents().size(); i++) {
                     // can change values (105, 4) for testing
                     if (sec.getStudents()[i]->getEcts() >= 105 && sec.getStudents()[i]->getSem() >= 4) {
@@ -511,7 +509,6 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                             // ignores all characters in the input stream until it reaches a newline
                             cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         }
-
                     }
                     sec.assignGradeToStudent(*foundCourse->getEnrolledStudents()[i], *foundCourse, grade);
                     if (grade >= 5) {
@@ -1001,4 +998,3 @@ Course* find_course_with_code(Secretary &sec, string code) {
     }
     return foundCourse;
 }
-

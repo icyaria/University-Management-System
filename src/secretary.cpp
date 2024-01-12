@@ -27,14 +27,6 @@ using namespace std;
         }
 
         Secretary::~Secretary() {
-                // int sizep = vecp.size();
-                // int sizes = vecs.size();              
-                //  for (int i = 0; i < sizep; i++) {
-                //         delete vecp.at(i);
-                // }
-                // for (int i = 0; i < sizes; i++) {
-                //         delete vecs.at(i);
-                // }
                 vecp.clear();  
                 vecs.clear();
                 vecc.clear();
