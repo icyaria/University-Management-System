@@ -5,6 +5,9 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <sstream>
+
+using namespace std;
 
 class Secretary;
 class Student;
@@ -19,6 +22,7 @@ Student* find_student_fromAM(Secretary &sec); //gets AM from user
 Student* find_student_withAM(Secretary &sec, long int AM); //gets AM as input in the function
 Professor* find_professor_from_email(Secretary &sec);
 Course* find_course_from_code(Secretary &sec);
+Course* find_course_with_code(Secretary &sec, string code);
 
 void editStudent(Secretary &sec);
 void deleteStudent(Secretary &sec);

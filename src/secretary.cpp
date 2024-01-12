@@ -340,8 +340,17 @@ using namespace std;
         }
 
         void Secretary::assignProfessorToCourse(Professor& professor, Course& course) {
+                //checks if professor already teaches the course
+                int size = professor.getCoursesTeaching().size();
+                for (int i = 0; i<size; i++) {
+                        if (professor.getCoursesTeaching().at(i)->getCode() == course.getCode()) {
+                                cout << "Professor already teaches this course" << endl;
+                                return;
+                        }
+                }
                 course.assignProfessor(professor);
                 professor.assignCourse(course);
+                cout << "Professor assigned successfully" << endl;
         }
 
         void Secretary::assignStudentToCourse(Student& student, Course& course) {
@@ -350,8 +359,18 @@ using namespace std;
         }
 
         void Secretary::assignGradeToStudent(Student& student, Course& course, int g) {
+                //checks if student has already been graded
+                int size = vecg.size();
+                for (int i = 0; i<size; i++) {
+                        if (vecg.at(i)->getStudentAM() == student.getAM() &&
+                            vecg.at(i)->getCourseCode() == course.getCode()) {
+                                cout << "Student has already been graded" << endl;
+                                return;
+                        }
+                }
                 Grade* grade = new Grade(g, student.getAM(), course.getCode());
                 vecg.push_back(grade);
+                cout << "Graded successfully" << endl;
         }
 
         void Secretary::assignStudentToPassedStudents(Student& student, Course& course) {
