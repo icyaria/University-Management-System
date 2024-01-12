@@ -516,11 +516,9 @@ void studentMenu(Secretary &sec, Student* &student) {
                             cout << student->getSem() << endl;
                             cout << "My grades for the current semester are:" << endl;
                             for (size_t i = 0; i < sec.getGrades().size(); i++) { 
-                                Course* foundCourse = find_course_with_code(sec, sec.getGrades()[i]->getCourseCode());
-                                for (size_t j = 0; j < foundCourse->getEnrolledStudents().size(); j++) {
-                                    if (foundCourse->getEnrolledStudents()[j]->getAM() == student->getAM()) {
-                                        cout << foundCourse->getCourseName() << ": " << sec.getGrades()[i]->getGrade() << endl;
-                                    }
+                                if (sec.getGrades()[i]->getStudentAM() == student->getAM()) {
+                                    Course* foundCourse = find_course_with_code(sec, sec.getGrades()[i]->getCourseCode());
+                                    cout << foundCourse->getCourseName() << ": " << sec.getGrades()[i]->getGrade() << endl;
                                 }
                             }
                         }
