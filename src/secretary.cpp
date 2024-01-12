@@ -62,21 +62,16 @@ using namespace std;
         }
 
         void Secretary::add(Professor &p) {
-                //Professor* newp = new Professor(p);
                 vecp.push_back(&p);
-                cout<<"\nAdded "<<p.getFirstName()<<" "<<p.getLastName() <<" in Secretary"<<endl;
+
         }
         
         void Secretary::add(Student &s) {
-                //Student* news = new Student(s);
                 vecs.push_back(&s);
-                cout<<"\nAdded "<<s.getFirstName()<<" "<<s.getLastName() <<" in Secretary"<<endl;
         }
 
         void Secretary::add(Course &c) {
-                //Course* newc = new Course(c);
                 vecc.push_back(&c);
-                cout<<"\nAdded "<<c.getCourseName()<<" in Secretary"<<endl;
         }
 
         void Secretary::remove(Professor &p) {
@@ -233,30 +228,6 @@ using namespace std;
                 return ostr;
         }
 
-        ostream& Secretary::printProfessors(ostream &ostr) {
-                ostr << "\nProfessors in secretary are: " << endl;
-                for (size_t i = 0; i< vecp.size(); i++) {
-                     cout<< *vecp.at(i)<< endl; // prints all professors in secretary
-                }
-                return ostr;
-        }
-
-        ostream& Secretary::printStudents(ostream &ostr) {
-                ostr << "\nStudents in secretary are:" << endl;
-                for (size_t i = 0; i<vecs.size(); i++) {
-                     cout<< *vecs.at(i)<< endl; // prints all students in secretary
-                }
-                return ostr;
-        }
-
-        ostream& Secretary::printCourses(ostream &ostr) {
-                ostr << "\nCourses in secretary are:" << endl;
-                for (size_t i = 0; i<vecc.size(); i++) {
-                     cout<< *vecc.at(i)<< endl; // prints all courses in secretary
-                }
-                return ostr;
-        }
-
         Secretary& Secretary::operator+(Professor &professor) {
                 add(professor);
                 return *this;                 
@@ -282,6 +253,30 @@ using namespace std;
                         vecs.push_back(newStudent);
                 }
                 return *this;
+        }
+
+        ostream& Secretary::printProfessors(ostream &ostr) {
+                ostr << "\nProfessors in secretary are: " << endl;
+                for (size_t i = 0; i< vecp.size(); i++) {
+                     cout<< *vecp.at(i)<< endl; // prints all professors in secretary
+                }
+                return ostr;
+        }
+
+        ostream& Secretary::printStudents(ostream &ostr) {
+                ostr << "\nStudents in secretary are:" << endl;
+                for (size_t i = 0; i<vecs.size(); i++) {
+                     cout<< *vecs.at(i)<< endl; // prints all students in secretary
+                }
+                return ostr;
+        }
+
+        ostream& Secretary::printCourses(ostream &ostr) {
+                ostr << "\nCourses in secretary are:" << endl;
+                for (size_t i = 0; i<vecc.size(); i++) {
+                     cout<< *vecc.at(i)<< endl; // prints all courses in secretary
+                }
+                return ostr;
         }
 
         void Secretary::new_semester() {

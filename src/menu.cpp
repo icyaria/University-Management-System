@@ -70,6 +70,7 @@ void secretaryMenu(Secretary &sec) {
                                 break;
                             }
                             sec + *student;
+                            cout<<"\nAdded "<<student->getFirstName()<<" "<<student->getLastName() <<" in Secretary"<<endl;
                             cout << "\n" << endl;
                             break;
                         case 2:
@@ -125,6 +126,7 @@ void secretaryMenu(Secretary &sec) {
                                 break;
                             }
                             sec + *professor;
+                            cout<<"Added "<<professor->getFirstName()<<" "<<professor->getLastName() <<" in Secretary"<<endl;
                             cout << "\n" << endl;
                         }
                             break;
@@ -183,6 +185,7 @@ void secretaryMenu(Secretary &sec) {
                                 break;
                             }
                             sec + *course;
+                            cout<<"Added "<<course->getCourseName()<<" in Secretary"<<endl;
                             cout << "\n" << endl;
                             }
                             break;
