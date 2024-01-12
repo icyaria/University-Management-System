@@ -221,30 +221,6 @@ using namespace std;
         }
 
         //Operators overloading
-        istream &operator>>(istream &istr, Secretary &secretary) {
-                cout << "Enter professor or student? (p/s)" << endl;
-                string choice;
-                istr >> choice;
-                if (choice == "p") {
-                        cout << "Enter professor's details to add to secretary: " << endl;
-                        Professor* newProfessor = new Professor;  
-                        istr >> *newProfessor; // inputs information from user           
-                        secretary.add(*newProfessor);
-                        return istr;
-                }
-                else if (choice == "s") {
-                        cout << "Enter student's details to add to secretary: " << endl;
-                        Student* newStudent = new Student;  
-                        istr >> *newStudent; // inputs information from user           
-                        secretary.add(*newStudent);
-                        return istr;
-                }
-                else {
-                        cout << "Wrong input" << endl;
-                        return istr;
-                }
-        }
-
         ostream &operator<<(ostream &ostr, Secretary &secretary) {
                 ostr << "\nProfessors in secretary are: " << endl;
                 for (size_t i = 0; i<secretary.vecp.size(); i++) {

@@ -70,18 +70,46 @@ using namespace std;
             cout << "Enter email: ";
             istr >> e;
             student.setEmail(e);
-            cout << "Enter phone: ";
-            istr >> ph;
-            student.setPhone(ph);
+
+            try {
+                cout << "Enter phone: ";
+                istr >> ph;
+                if (istr.fail()) {
+                    throw runtime_error("Invalid input for phone.");
+                }
+                student.setPhone(ph);
+            } catch (const exception& e) {
+                cout << "Error: " << e.what() << endl;
+                istr.clear();
+                istr.ignore(numeric_limits<streamsize>::max(), '\n');
+                return operator>>(istr, student);
+            }
 
             // Input additional Student information
-            cout << "Enter student ID: ";
-            istr >> student.AM;
-            cout << "Enter semester: ";
-            istr >> student.sem_s;
-            cout << "Enter ECTS: ";
-            istr >> student.ects_s;
+            try {
+                cout << "Enter student ID: ";
+                istr >> student.AM;
+                if (istr.fail()) {
+                    throw runtime_error("Invalid input for student ID.");
+                }
 
+                cout << "Enter semester: ";
+                istr >> student.sem_s;
+                if (istr.fail()) {
+                    throw runtime_error("Invalid input for semester.");
+                }
+
+                cout << "Enter ECTS: ";
+                istr >> student.ects_s;
+                if (istr.fail()) {
+                    throw runtime_error("Invalid input for ECTS.");
+                }
+            } catch (const exception& e) {
+                cout << "Error: " << e.what() << endl;
+                istr.clear();
+                istr.ignore(numeric_limits<streamsize>::max(), '\n');
+                return operator>>(istr, student);
+            }
             return istr;
         }
 

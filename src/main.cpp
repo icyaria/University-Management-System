@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <limits>
 
 #include "secretary.h"
 #include "student.h"
@@ -159,7 +160,20 @@ int main() {
         cout << "3. Student" << endl;
         cout << "4. Exit" << endl;
         cout << "(Type 1, 2, 3 or 4):" << endl;
-        cin >> login;
+        
+        try {
+            cin >> login;
+            if (cin.fail()) {
+                throw runtime_error("Invalid input type. Please enter a valid integer.");
+            }
+        } 
+        catch (const exception& mes) {
+            cout << "Error: " << mes.what() << endl;
+            cin.clear();
+            // ignores all characters in the input stream until it reaches a newline
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        
         Professor* loggedInProfessor;
         Student* loggedInStudent;
 

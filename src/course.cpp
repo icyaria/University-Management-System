@@ -111,12 +111,30 @@ using namespace std;
         istr >> course.course_name;
         cout << "Code: ";
         istr >> course.code;
-        cout << "Semester: ";
-        istr >> course.sem;
-        cout << "ECTS: ";
-        istr >> course.ects;
-        cout << "Compulsory (1 for yes, 0 for no): ";
-        istr >> course.comp;
+        try {
+            cout << "Semester: ";
+            istr >> course.sem;
+            if (istr.fail()) {
+                throw runtime_error("Invalid input for semester.");
+            }
+
+            cout << "ECTS: ";
+            istr >> course.ects;
+            if (istr.fail()) {
+                throw runtime_error("Invalid input for ECTS.");
+            }
+
+            cout << "Compulsory (1 for yes, 0 for no): ";
+            istr >> course.comp;
+            if (istr.fail()) {
+                throw runtime_error("Invalid input for compulsory.");
+            }
+        } catch (const exception& e) {
+            cout << "Error: " << e.what() << endl;
+            istr.clear();
+            istr.ignore(numeric_limits<streamsize>::max(), '\n');
+            return operator>>(istr, course);
+        }
         return istr;
     }
 

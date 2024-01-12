@@ -78,8 +78,18 @@ using namespace std;
         istr >> person.last_name;
         cout << "Enter email: ";
         istr >> person.email;
-        cout << "Enter phone: ";
-        istr >> person.phone;
+        try {
+            cout << "Enter phone: ";
+            istr >> person.phone;
+            if (istr.fail()) {
+                throw runtime_error("Invalid input for phone number.");
+            }
+        } catch (const exception& e) {
+            cout << "Error: " << e.what() << endl;
+            istr.clear();
+            istr.ignore(numeric_limits<streamsize>::max(), '\n');
+            return operator>>(istr, person);
+        }
         return istr;
     }
 

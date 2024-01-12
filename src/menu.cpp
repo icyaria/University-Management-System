@@ -20,7 +20,19 @@ void secretaryMenu(Secretary &sec) {
         cout << "7. Get a list of all the courses, with all the students' grades in each one" << endl;
         cout << "8. See students that can graduate" << endl;
         cout << "9. Logout" << endl;
-        cin >> choice;
+
+        try {
+            cin >> choice;
+            if (cin.fail()) {
+                throw runtime_error("Invalid input type. Please enter a valid integer.");
+            }
+        } 
+        catch (const exception& mes) {
+            cout << "Error: " << mes.what() << endl;
+            cin.clear();
+            // ignores all characters in the input stream until it reaches a newline
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
         int ch = 0;
 
@@ -35,7 +47,19 @@ void secretaryMenu(Secretary &sec) {
                     cout << "3. Delete a student" << endl;
                     cout << "4. View student list" << endl;
                     cout << "5. Back" << endl;
-                    cin >> ch;
+                    
+                    try {
+                        cin >> ch;
+                        if (cin.fail()) {
+                            throw runtime_error("Invalid input type. Please enter a valid integer.");
+                        }
+                    } 
+                    catch (const exception& mes) {
+                        cout << "Error: " << mes.what() << endl;
+                        cin.clear();
+                        // ignores all characters in the input stream until it reaches a newline
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
 
                     switch (ch) {
                         case 1:
@@ -78,7 +102,19 @@ void secretaryMenu(Secretary &sec) {
                     cout << "3. Delete a professor" << endl;
                     cout << "4. View professor list" << endl;
                     cout << "5. Back" << endl;
-                    cin >> ch;
+                    
+                    try {
+                        cin >> ch;
+                        if (cin.fail()) {
+                            throw runtime_error("Invalid input type. Please enter a valid integer.");
+                        }
+                    } 
+                    catch (const exception& mes) {
+                        cout << "Error: " << mes.what() << endl;
+                        cin.clear();
+                        // ignores all characters in the input stream until it reaches a newline
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
 
                     switch (ch) {
                         case 1: {
@@ -124,7 +160,19 @@ void secretaryMenu(Secretary &sec) {
                     cout << "5. View professors that teach a course" << endl;
                     cout << "6. View students that are enrolled in a course" << endl;
                     cout << "7. Back" << endl;
-                    cin >> ch;
+                    
+                    try {
+                        cin >> ch;
+                        if (cin.fail()) {
+                            throw runtime_error("Invalid input type. Please enter a valid integer.");
+                        }
+                    } 
+                    catch (const exception& mes) {
+                        cout << "Error: " << mes.what() << endl;
+                        cin.clear();
+                        // ignores all characters in the input stream until it reaches a newline
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
 
                     switch (ch) {
                         case 1: {
@@ -202,7 +250,20 @@ void secretaryMenu(Secretary &sec) {
             case 5: {
                 cout << "Do you want to assign one professor for each course of the semester or the professor(s) for a specific course? (1 for all, 2 for specific)" << endl;
                 int choice;
-                cin >> choice;
+
+                try {
+                    cin >> choice;
+                    if (cin.fail()) {
+                        throw runtime_error("Invalid input type. Please enter a valid integer.");
+                    }
+                } 
+                catch (const exception& mes) {
+                    cout << "Error: " << mes.what() << endl;
+                    cin.clear();
+                    // ignores all characters in the input stream until it reaches a newline
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                
                 if (choice == 1) {
                     for (size_t i = 0; i < sec.getCourses().size(); i++) {
                         if ((sec.getCourses()[i]->getSem()%2 == 1 && sec.getSemester() == 0)
@@ -356,7 +417,19 @@ void professorMenu(Secretary &sec, Professor* &professor) {
         cout << "2. Grade students" << endl;
         cout << "3. View semester statistics" << endl;
         cout << "4. Logout" << endl;
-        cin >> choice;
+        
+        try {
+            cin >> choice;
+            if (cin.fail()) {
+                throw runtime_error("Invalid input type. Please enter a valid integer.");
+            }
+        } 
+        catch (const exception& mes) {
+            cout << "Error: " << mes.what() << endl;
+            cin.clear();
+            // ignores all characters in the input stream until it reaches a newline
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
         string code;
 
@@ -404,11 +477,37 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                         << foundCourse->getEnrolledStudents()[i]->getAM() << endl;
                     cout << "Enter grade: " << endl;
                     int grade;
-                    cin >> grade;
+                    
+                    try {
+                        cin >> grade;
+                        if (cin.fail()) {
+                            throw runtime_error("Invalid input type. Please enter a valid integer.");
+                        }
+                    } 
+                    catch (const exception& mes) {
+                        cout << "Error: " << mes.what() << endl;
+                        cin.clear();
+                        // ignores all characters in the input stream until it reaches a newline
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+
                     //checks if grade is valid
                     while (grade < 0 || grade > 10) {
-                        cout << "Wrong input, try again!" << endl;
-                        cin >> grade;
+                        cout << "Wrong input, enter number between 1-10 !" << endl;
+                        
+                        try {
+                            cin >> grade;
+                            if (cin.fail()) {
+                                throw runtime_error("Invalid input type. Please enter a valid integer.");
+                            }
+                        } 
+                        catch (const exception& mes) {
+                            cout << "Error: " << mes.what() << endl;
+                            cin.clear();
+                            // ignores all characters in the input stream until it reaches a newline
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        }
+
                     }
                     sec.assignGradeToStudent(*foundCourse->getEnrolledStudents()[i], *foundCourse, grade);
                     if (grade >= 5) {
@@ -450,7 +549,19 @@ void studentMenu(Secretary &sec, Student* &student) {
         cout << "2. See my grades" << endl;
         cout << "3. See my courses" << endl;
         cout << "4. Logout" << endl;
-        cin >> choice;
+        
+        try {
+            cin >> choice;
+            if (cin.fail()) {
+                throw runtime_error("Invalid input type. Please enter a valid integer.");
+            }
+        } 
+        catch (const exception& mes) {
+            cout << "Error: " << mes.what() << endl;
+            cin.clear();
+            // ignores all characters in the input stream until it reaches a newline
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
         switch (choice) {
             case 1:{
@@ -533,7 +644,20 @@ void studentMenu(Secretary &sec, Student* &student) {
                     cout << "1. View my grades for the current semester" << endl;
                     cout << "2. View my grades for all semesters" << endl;
                     cout << "3. Back" << endl;
-                    cin >> choice_g;
+                    
+                    try {
+                        cin >> choice_g;
+                        if (cin.fail()) {
+                            throw runtime_error("Invalid input type. Please enter a valid integer.");
+                        }
+                    } 
+                    catch (const exception& mes) {
+                        cout << "Error: " << mes.what() << endl;
+                        cin.clear();
+                        // ignores all characters in the input stream until it reaches a newline
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+
                     switch (choice_g) {
                         case 1: {
                             cout << "Current semester:" << endl;
@@ -603,7 +727,20 @@ void studentMenu(Secretary &sec, Student* &student) {
 
 Student* find_student_fromAM(Secretary &sec) {
     long int targetAM = 0;
-    cin >> targetAM;
+
+    try {
+        cin >> targetAM;
+        if (cin.fail()) {
+            throw runtime_error("Invalid input type. Please enter a valid integer.");
+        }
+    } 
+    catch (const exception& mes) {
+        cout << "Error: " << mes.what() << endl;
+        cin.clear();
+        // ignores all characters in the input stream until it reaches a newline
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
 
     Student* foundStudent = nullptr;
     vector<Student*> const &students = sec.getStudents();
@@ -860,3 +997,4 @@ Course* find_course_with_code(Secretary &sec, string code) {
     }
     return foundCourse;
 }
+
