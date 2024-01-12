@@ -367,10 +367,11 @@ void secretaryMenu(Secretary &sec) {
             }
                 break;
             case 8:
-                cout << "students that can graduate:" << endl;
+                cout << "Students that can graduate:" << endl;
                 // checks if ects 
                 for (size_t i = 0; i < sec.getStudents().size(); i++) {
-                    if (sec.getStudents()[i]->getEcts() >= 105) {
+                    // can change values (105, 4) for testing
+                    if (sec.getStudents()[i]->getEcts() >= 105 && sec.getStudents()[i]->getSem() >= 4) {
                         int found = 0;
                         for (size_t j = 0; j < sec.getCourses().size(); j++) {
                             if (sec.getCourses()[j]->getComp() == 1) {
