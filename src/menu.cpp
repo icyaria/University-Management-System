@@ -303,8 +303,32 @@ void secretaryMenu(Secretary &sec) {
             }
                 break;
             case 8:
-                // blabla
                 cout << "students that can graduate:" << endl;
+                // checks if ects 
+                for (size_t i = 0; i < sec.getStudents().size(); i++) {
+                    if (sec.getStudents()[i]->getEcts() >= 105) {
+                        int found = 0;
+                        for (size_t j = 0; j < sec.getCourses().size(); j++) {
+                            if (sec.getCourses()[j]->getComp() == 1) {
+                                for (size_t k = 0; k < sec.getStudents()[i]->getPassedCourses().size(); k++) {
+                                    if (sec.getCourses()[j]->getCode() == sec.getStudents()[i]->getPassedCourses()[k]->getCode()) {
+                                        found = 1;
+                                        break;
+                                    }
+                                }
+                                if (found == 0) {
+                                    break;
+                                }
+                            }
+                            if (found == 0) {
+                                break;
+                            }
+                        }
+                        if (found == 1) {
+                            cout << sec.getStudents()[i]->getFirstName() << " " << sec.getStudents()[i]->getLastName() << endl;
+                        }
+                    }
+                }
                 cout << "*****************" << endl;
                 break;
             case 9:
