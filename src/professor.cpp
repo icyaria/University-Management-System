@@ -1,5 +1,6 @@
 #include "professor.h"
 #include "course.h"
+#include "secretary.h"
 
 using namespace std;
 
@@ -29,7 +30,10 @@ using namespace std;
                 }
         }
 
-        #include "secretary.h" // Include the header file for the Secretary class
+        Professor::~Professor() {
+                coursesTeaching.clear();
+        }
+
 
         void Professor::printCourseStatistics(Secretary &sec) const {  
                 cout << "Course statistics for: " << endl;
@@ -53,6 +57,8 @@ using namespace std;
                         double average = 0.0;
                         if (students != 0) {
                                 cout << coursesTeaching.at(i)->getCourseName()  << endl;
+                                // number of students
+                                cout << "Number of students: " << students << endl;
                                 // percentage of students that passed
                                 percentage = (passed * 100) / students;
                                 // average grade
@@ -61,6 +67,10 @@ using namespace std;
                                 cout << "Average grade: " << average << endl;
                                 // prints percentage of students that passed
                                 cout << "Percentage of students that passed: " << percentage << "%" << endl;
+                        }
+                        else {
+                                cout << coursesTeaching.at(i)->getCourseName()  << endl;
+                                cout << "No Statistics available." << endl;
                         }
                 }
         }

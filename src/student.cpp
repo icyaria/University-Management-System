@@ -20,6 +20,11 @@ using namespace std;
             AM = student.AM;
         }
 
+        Student::~Student() {
+            my_courses.clear();
+            passed_courses.clear();
+        }
+
         int Student::getSem() const {
             return sem_s;
         }
@@ -43,6 +48,14 @@ using namespace std;
         void Student::setAM(long int newAM) {
             cout << "\n" << endl;
             AM = newAM;
+        }
+
+        vector<Course*> &Student::getMyCourses() {
+            return my_courses;
+        }
+
+        vector<Course*> &Student::getPassedCourses() {
+            return passed_courses;
         }
 
         istream &operator>>(istream &istr, Student &student) {
@@ -88,4 +101,8 @@ using namespace std;
 
         void Student::assignCourse(Course& course) {
             my_courses.push_back(&course);
+        }
+
+        void Student::assignPassedCourse(Course& course) {
+            passed_courses.push_back(&course);
         }

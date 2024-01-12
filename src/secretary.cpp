@@ -317,7 +317,6 @@ using namespace std;
                         vecs.at(i)->setSem(sem);
                 }
                 // clears the courses a professor teaches and the teaching professors of a course
-                // doesnt work
                 size = vecp.size();
                 for (int i = 0; i<size; i++) {
                         vecp.at(i)->getCoursesTeaching().clear();
@@ -326,6 +325,16 @@ using namespace std;
                 for (int i = 0; i<size; i++) {
                         vecc.at(i)->getProfessorsTeaching().clear();
                 }
+                // clears the students enrolled in a course
+                size = vecc.size();
+                for (int i = 0; i<size; i++) {
+                        vecc.at(i)->getEnrolledStudents().clear();
+                }
+                size = vecs.size();
+                for (int i = 0; i<size; i++) {
+                        vecs.at(i)->getMyCourses().clear();
+                }
+
                 // changes the semester of the secretary
                 semester_type = !semester_type;
         }
@@ -343,6 +352,11 @@ using namespace std;
         void Secretary::assignGradeToStudent(Student& student, Course& course, int g) {
                 Grade* grade = new Grade(g, student.getAM(), course.getCode());
                 vecg.push_back(grade);
+        }
+
+        void Secretary::assignStudentToPassedStudents(Student& student, Course& course) {
+                course.assignPassedStudent(student);
+                student.assignPassedCourse(course);
         }
 
 

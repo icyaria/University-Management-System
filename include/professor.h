@@ -23,6 +23,9 @@ public:
     // copy constructor
     Professor(const Professor &professor);    
 
+    // destructor
+    ~Professor();
+
     // getter
     vector<Course*> &getCoursesTeaching();
 

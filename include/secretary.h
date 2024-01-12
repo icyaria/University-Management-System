@@ -86,6 +86,8 @@ public:
     void assignStudentToCourse(Student& student, Course& course);
 
     void assignGradeToStudent(Student& student, Course& course, int grade);
+
+    void assignStudentToPassedStudents(Student& student, Course& course);
 };
 
 #endif

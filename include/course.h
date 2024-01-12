@@ -9,15 +9,11 @@
 
 using namespace std;
 
+// forward declaration
 class Professor;
 class Student; 
 class Secretary;
-// forward declaration
-// it tells the compiler that the class Professor exists before the actual definition becomes available
-// *ΓΙΑ ΕΜΑΣ ΜΟΝΟ*
-// This is sufficient for the compiler to know that such a class exists, 
-// which allows you to use pointers or references to that class in your 
-// header file without requiring the full definition
+
 
 class Course {
 private:
@@ -28,6 +24,7 @@ private:
     bool comp;
     vector<Professor*> professorsTeaching;
     vector<Student*> students;
+    vector<Student*> studentsPassed;
 public:
     // default constructor
     Course();
@@ -39,30 +36,31 @@ public:
 
     // getters και setters
     string getCourseName() const;
-    //void setCourseName(string newCN);
 
     string getCode() const;
-    //void setCode(string newCode);
 
     int getSem() const;
-    void setSem(int newSem);
 
     int getEcts() const;
-    //void setEcts(int newEcts);
 
     bool getComp() const;
-    //void setComp(bool newComp); 
 
     vector<Professor*> &getProfessorsTeaching();
 
     vector<Student*> &getEnrolledStudents();
+
+    vector<Student*> &getStudentsPassed();
+
+    void setSem(int newSem);
     
-    // assigns a professor to the course and calls function
-    // to add the course to the professor's teaching courses 
-    // (η secretary καλεί αυτή τη συνάρτηση)
+    // assigns a professor to the course 
     void assignProfessor(Professor &professor);
 
+    // enroll a student to the course
     void assignStudent(Student &student);
+
+    // assign a student to the passed students vector
+    void assignPassedStudent(Student &student);
 
     // prints the professors teaching the course
     void printProfessorsTeaching();
@@ -70,6 +68,7 @@ public:
     // prints the students enrolled in the course
     void printEnrolledStudents();
 
+    // overload operators for reading and writing
     friend istream &operator>>(istream &istr, Course &course);
     friend ostream &operator<<(ostream &ostr, Course &course);
 };

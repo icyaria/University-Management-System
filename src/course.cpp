@@ -23,6 +23,9 @@ using namespace std;
 
     // destructor
     Course::~Course() {
+        professorsTeaching.clear();
+        students.clear();
+        studentsPassed.clear();
     }
 
     //getters
@@ -54,6 +57,10 @@ using namespace std;
         return students;
     }
 
+    vector<Student*> &Course::getStudentsPassed() {
+        return studentsPassed;
+    }
+
     //setter (θα πρέπει να δίνεται η δυνατότητα να μετακινηθούν μεταξύ semesters)
     void Course::setSem(int newSem) {
         sem = newSem;
@@ -67,6 +74,10 @@ using namespace std;
     void Course::assignStudent(Student &student) {
         cout << "Enrolled to " << course_name << endl;
         students.push_back(&student);
+    }
+
+    void Course::assignPassedStudent(Student &student) {
+        studentsPassed.push_back(&student);
     }
 
     void Course::printProfessorsTeaching() {

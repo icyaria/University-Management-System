@@ -154,7 +154,7 @@ void secretaryMenu(Secretary &sec) {
                             {
                             cout << "Enter the code of the course you want to see the professors of:" << endl;
                             Course* foundCourse = find_course_from_code(sec);
-                            if (foundCourse) {
+                            if (foundCourse != nullptr) {
                                 foundCourse->printProfessorsTeaching();
                             } else {
                                 cout << "Course not found!" << endl;
@@ -166,7 +166,7 @@ void secretaryMenu(Secretary &sec) {
                             {
                             cout << "Enter the code of the course you want to see the students of:" << endl;
                             Course* foundCourse = find_course_from_code(sec);
-                            if (foundCourse) {
+                            if (foundCourse != nullptr) {
                                 foundCourse->printEnrolledStudents();
                             } else {
                                 cout << "Course not found!" << endl;
@@ -205,20 +205,19 @@ void secretaryMenu(Secretary &sec) {
                 cin >> choice;
                 if (choice == 1) {
                     for (size_t i = 0; i < sec.getCourses().size(); i++) {
-                        if (sec.getCourses()[i]->getSem()%2 == sec.getSemester() + 1) {
+                        if ((sec.getCourses()[i]->getSem()%2 == 1 && sec.getSemester() == 0)
+                            || (sec.getCourses()[i]->getSem()%2 == 0 && sec.getSemester() == 1)) {
                             bool validInput = false;
                             while (!validInput) {
-                                if (sec.getCourses()[i]->getSem()%2 == sec.getSemester() + 1) {
-                                    cout << "Choose a professor to assign to " << sec.getCourses()[i]->getCourseName() << " (enter professor's email):" << endl;
-                                    Professor* professor = find_professor_from_email(sec);
-                                    if (professor) {
-                                        sec.assignProfessorToCourse(*professor, *sec.getCourses()[i]);
-                                        cout << "Professor assigned to course successfully!" << endl;
-                                        validInput = true;
-                                    } 
-                                    else {
-                                        cout << "Wrong professor, try again!" << endl;    
-                                    }
+                                cout << "Choose a professor to assign to " << sec.getCourses()[i]->getCourseName() << " (enter professor's email):" << endl;
+                                Professor* professor = find_professor_from_email(sec);
+                                if (professor) {
+                                    sec.assignProfessorToCourse(*professor, *sec.getCourses()[i]);
+                                    cout << "Professor assigned to course successfully!" << endl;
+                                    validInput = true;
+                                } 
+                                else {
+                                    cout << "Wrong professor, try again!" << endl;    
                                 }
                             }
                         }
@@ -227,7 +226,12 @@ void secretaryMenu(Secretary &sec) {
                 else if (choice == 2) {
                     cout << "Choose a course to assign (enter course's code):" << endl;
                     Course* course = find_course_from_code(sec);
-                    if (course->getSem()%2 == sec.getSemester() + 1) {
+                    if (course == nullptr) {
+                        cout << "Course not found!" << endl;
+                        break;
+                    }
+                    if ((course->getSem()%2 == 1 && sec.getSemester() == 0)
+                        || (course->getSem()%2 == 0 && sec.getSemester() == 1)) {
                         bool doneAssigning = false;
                         while (!doneAssigning) {
                             cout << "Choose a professor to assign to " << course->getCourseName() << " (enter professor's email):" << endl;
@@ -247,7 +251,8 @@ void secretaryMenu(Secretary &sec) {
                             }
                         }
                     } 
-                    else if (course->getSem()%2 != sec.getSemester() + 1) {
+                    else if ((course->getSem()%2 == 0 && sec.getSemester() == 0)
+                        || (course->getSem()%2 == 1 && sec.getSemester() == 1)) {
                         cout << "You can't assign a professor to this course this semester!" << endl;
                     }
                     else {
@@ -343,7 +348,15 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                 cout << "Type the code of the course you want to grade: " << endl;
                 //Check if the professor teaches the course, NOT DONE YET
                 Course* foundCourse = find_course_from_code(sec);
+                if (foundCourse == nullptr) {
+                    cout << "Course not found!" << endl;
+                    break;
+                }
                 //Print the students of the course and grade them
+                if (foundCourse->getEnrolledStudents().size() == 0) {
+                    cout << "No students enrolled in this course!" << endl;
+                    break;
+                }
                 for (size_t i = 0; i < foundCourse->getEnrolledStudents().size(); i++) {
                     cout << foundCourse->getEnrolledStudents()[i]->getFirstName() << " "  
                         << foundCourse->getEnrolledStudents()[i]->getLastName() << "\nAM:"
@@ -351,9 +364,20 @@ void professorMenu(Secretary &sec, Professor* &professor) {
                     cout << "Enter grade: " << endl;
                     int grade;
                     cin >> grade;
+                    //checks if grade is valid
+                    while (grade < 0 || grade > 10) {
+                        cout << "Wrong input, try again!" << endl;
+                        cin >> grade;
+                    }
                     sec.assignGradeToStudent(*foundCourse->getEnrolledStudents()[i], *foundCourse, grade);
+                    if (grade >= 5) {
+                        // add student to passed students
+                        sec.assignStudentToPassedStudents(*foundCourse->getEnrolledStudents()[i], *foundCourse);
+                        // adds ects to student
+                        int current_ects = foundCourse->getEnrolledStudents()[i]->getEcts();
+                        foundCourse->getEnrolledStudents()[i]->setEcts(current_ects + foundCourse->getEcts());
+                    }
                 }
-                cout << "Graded all students!" << endl;
                 cout << "*****************" << endl;
                 }
                 break;
@@ -378,12 +402,13 @@ void studentMenu(Secretary &sec, Student* &student) {
     cout << "Logged in successfully!" << endl;
     cout << "Welcome " << student->getFirstName() << " " << student->getLastName() << endl;
 
-    while (choice != 3) {
+    while (choice != 4) {
         cout << "Student Menu" << endl;
         cout << "****************" << endl;
         cout << "1. Enroll in classes" << endl;
         cout << "2. See my grades" << endl;
-        cout << "3. Logout" << endl;
+        cout << "3. See my courses" << endl;
+        cout << "4. Logout" << endl;
         cin >> choice;
 
         switch (choice) {
@@ -392,9 +417,29 @@ void studentMenu(Secretary &sec, Student* &student) {
                 //check which courses are available to enroll
                 for (size_t i = 0; i < sec.getCourses().size(); i++) {
                     // Θέλουμε 2ο έλεγχο για να μην εμφανίζονται μαθήματα που έχουν ήδη περάσει οι φοιτητές
-                    if (sec.getCourses()[i]->getSem()%2 == sec.getSemester() + 1) {
+                    //Αν βρίσκεται σε αυτο το εξάμηνο
+                    if ((sec.getCourses()[i]->getSem()%2 == 0 && sec.getSemester() == 1)
+                        || (sec.getCourses()[i]->getSem()%2 == 1 && sec.getSemester() == 0)) {
+                        // Αν ο φοιτητής είναι στο καταλληλο έτος για να παρακολουθήσει το μάθημα
                         if (student->getSem() >= sec.getCourses()[i]->getSem()) {
-                            cout << *sec.getCourses()[i] << endl;
+                            // Αν δεν έχει ήδη εγγραφεί στο μάθημα
+                            int found = 0;
+                            for (size_t j = 0; j < student->getMyCourses().size(); j++) {
+                                if (student->getMyCourses()[j]->getCode() == sec.getCourses()[i]->getCode()) {
+                                    found = 1;
+                                    break;
+                                }
+                            }
+                            // Αν δεν έχει ήδη περάσει το μάθημα
+                            for (size_t j = 0; j < student->getPassedCourses().size(); j++) {
+                                if (student->getPassedCourses()[j]->getCode() == sec.getCourses()[i]->getCode()) {
+                                    found = 1;
+                                    break;
+                                }
+                            }
+                            if (found == 0) {
+                                cout << *sec.getCourses()[i] << endl;
+                            }
                         }
                     }
                 }
@@ -402,8 +447,29 @@ void studentMenu(Secretary &sec, Student* &student) {
                 Course* foundCourse = find_course_from_code(sec);
                 if (foundCourse) {
                     if (student->getSem() >= foundCourse->getSem()) {
-                        if (foundCourse->getSem()%2 == sec.getSemester() + 1) {
-                            sec.assignStudentToCourse(*student, *foundCourse);
+                        if ((foundCourse->getSem()%2 == 0 && sec.getSemester() == 1)
+                            || (foundCourse->getSem()%2 == 1 && sec.getSemester() == 0)) {
+                            int found = 0;
+                            // Αν δεν έχει ήδη εγγραφεί στο μάθημα
+                            for (size_t j = 0; j < student->getMyCourses().size(); j++) {
+                                if (student->getMyCourses()[j]->getCode() == foundCourse->getCode()) {
+                                    found = 1;
+                                    break;
+                                }
+                            }
+                            // Αν δεν έχει ήδη περάσει το μάθημα
+                            for (size_t j = 0; j < student->getPassedCourses().size(); j++) {
+                                if (student->getPassedCourses()[j]->getCode() == foundCourse->getCode()) {
+                                    found = 1;
+                                    break;
+                                }
+                            }
+                            if (found == 0) {
+                                sec.assignStudentToCourse(*student, *foundCourse);
+                            }
+                            else {
+                                cout << "You are already enrolled or have already passed this course!" << endl;
+                            }
                         }
                         else {
                             cout << "You can't enroll in this course this semester!" << endl;
@@ -434,12 +500,17 @@ void studentMenu(Secretary &sec, Student* &student) {
                             //blabla
                             //Να τυπώνει και current semester
                         }
-                            break;
+                        break;
                         case 2: {
                             cout << "My grades for all the semesters are:" << endl;
-                            //blabla
+                            for (size_t i = 0; i < sec.getGrades().size(); i++) { 
+                            if (sec.getGrades()[i]->getStudentAM() == student->getAM()) {
+                            cout << sec.getGrades()[i]->getCourseCode() << " " << sec.getGrades()[i]->getGrade() << endl;
+                            }
+                            }
+                            cout << "Total ECTS: " << student->getEcts() << endl;
                         }
-                            break;
+                        break;
                         case 3:
                             break;
                         default:
@@ -450,8 +521,30 @@ void studentMenu(Secretary &sec, Student* &student) {
                 }
                 cout << "*****************" << endl;
             }
-                break;
+            break;
             case 3: {
+                //prints courses that student is enrolled in
+                cout << "Enrolled this semester:" << endl;
+                if (student->getMyCourses().size() == 0) {
+                    cout << "No courses enrolled!" << endl;
+                    cout << "*****************" << endl;
+                }
+                for (size_t i = 0; i < student->getMyCourses().size(); i++) {
+                    cout << student->getMyCourses()[i]->getCourseName() << " " << student->getMyCourses()[i]->getCode() << endl;
+                    cout << "*****************" << endl;
+                }
+                //prints courses that student has passed
+                cout << "My passed courses:" << endl;
+                if (student->getPassedCourses().size() == 0) {
+                    cout << "No courses passed!" << endl;
+                }
+                for (size_t i = 0; i < student->getPassedCourses().size(); i++) {
+                    cout << student->getPassedCourses()[i]->getCourseName() << " " << student->getPassedCourses()[i]->getCode() << endl;
+                }
+                cout << "****************" << endl;
+            }
+            break;
+            case 4: {
                 cout << "Logging out..." << endl;
             }
                 break;
@@ -495,9 +588,9 @@ Professor* find_professor_from_email(Secretary &sec) {
 }
 
 Course* find_course_from_code(Secretary &sec) {
-    string targetCode = " ";
+    string targetCode;
     cin >> targetCode;
-
+    
     Course* foundCourse = nullptr;
     vector<Course*> const &courses = sec.getCourses();
 
@@ -507,6 +600,11 @@ Course* find_course_from_code(Secretary &sec) {
             break;
         }
     }
+
+    if (foundCourse == nullptr) {
+        return nullptr;
+    }
+
     return foundCourse;
 }
 
@@ -564,7 +662,15 @@ void editCourse(Secretary &sec) {
     Course* foundCourse = find_course_from_code(sec);
 
     if (foundCourse) {
-        cout << "Course Info: \n" << *foundCourse << endl;
+        cout << "Course Info: \n" << *foundCourse << 
+        "Semester: " << foundCourse->getSem() << "\n" <<
+        "ECTS: " << foundCourse->getEcts() << endl;
+        if (foundCourse->getComp() == true) {
+            cout << "Compulsory: Yes" << endl;
+        }
+        else {
+            cout << "Compulsory: No" << endl;
+        }
         cout << "Proceed with editing? (y/n)" << endl;
         char choice;
         cin >> choice;
