@@ -27,7 +27,7 @@ using namespace std;
         }
 
         Secretary::~Secretary() {
-                vecp.clear();  
+                vecp.clear();
                 vecs.clear();
                 vecc.clear();
                 vecg.clear();
@@ -55,7 +55,6 @@ using namespace std;
 
         void Secretary::add(Professor &p) {
                 vecp.push_back(&p);
-
         }
         
         void Secretary::add(Student &s) {
@@ -162,6 +161,7 @@ using namespace std;
                 return false;
         }
 
+        //not used
         bool Secretary::find_person(Secretary &sec, Person &person) {
                 cout << "\nSearching for "<< person.getFirstName() << " " << person.getLastName() << " in Secretary" << endl;
                 int sizep = sec.vecp.size();
@@ -243,6 +243,10 @@ using namespace std;
                 for (size_t i = 0; i<sec.vecs.size(); i++) {
                         Student* newStudent = new Student(*sec.vecs.at(i));  
                         vecs.push_back(newStudent);
+                }
+                for (size_t i = 0; i<sec.vecc.size(); i++) {
+                        Course* newCourse = new Course(*sec.vecc.at(i));  
+                        vecc.push_back(newCourse);
                 }
                 return *this;
         }
